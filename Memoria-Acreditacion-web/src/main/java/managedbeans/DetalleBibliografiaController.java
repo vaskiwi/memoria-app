@@ -20,6 +20,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import managedbeans.util.JsfUtil;
+import sessionbeans.AsignaturaFacadeLocal;
 import sessionbeans.DetalleBibliografiaFacadeLocal;
 
 /**
@@ -38,6 +39,8 @@ public class DetalleBibliografiaController implements Serializable {
     private List<DetalleBibliografia> items = null;
     private DetalleBibliografia selected;
     private List<DetalleBibliografia> lista_nombres = null;
+     @EJB
+    private AsignaturaFacadeLocal AsignaturaFacade;
     
     public DetalleBibliografiaController() {
     }
@@ -54,6 +57,14 @@ public class DetalleBibliografiaController implements Serializable {
 
     public void setFacade(DetalleBibliografiaFacadeLocal ejbFacade) {
         this.ejbFacade = ejbFacade;
+    }
+
+    public AsignaturaFacadeLocal getAsignaturaFacade() {
+        return AsignaturaFacade;
+    }
+
+    public void setAsignaturaFacade(AsignaturaFacadeLocal AsignaturaFacade) {
+        this.AsignaturaFacade = AsignaturaFacade;
     }
 
     public List<DetalleBibliografia> getItems() {
@@ -128,6 +139,13 @@ public class DetalleBibliografiaController implements Serializable {
         if (!JsfUtil.isValidationFailed()) {
             items = null;
         }
+        DetalleBibliografia total = ejbFacade.findById(Long.valueOf(99900));
+        total.setCantBibliografiaComplementaria(selected.getCantBibliografiaComplementaria()+total.getCantBibliografiaComplementaria());
+        total.setCantBibliografiaObligatoria(selected.getCantBibliografiaObligatoria()+total.getCantBibliografiaObligatoria());
+        total.setCantEjemplaresFisicos(selected.getCantEjemplaresFisicos()+total.getCantEjemplaresFisicos());
+        total.setCantTitulosFisicos(selected.getCantTitulosFisicos()+total.getCantTitulosFisicos());
+        total.setPromAlumnosCurso(selected.getPromAlumnosCurso()+total.getPromAlumnosCurso());
+        total.setRelEjemplaresAlumnos(selected.getRelEjemplaresAlumnos()+total.getRelEjemplaresAlumnos());
     }
 
     public void update() {
@@ -184,7 +202,7 @@ public class DetalleBibliografiaController implements Serializable {
             }
             if (object instanceof DetalleBibliografia) {
                 DetalleBibliografia o = (DetalleBibliografia) object;
-                return getStringKey(o.getId());
+                return getStringKey(o.getId_detalle_bibliografia());
             } else {
                 Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), DetalleBibliografia.class.getName()});
                 return null;

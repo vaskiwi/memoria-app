@@ -6,15 +6,12 @@
 package entities;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Set;
 import javax.persistence.Entity;
-import javax.persistence.EntityManager;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -40,6 +37,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Profesor.findByJerarquia", query = "SELECT a FROM Profesor a WHERE a.jerarquia = :jerarquia"),
     @NamedQuery(name = "Profesor.findByGrado", query = "SELECT a FROM Profesor a WHERE a.grado = :grado"),
     @NamedQuery(name = "Profesor.findByJerarYGrado", query = "SELECT a FROM Profesor a WHERE a.jerarquia = :jerarquia AND a.grado = :grado"),
+    @NamedQuery(name = "Profesor.findByGradoYDiurnoVespertino", query = "SELECT a FROM Profesor a WHERE a.grado = :grado AND a.diurno_vespertino = :diurno_vespertino"),
+    @NamedQuery(name = "Profesor.findByJerarYGradoYDiurnoVespertino", query = "SELECT a FROM Profesor a WHERE a.jerarquia = :jerarquia AND a.grado = :grado AND a.diurno_vespertino = :diurno_vespertino"),
     @NamedQuery(name = "Profesor.findByJerarYContrato", query = "SELECT a FROM Profesor a WHERE a.jerarquia = :jerarquia AND a.contrato = :contrato"),
     @NamedQuery(name = "Profesor.findByDiurnoVespertino", query = "SELECT a FROM Profesor a WHERE a.diurno_vespertino = :diurno_vespertino")
     

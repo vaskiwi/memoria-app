@@ -41,6 +41,7 @@ INSERT INTO rol("id_rol","nombre") VALUES (1,'ADMINISTRADOR')
 INSERT INTO profesor("rut_profesor","anoretiro","ano_ingreso","apellido_mat","apellido_pat","titulo_profesor","contrato","dedicacion_contratada","nombre_profesor","vigente","unidad_profesor","comuna_profesor","diurno_vespertino","grado_id_grado_academico","jerarquia_id_jerarquia") VALUES ('120188615',0,2001,'Castro','Bonacic','Ingeniero de Ejecución en Computación e Informática','Completa',45,'Carolina',TRUE,'Departamento de Ingeniería Informática','Estación Central','DIURNO',2,3)
 INSERT INTO profesor("rut_profesor","anoretiro","ano_ingreso","apellido_mat","apellido_pat","titulo_profesor","contrato","dedicacion_contratada","nombre_profesor","vigente","unidad_profesor","comuna_profesor","diurno_vespertino","grado_id_grado_academico","jerarquia_id_jerarquia") VALUES ('69476376',0,2001,'Leiva','Acuña','Ingeniero Civil Electricista','Completa',45,'Gonzalo',TRUE,'Departamento de Ingeniería Informática','Estación Central','VESPERTINO',1,1)
 
+INSERT INTO asignatura("id_asignatura","nombre_asignatura") VALUES (99000,'Total')
 INSERT INTO asignatura("id_asignatura","codigo","creditos_asignatura","cant_horas_presenciales","nombre_asignatura","semestre","carrera_id_carrera") VALUES (99900,13201,8,8,'Métodos de Programación',3,1)
 INSERT INTO asignatura("id_asignatura","codigo","creditos_asignatura","cant_horas_presenciales","nombre_asignatura","semestre","carrera_id_carrera") VALUES (99901,13278,6,6,'Estructura de Computadores',4,1)
 INSERT INTO asignatura("id_asignatura","codigo","creditos_asignatura","cant_horas_presenciales","nombre_asignatura","semestre","carrera_id_carrera") VALUES (99902,13204,6,6,'Paradigmas de Programación',4,1)
@@ -68,3 +69,4 @@ INSERT INTO asignatura("id_asignatura","codigo","creditos_asignatura","cant_hora
 
 INSERT INTO usuario("rut_usuario","activo","nombre_usuario","uid","user_password","rol_nombre") VALUES ('18210538-4',TRUE,'vasco.vergara@usach.cl',9999,'4b7ee6c01bc292e00ea85991febf6a3b','ADMINISTRADOR')
 
+INSERT INTO detallebibliografia("id_detalle_bibliografia","asignatura_id","cantidad_titulos_fisicos","cantidad_ejemplares_fisicos","cantidad_bibliografia_obligatoria","cantidad_bibliografia_complementaria","promedio_alumnos_curso","relacion_ejemplares_alumnos") VALUES (99900,99000,0,0,0,0,0,0)

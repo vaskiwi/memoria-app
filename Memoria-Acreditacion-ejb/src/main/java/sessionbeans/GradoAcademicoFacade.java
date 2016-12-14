@@ -6,7 +6,6 @@
 package sessionbeans;
 
 import entities.GradoAcademico;
-import entities.Profesor;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

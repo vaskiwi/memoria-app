@@ -13,19 +13,28 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Vasco
  */
 @Entity
+@Table(name = "detallebibliografia")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "DetalleBibliografia.findById", query = "SELECT a FROM DetalleBibliografia a WHERE a.id_detalle_bibliografia = :id_detalle_bibliografia"),
+})
 public class DetalleBibliografia implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long id_detalle_bibliografia;
     @ManyToOne
     @JoinColumn(name = "asignatura_id")
     private Asignatura asignatura;
@@ -45,12 +54,13 @@ public class DetalleBibliografia implements Serializable {
     private float promAlumnosCurso;
     @Column(name = "relacion_ejemplares_alumnos")
     private float relEjemplaresAlumnos;
-    public Long getId() {
-        return id;
+
+    public Long getId_detalle_bibliografia() {
+        return id_detalle_bibliografia;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId_detalle_bibliografia(Long id_detalle_bibliografia) {
+        this.id_detalle_bibliografia = id_detalle_bibliografia;
     }
 
     public Asignatura getAsignatura() {
@@ -112,7 +122,7 @@ public class DetalleBibliografia implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (id_detalle_bibliografia != null ? id_detalle_bibliografia.hashCode() : 0);
         return hash;
     }
 
@@ -123,7 +133,7 @@ public class DetalleBibliografia implements Serializable {
             return false;
         }
         DetalleBibliografia other = (DetalleBibliografia) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.id_detalle_bibliografia == null && other.id_detalle_bibliografia != null) || (this.id_detalle_bibliografia != null && !this.id_detalle_bibliografia.equals(other.id_detalle_bibliografia))) {
             return false;
         }
         return true;
@@ -131,7 +141,7 @@ public class DetalleBibliografia implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.DetalleBibliografia[ id=" + id + " ]";
+        return "entities.DetalleBibliografia[ id=" + id_detalle_bibliografia + " ]";
     }
     
 }

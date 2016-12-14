@@ -14,7 +14,7 @@
                 <h:panelGroup id="display" >
                     <p:panelGrid columns="2" rendered="#{detalleBibliografiaController.selected != null}">
                         <h:outputText value="Asignatura: "/>
-                        <h:outputText value="#{detalleBibliografiaController.selected.asignatura.nombre}" title="Asignatura"/>
+                        <h:outputText value="#{detalleBibliografiaController.selected.asignatura.nombre_asignatura}" title="Asignatura"/>
                         <h:outputText value="Cantidad de bibliografia obligatoria: "/>
                         <h:outputText value="#{detalleBibliografiaController.selected.cantBibliografiaObligatoria}" title="Cantidad Bibliografia Obligatoria"/>
                         <h:outputText value="Cantidad de bibliografia complementaria: "/>

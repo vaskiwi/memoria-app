@@ -6,11 +6,8 @@ import entities.Jerarquia;
 import entities.Profesor;
 import entities.ProfesorAsignatura;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.Reader;
 import managedbeans.util.JsfUtil;
 import managedbeans.util.JsfUtil.PersistAction;
 import sessionbeans.ProfesorFacadeLocal;
@@ -797,12 +794,19 @@ public class ProfesorController implements Serializable {
     }
     
     public void addAsignatura(){
-        FacesContext context = FacesContext.getCurrentInstance();
-        //if (selected.getAsignaturaList().contains(curso_add)){
-        //}
         Date fecha = new Date();
         int year;
         year = fecha.getYear() + 1900;
+        float horas_profesor;
+        float horas_asignatura;
+        float horas_total;
+        if(selected.getContrato().equals("Completa")==false){
+            horas_profesor=selected.getDedicacion_contratada();
+            horas_asignatura=curso_add.getCant_horas_presenciales()/5;
+            horas_total=horas_profesor+horas_asignatura;
+            selected.setDedicacion_contratada(horas_total);
+            persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("ProfesorUpdated"));
+        }
         profeasigCtrl.prepareCreate();
         profeasigCtrl.getSelected().setRut_profesor(selected);
         profeasigCtrl.getSelected().setId_asignatura(curso_add);
@@ -811,6 +815,16 @@ public class ProfesorController implements Serializable {
     }
     
     public void delAsignatura(){
+        float horas_profesor;
+        float horas_asignatura;
+        float horas_total;
+        if(selected.getContrato().equals("Completa")==false){
+            horas_profesor=selected.getDedicacion_contratada();
+            horas_asignatura=curso_del.getId_asignatura().getCant_horas_presenciales()/5;
+            horas_total=horas_profesor-horas_asignatura;
+            selected.setDedicacion_contratada(horas_total);
+            persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("ProfesorUpdated"));
+        }
         profeasigCtrl.setSelected(curso_del);
         profeasigCtrl.destroy();
     }
@@ -846,9 +860,6 @@ public class ProfesorController implements Serializable {
         return horas;
     }
     
-    
-   
-
     public Profesor prepareCreate() {
         selected = new Profesor();
         initializeEmbeddableKey();
@@ -856,62 +867,16 @@ public class ProfesorController implements Serializable {
     }
 
     public void create() {
-        if ("TITULAR".equals(selected.getJerarquia().getNombre_jerarquia())) {
-            selected.setRenta(90);
-            }
+        if ("Completa".equals(selected.getContrato())) {
+            selected.setDedicacion_contratada(45);
+        }
         else{    
-            if ("ASOCIADO".equals(selected.getJerarquia().getNombre_jerarquia())) {
-                selected.setRenta(80);
-            }
-            else{    
-                if ("ASISTENTE".equals(selected.getJerarquia().getNombre_jerarquia())) {
-                    selected.setRenta(70);
-                }
-                else{    
-                    if ("INSTRUCTOR".equals(selected.getJerarquia().getNombre_jerarquia())) {
-                        selected.setRenta(60);
-                    }
-                    else{    
-                        if ("AYUDANTE".equals(selected.getJerarquia().getNombre_jerarquia())) {
-                            selected.setRenta(50);
-                        }   
-                        else{    
-                            if ("ADJUNTO CATEGORÍA I".equals(selected.getJerarquia().getNombre_jerarquia())) {
-                                selected.setRenta(40);
-                            }
-                            else{    
-                                if ("ADJUNTO CATEGORÍA II".equals(selected.getJerarquia().getNombre_jerarquia())) {
-                                    selected.setRenta(40);
-                                } 
-                                else{    
-                                    if ("INSTRUCTOR CATEGORÍA I".equals(selected.getJerarquia().getNombre_jerarquia())) {
-                                        selected.setRenta(30);
-                                    }
-                                    else{    
-                                        if ("INSTRUCTOR CATEGORÍA II".equals(selected.getJerarquia().getNombre_jerarquia())) {
-                                        selected.setRenta(20);
-                                        }
-                                        else{    
-                                            if ("AYUDANTE PROFESOR".equals(selected.getJerarquia().getNombre_jerarquia())) {
-                                                selected.setRenta(10);
-                                            }    
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+            selected.setDedicacion_contratada(0);
         }
         selected.setVigente(true);
-        System.out.println("Profesor:" + selected.getNombre_profesor() + ", Jerarquia: " + selected.getJerarquia() + "Renta:" + selected.getRenta());
         persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("ProfesorCreated"));
         if (!JsfUtil.isValidationFailed()) {
-            items = null;    // Invalidate list of items to trigger re-query.
-            System.out.println("WEREWEREEWRE");
-        }else{
-            System.out.println("WEREWEREEWRE");
+            items = null;
         }
     }
 

@@ -9,6 +9,7 @@ import entities.DetalleBibliografia;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,7 +28,12 @@ public class DetalleBibliografiaFacade extends AbstractFacade<DetalleBibliografi
     public DetalleBibliografiaFacade() {
         super(DetalleBibliografia.class);
     }
-
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
+    
+    @Override
+    public DetalleBibliografia findById(Long id){
+        Query query;
+        query = em.createNamedQuery("DetalleBibliografia.findById")
+                .setParameter("id_detalle_bibliografia", id);
+        return (DetalleBibliografia) query.getSingleResult();
+    }
 }

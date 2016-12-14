@@ -27,8 +27,12 @@
                         <p:inputText id="apellidomat" value="#{profesorController.selected.apellido_mat}" required="true" title="apellidomat">
                             <f:validator validatorId="custom.nombreValidador"/>
                         </p:inputText>
+                        <p:outputLabel value="Título profesional: " for="titulo" />
+                        <p:inputText id="titulo" value="#{profesorController.selected.titulo_profesor}" required="true" title="titulo">
+                            <f:validator validatorId="custom.nombreValidador"/>
+                        </p:inputText>
                         <p:outputLabel value="Unidad: " for="unidad" />
-                        <p:inputText id="unidad" value="#{profesorController.selected.unidad_profesor}" title="unidad" required="true" >
+                        <p:inputText id="unidad" value="#{profesorController.selected.unidad_profesor}" title="unidad" required="true"> 
                             <f:validator validatorId="custom.nombreValidador"/>
                         </p:inputText>
                         <p:outputLabel value="Comuna: " for="comuna" />
@@ -36,8 +40,7 @@
                             <f:validator validatorId="custom.nombreValidador"/>
                         </p:inputText>
                         <p:outputLabel value="RUN: " for="rut_profesor" />
-                        <p:inputMask id="rut_profesor" value="#{profesorController.selected.rut_profesor}" required="true" mask="999999999" title="#{bundle.CreateProfesorTitle_rut_profesor}" >
-                          
+                        <p:inputMask id="rut_profesor" value="#{profesorController.selected.rut_profesor}" required="true" mask="999999999" title="#{bundle.CreateProfesorTitle_rut_profesor}" >                    
                             <f:validator validatorId="custom.numeroValidador"/>
                             <f:validateLength minimum="9" maximum="9"/>
                         </p:inputMask>   
@@ -46,13 +49,19 @@
                             <f:validator validatorId="custom.numeroValidador"/>
                             <f:validateLength minimum="4" maximum="4"/>
                         </p:inputMask>
-                        <p:outputLabel for="jornada" value="Jornada Contrato: " />
-                        <p:selectOneMenu id="jornada" value="#{profesorController.selected.contrato}"  required="true" style="width:190px">
-                                    <f:selectItem itemLabel="Seleccione Jornada" itemValue=""/>
+                        <p:outputLabel for="contrato" value="Contrato: " />
+                        <p:selectOneMenu id="contrato" value="#{profesorController.selected.contrato}"  required="true" style="width:190px">
+                                    <f:selectItem itemLabel="Seleccione Contrato" itemValue=""/>
                                     <f:selectItem itemLabel="Completa" itemValue="Completa"/>
                                     <f:selectItem itemLabel="Parcial" itemValue="Parcial"/>
                                     <f:selectItem itemLabel="Por Hora" itemValue="Por Hora"/>
                                 </p:selectOneMenu>
+                        <p:outputLabel for="jornada" value="Jornada: " />
+                        <p:selectOneMenu id="jornada" value="#{profesorController.selected.diurno_vespertino}"  required="true" style="width:190px">
+                                    <f:selectItem itemLabel="Seleccione Jornada" itemValue=""/>
+                                    <f:selectItem itemLabel="DIURNO" itemValue="DIURNO"/>
+                                    <f:selectItem itemLabel="VESPERTINO" itemValue="VESPERTINO"/>
+                        </p:selectOneMenu>
                         <p:outputLabel value="Tipo de Jerarquía: " for="jerarquia" />
                         <p:selectOneMenu id="jerarquia"  required="true" value="#{profesorController.selected.jerarquia}" >
                                     <f:selectItem itemLabel="Seleccione Jearquía" itemValue=""/>

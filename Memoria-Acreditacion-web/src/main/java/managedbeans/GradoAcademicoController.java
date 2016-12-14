@@ -57,15 +57,25 @@ public class GradoAcademicoController implements Serializable {
     
     private List<GradoAcademico> lista_nombres = null;
     
-    private List<CantJerarquiaGrado> cant_jerar_grado = null;
+    private List<CantJerarquiaGrado> cant_jerar_grado_diurno = null;
     
-    private List<GradoCant> grado_cant_ano_1;
+    private List<CantJerarquiaGrado> cant_jerar_grado_vespertino = null;
     
-    private List<GradoCant> grado_cant_ano_2;
+    private List<GradoCant> grado_cant_ano_1_diurno;
     
-    private List<GradoCant> grado_cant_ano_3;
+    private List<GradoCant> grado_cant_ano_2_diurno;
     
-    private List<GradoCant> grado_cant_ano_4;
+    private List<GradoCant> grado_cant_ano_3_diurno;
+    
+    private List<GradoCant> grado_cant_ano_4_diurno;
+    
+    private List<GradoCant> grado_cant_ano_1_vespertino;
+    
+    private List<GradoCant> grado_cant_ano_2_vespertino;
+    
+    private List<GradoCant> grado_cant_ano_3_vespertino;
+    
+    private List<GradoCant> grado_cant_ano_4_vespertino;
     
      /*************************************************
       *               INICIO
@@ -95,8 +105,8 @@ public class GradoAcademicoController implements Serializable {
         this.listaGJ = listaGJ;
     }
 
-    public List<CantJerarquiaGrado> getCant_jerar_grado() {
-        cant_jerar_grado = new ArrayList<>();
+    public List<CantJerarquiaGrado> getCant_jerar_grado_diurno() {
+        cant_jerar_grado_diurno = new ArrayList<>();
         GradoAcademico gdoctor = (GradoAcademico) ejbFacade.findByNombre("DOCTOR");
         GradoAcademico gmagister = (GradoAcademico) ejbFacade.findByNombre("MAGISTER");
         GradoAcademico glicenciado = (GradoAcademico) ejbFacade.findByNombre("LICENCIADO-TITULADO");
@@ -155,46 +165,46 @@ public class GradoAcademicoController implements Serializable {
         List<Profesor> tituladoinstructor2;
         List<Profesor> tituladoayudantep;
         
-        doctortitular = profeFacade.findByJerarYGrado(jtitular, gdoctor);
-        doctorasociado = profeFacade.findByJerarYGrado(jasociado, gdoctor);
-        doctorasistente = profeFacade.findByJerarYGrado(jasistente, gdoctor);
-        doctorinstructor = profeFacade.findByJerarYGrado(jinstructor, gdoctor);
-        doctorayudante = profeFacade.findByJerarYGrado(jayudante, gdoctor);
-        doctoradjcat1 = profeFacade.findByJerarYGrado(jadjcat1, gdoctor);
-        doctoradjcat2 = profeFacade.findByJerarYGrado(jadjcat2, gdoctor);
-        doctorinstructor1 = profeFacade.findByJerarYGrado(jinstructor1, gdoctor);
-        doctorinstructor2 = profeFacade.findByJerarYGrado(jinstructor2, gdoctor);
-        doctorayudantep = profeFacade.findByJerarYGrado(jayudantep, gdoctor);
-        magistertitular = profeFacade.findByJerarYGrado(jtitular, gmagister);
-        magisterasociado  = profeFacade.findByJerarYGrado(jasociado, gmagister);
-        magisterasistente  = profeFacade.findByJerarYGrado(jasistente, gmagister);
-        magisterinstructor = profeFacade.findByJerarYGrado(jinstructor, gmagister);
-        magisterayudante  = profeFacade.findByJerarYGrado(jayudante, gmagister);
-        magisteradjcat1  = profeFacade.findByJerarYGrado(jadjcat1, gmagister);
-        magisteradjcat2  = profeFacade.findByJerarYGrado(jadjcat2, gmagister);
-        magisterinstructor1  = profeFacade.findByJerarYGrado(jinstructor1, gmagister);
-        magisterinstructor2  = profeFacade.findByJerarYGrado(jinstructor2, gmagister);
-        magisterayudantep  = profeFacade.findByJerarYGrado(jayudantep, gmagister);
-        licenciadotitular  = profeFacade.findByJerarYGrado(jtitular, glicenciado);
-        licenciadoasociado  = profeFacade.findByJerarYGrado(jasociado, glicenciado);
-        licenciadoasistente  = profeFacade.findByJerarYGrado(jasistente, glicenciado);
-        licenciadoinstructor  = profeFacade.findByJerarYGrado(jinstructor, glicenciado);
-        licenciadoayudante  = profeFacade.findByJerarYGrado(jayudante, glicenciado) ;
-        licenciadoadjcat1 = profeFacade.findByJerarYGrado(jadjcat1, glicenciado);
-        licenciadoadjcat2   = profeFacade.findByJerarYGrado(jadjcat2, glicenciado);
-        licenciadoinstructor1 = profeFacade.findByJerarYGrado(jinstructor1, glicenciado);
-        licenciadoinstructor2   = profeFacade.findByJerarYGrado(jinstructor2, glicenciado);
-        licenciadoayudantep = profeFacade.findByJerarYGrado(jayudantep, glicenciado);
-        tituladotitular = profeFacade.findByJerarYGrado(jtitular, gtitulado);
-        tituladoasociado = profeFacade.findByJerarYGrado(jasociado, gtitulado);
-        tituladoasistente  = profeFacade.findByJerarYGrado(jasistente, gtitulado);
-        tituladoinstructor  = profeFacade.findByJerarYGrado(jinstructor, gtitulado);
-        tituladoayudante  = profeFacade.findByJerarYGrado(jayudante, gtitulado);
-        tituladoadjcat1  = profeFacade.findByJerarYGrado(jadjcat1, gtitulado);
-        tituladoadjcat2  = profeFacade.findByJerarYGrado(jadjcat2, gtitulado);
-        tituladoinstructor1 = profeFacade.findByJerarYGrado(jinstructor1, gtitulado);
-        tituladoinstructor2  = profeFacade.findByJerarYGrado(jinstructor2, gtitulado);
-        tituladoayudantep  = profeFacade.findByJerarYGrado(jayudantep, gtitulado);
+        doctortitular = profeFacade.findByJerarYGradoYDiurnoVespertino(jtitular, gdoctor,"DIURNO");
+        doctorasociado = profeFacade.findByJerarYGradoYDiurnoVespertino(jasociado, gdoctor,"DIURNO");
+        doctorasistente = profeFacade.findByJerarYGradoYDiurnoVespertino(jasistente, gdoctor,"DIURNO");
+        doctorinstructor = profeFacade.findByJerarYGradoYDiurnoVespertino(jinstructor, gdoctor,"DIURNO");
+        doctorayudante = profeFacade.findByJerarYGradoYDiurnoVespertino(jayudante, gdoctor,"DIURNO");
+        doctoradjcat1 = profeFacade.findByJerarYGradoYDiurnoVespertino(jadjcat1, gdoctor,"DIURNO");
+        doctoradjcat2 = profeFacade.findByJerarYGradoYDiurnoVespertino(jadjcat2, gdoctor,"DIURNO");
+        doctorinstructor1 = profeFacade.findByJerarYGradoYDiurnoVespertino(jinstructor1, gdoctor,"DIURNO");
+        doctorinstructor2 = profeFacade.findByJerarYGradoYDiurnoVespertino(jinstructor2, gdoctor,"DIURNO");
+        doctorayudantep = profeFacade.findByJerarYGradoYDiurnoVespertino(jayudantep, gdoctor,"DIURNO");
+        magistertitular = profeFacade.findByJerarYGradoYDiurnoVespertino(jtitular, gmagister,"DIURNO");
+        magisterasociado  = profeFacade.findByJerarYGradoYDiurnoVespertino(jasociado, gmagister,"DIURNO");
+        magisterasistente  = profeFacade.findByJerarYGradoYDiurnoVespertino(jasistente, gmagister,"DIURNO");
+        magisterinstructor = profeFacade.findByJerarYGradoYDiurnoVespertino(jinstructor, gmagister,"DIURNO");
+        magisterayudante  = profeFacade.findByJerarYGradoYDiurnoVespertino(jayudante, gmagister,"DIURNO");
+        magisteradjcat1  = profeFacade.findByJerarYGradoYDiurnoVespertino(jadjcat1, gmagister,"DIURNO");
+        magisteradjcat2  = profeFacade.findByJerarYGradoYDiurnoVespertino(jadjcat2, gmagister,"DIURNO");
+        magisterinstructor1  = profeFacade.findByJerarYGradoYDiurnoVespertino(jinstructor1, gmagister,"DIURNO");
+        magisterinstructor2  = profeFacade.findByJerarYGradoYDiurnoVespertino(jinstructor2, gmagister,"DIURNO");
+        magisterayudantep  = profeFacade.findByJerarYGradoYDiurnoVespertino(jayudantep, gmagister,"DIURNO");
+        licenciadotitular  = profeFacade.findByJerarYGradoYDiurnoVespertino(jtitular, glicenciado,"DIURNO");
+        licenciadoasociado  = profeFacade.findByJerarYGradoYDiurnoVespertino(jasociado, glicenciado,"DIURNO");
+        licenciadoasistente  = profeFacade.findByJerarYGradoYDiurnoVespertino(jasistente, glicenciado,"DIURNO");
+        licenciadoinstructor  = profeFacade.findByJerarYGradoYDiurnoVespertino(jinstructor, glicenciado,"DIURNO");
+        licenciadoayudante  = profeFacade.findByJerarYGradoYDiurnoVespertino(jayudante, glicenciado,"DIURNO") ;
+        licenciadoadjcat1 = profeFacade.findByJerarYGradoYDiurnoVespertino(jadjcat1, glicenciado,"DIURNO");
+        licenciadoadjcat2   = profeFacade.findByJerarYGradoYDiurnoVespertino(jadjcat2, glicenciado,"DIURNO");
+        licenciadoinstructor1 = profeFacade.findByJerarYGradoYDiurnoVespertino(jinstructor1, glicenciado,"DIURNO");
+        licenciadoinstructor2   = profeFacade.findByJerarYGradoYDiurnoVespertino(jinstructor2, glicenciado,"DIURNO");
+        licenciadoayudantep = profeFacade.findByJerarYGradoYDiurnoVespertino(jayudantep, glicenciado,"DIURNO");
+        tituladotitular = profeFacade.findByJerarYGradoYDiurnoVespertino(jtitular, gtitulado,"DIURNO");
+        tituladoasociado = profeFacade.findByJerarYGradoYDiurnoVespertino(jasociado, gtitulado,"DIURNO");
+        tituladoasistente  = profeFacade.findByJerarYGradoYDiurnoVespertino(jasistente, gtitulado,"DIURNO");
+        tituladoinstructor  = profeFacade.findByJerarYGradoYDiurnoVespertino(jinstructor, gtitulado,"DIURNO");
+        tituladoayudante  = profeFacade.findByJerarYGradoYDiurnoVespertino(jayudante, gtitulado,"DIURNO");
+        tituladoadjcat1  = profeFacade.findByJerarYGradoYDiurnoVespertino(jadjcat1, gtitulado,"DIURNO");
+        tituladoadjcat2  = profeFacade.findByJerarYGradoYDiurnoVespertino(jadjcat2, gtitulado,"DIURNO");
+        tituladoinstructor1 = profeFacade.findByJerarYGradoYDiurnoVespertino(jinstructor1, gtitulado,"DIURNO");
+        tituladoinstructor2  = profeFacade.findByJerarYGradoYDiurnoVespertino(jinstructor2, gtitulado,"DIURNO");
+        tituladoayudantep  = profeFacade.findByJerarYGradoYDiurnoVespertino(jayudantep, gtitulado,"DIURNO");
         CantJerarquiaGrado nuevod = new CantJerarquiaGrado();
         CantJerarquiaGrado nuevom = new CantJerarquiaGrado();
         CantJerarquiaGrado nuevol = new CantJerarquiaGrado();
@@ -470,28 +480,415 @@ public class GradoAcademicoController implements Serializable {
         nuevototal.setJerar9(nuevod.getJerar9()+nuevom.getJerar9()+nuevol.getJerar9()+nuevot.getJerar9());
         nuevototal.setJerar10(nuevod.getJerar10()+nuevom.getJerar10()+nuevol.getJerar10()+nuevot.getJerar10());
         nuevototal.setTotal(nuevod.getTotal()+nuevom.getTotal()+nuevol.getTotal()+nuevot.getTotal());
-        cant_jerar_grado.add(nuevod);
-        cant_jerar_grado.add(nuevom);
-        cant_jerar_grado.add(nuevol);
-        cant_jerar_grado.add(nuevot);
-        cant_jerar_grado.add(nuevototal);
-        return cant_jerar_grado;
+        cant_jerar_grado_diurno.add(nuevod);
+        cant_jerar_grado_diurno.add(nuevom);
+        cant_jerar_grado_diurno.add(nuevol);
+        cant_jerar_grado_diurno.add(nuevot);
+        cant_jerar_grado_diurno.add(nuevototal);
+        return cant_jerar_grado_diurno;
     }
 
-    public void setCant_jerar_grado(List<CantJerarquiaGrado> cant_jerar_grado) {
-        this.cant_jerar_grado = cant_jerar_grado;
+    public void setCant_jerar_grado_diurno(List<CantJerarquiaGrado> cant_jerar_grado_diurno) {
+        this.cant_jerar_grado_diurno = cant_jerar_grado_diurno;
     }
 
-    public List<GradoCant> getGrado_cant_ano_1() {
-        grado_cant_ano_1 = new ArrayList<>();
+    public List<CantJerarquiaGrado> getCant_jerar_grado_vespertino() {
+        cant_jerar_grado_vespertino = new ArrayList<>();
         GradoAcademico gdoctor = (GradoAcademico) ejbFacade.findByNombre("DOCTOR");
         GradoAcademico gmagister = (GradoAcademico) ejbFacade.findByNombre("MAGISTER");
         GradoAcademico glicenciado = (GradoAcademico) ejbFacade.findByNombre("LICENCIADO-TITULADO");
         GradoAcademico gtitulado = (GradoAcademico) ejbFacade.findByNombre("NO TITULADO");
-        List<Profesor> doctor = profeFacade.findByGrado(gdoctor);
-        List<Profesor> magister = profeFacade.findByGrado(gmagister);
-        List<Profesor> licenciado = profeFacade.findByGrado(glicenciado);
-        List<Profesor> titulado = profeFacade.findByGrado(gtitulado);
+        Jerarquia jtitular = (Jerarquia) jeraFacade.findByNombre("TITULAR");
+        Jerarquia jasociado = (Jerarquia) jeraFacade.findByNombre("ASOCIADO");
+        Jerarquia jasistente = (Jerarquia) jeraFacade.findByNombre("ASISTENTE");
+        Jerarquia jinstructor = (Jerarquia) jeraFacade.findByNombre("INSTRUCTOR");
+        Jerarquia jayudante = (Jerarquia) jeraFacade.findByNombre("AYUDANTE");
+        Jerarquia jadjcat1 = (Jerarquia) jeraFacade.findByNombre("ADJUNTO CATEGORÍA I");
+        Jerarquia jadjcat2 = (Jerarquia) jeraFacade.findByNombre("ADJUNTO CATEGORÍA II");
+        Jerarquia jinstructor1 = (Jerarquia) jeraFacade.findByNombre("INSTRUCTOR CATEGORÍA I");
+        Jerarquia jinstructor2 = (Jerarquia) jeraFacade.findByNombre("INSTRUCTOR CATEGORÍA II");
+        Jerarquia jayudantep = (Jerarquia) jeraFacade.findByNombre("AYUDANTE PROFESOR");
+        Date fecha = new Date();
+        int year;
+        year = fecha.getYear() + 1900;
+        List<Profesor> doctortitular;
+        List<Profesor> doctorasociado;
+        List<Profesor> doctorasistente;
+        List<Profesor> doctorinstructor;
+        List<Profesor> doctorayudante;
+        List<Profesor> doctoradjcat1;
+        List<Profesor> doctoradjcat2;
+        List<Profesor> doctorinstructor1;
+        List<Profesor> doctorinstructor2;
+        List<Profesor> doctorayudantep;
+        List<Profesor> magistertitular;
+        List<Profesor> magisterasociado;
+        List<Profesor> magisterasistente;
+        List<Profesor> magisterinstructor;
+        List<Profesor> magisterayudante;
+        List<Profesor> magisteradjcat1;
+        List<Profesor> magisteradjcat2;
+        List<Profesor> magisterinstructor1;
+        List<Profesor> magisterinstructor2;
+        List<Profesor> magisterayudantep;
+        List<Profesor> licenciadotitular;
+        List<Profesor> licenciadoasociado;
+        List<Profesor> licenciadoasistente;
+        List<Profesor> licenciadoinstructor;
+        List<Profesor> licenciadoayudante;
+        List<Profesor> licenciadoadjcat1;
+        List<Profesor> licenciadoadjcat2;
+        List<Profesor> licenciadoinstructor1;
+        List<Profesor> licenciadoinstructor2;
+        List<Profesor> licenciadoayudantep;
+        List<Profesor> tituladotitular;
+        List<Profesor> tituladoasociado;
+        List<Profesor> tituladoasistente;
+        List<Profesor> tituladoinstructor;
+        List<Profesor> tituladoayudante;
+        List<Profesor> tituladoadjcat1;
+        List<Profesor> tituladoadjcat2;
+        List<Profesor> tituladoinstructor1;
+        List<Profesor> tituladoinstructor2;
+        List<Profesor> tituladoayudantep;
+        
+        doctortitular = profeFacade.findByJerarYGradoYDiurnoVespertino(jtitular, gdoctor,"VESPERTINO");
+        doctorasociado = profeFacade.findByJerarYGradoYDiurnoVespertino(jasociado, gdoctor,"VESPERTINO");
+        doctorasistente = profeFacade.findByJerarYGradoYDiurnoVespertino(jasistente, gdoctor,"VESPERTINO");
+        doctorinstructor = profeFacade.findByJerarYGradoYDiurnoVespertino(jinstructor, gdoctor,"VESPERTINO");
+        doctorayudante = profeFacade.findByJerarYGradoYDiurnoVespertino(jayudante, gdoctor,"VESPERTINO");
+        doctoradjcat1 = profeFacade.findByJerarYGradoYDiurnoVespertino(jadjcat1, gdoctor,"VESPERTINO");
+        doctoradjcat2 = profeFacade.findByJerarYGradoYDiurnoVespertino(jadjcat2, gdoctor,"VESPERTINO");
+        doctorinstructor1 = profeFacade.findByJerarYGradoYDiurnoVespertino(jinstructor1, gdoctor,"VESPERTINO");
+        doctorinstructor2 = profeFacade.findByJerarYGradoYDiurnoVespertino(jinstructor2, gdoctor,"VESPERTINO");
+        doctorayudantep = profeFacade.findByJerarYGradoYDiurnoVespertino(jayudantep, gdoctor,"VESPERTINO");
+        magistertitular = profeFacade.findByJerarYGradoYDiurnoVespertino(jtitular, gmagister,"VESPERTINO");
+        magisterasociado  = profeFacade.findByJerarYGradoYDiurnoVespertino(jasociado, gmagister,"VESPERTINO");
+        magisterasistente  = profeFacade.findByJerarYGradoYDiurnoVespertino(jasistente, gmagister,"VESPERTINO");
+        magisterinstructor = profeFacade.findByJerarYGradoYDiurnoVespertino(jinstructor, gmagister,"VESPERTINO");
+        magisterayudante  = profeFacade.findByJerarYGradoYDiurnoVespertino(jayudante, gmagister,"VESPERTINO");
+        magisteradjcat1  = profeFacade.findByJerarYGradoYDiurnoVespertino(jadjcat1, gmagister,"VESPERTINO");
+        magisteradjcat2  = profeFacade.findByJerarYGradoYDiurnoVespertino(jadjcat2, gmagister,"VESPERTINO");
+        magisterinstructor1  = profeFacade.findByJerarYGradoYDiurnoVespertino(jinstructor1, gmagister,"VESPERTINO");
+        magisterinstructor2  = profeFacade.findByJerarYGradoYDiurnoVespertino(jinstructor2, gmagister,"VESPERTINO");
+        magisterayudantep  = profeFacade.findByJerarYGradoYDiurnoVespertino(jayudantep, gmagister,"VESPERTINO");
+        licenciadotitular  = profeFacade.findByJerarYGradoYDiurnoVespertino(jtitular, glicenciado,"VESPERTINO");
+        licenciadoasociado  = profeFacade.findByJerarYGradoYDiurnoVespertino(jasociado, glicenciado,"VESPERTINO");
+        licenciadoasistente  = profeFacade.findByJerarYGradoYDiurnoVespertino(jasistente, glicenciado,"VESPERTINO");
+        licenciadoinstructor  = profeFacade.findByJerarYGradoYDiurnoVespertino(jinstructor, glicenciado,"VESPERTINO");
+        licenciadoayudante  = profeFacade.findByJerarYGradoYDiurnoVespertino(jayudante, glicenciado,"VESPERTINO") ;
+        licenciadoadjcat1 = profeFacade.findByJerarYGradoYDiurnoVespertino(jadjcat1, glicenciado,"VESPERTINO");
+        licenciadoadjcat2   = profeFacade.findByJerarYGradoYDiurnoVespertino(jadjcat2, glicenciado,"VESPERTINO");
+        licenciadoinstructor1 = profeFacade.findByJerarYGradoYDiurnoVespertino(jinstructor1, glicenciado,"VESPERTINO");
+        licenciadoinstructor2   = profeFacade.findByJerarYGradoYDiurnoVespertino(jinstructor2, glicenciado,"VESPERTINO");
+        licenciadoayudantep = profeFacade.findByJerarYGradoYDiurnoVespertino(jayudantep, glicenciado,"VESPERTINO");
+        tituladotitular = profeFacade.findByJerarYGradoYDiurnoVespertino(jtitular, gtitulado,"VESPERTINO");
+        tituladoasociado = profeFacade.findByJerarYGradoYDiurnoVespertino(jasociado, gtitulado,"VESPERTINO");
+        tituladoasistente  = profeFacade.findByJerarYGradoYDiurnoVespertino(jasistente, gtitulado,"VESPERTINO");
+        tituladoinstructor  = profeFacade.findByJerarYGradoYDiurnoVespertino(jinstructor, gtitulado,"VESPERTINO");
+        tituladoayudante  = profeFacade.findByJerarYGradoYDiurnoVespertino(jayudante, gtitulado,"VESPERTINO");
+        tituladoadjcat1  = profeFacade.findByJerarYGradoYDiurnoVespertino(jadjcat1, gtitulado,"VESPERTINO");
+        tituladoadjcat2  = profeFacade.findByJerarYGradoYDiurnoVespertino(jadjcat2, gtitulado,"VESPERTINO");
+        tituladoinstructor1 = profeFacade.findByJerarYGradoYDiurnoVespertino(jinstructor1, gtitulado,"VESPERTINO");
+        tituladoinstructor2  = profeFacade.findByJerarYGradoYDiurnoVespertino(jinstructor2, gtitulado,"VESPERTINO");
+        tituladoayudantep  = profeFacade.findByJerarYGradoYDiurnoVespertino(jayudantep, gtitulado,"VESPERTINO");
+        CantJerarquiaGrado nuevod = new CantJerarquiaGrado();
+        CantJerarquiaGrado nuevom = new CantJerarquiaGrado();
+        CantJerarquiaGrado nuevol = new CantJerarquiaGrado();
+        CantJerarquiaGrado nuevot = new CantJerarquiaGrado();
+        CantJerarquiaGrado nuevototal = new CantJerarquiaGrado();
+        int cont1 = 0;
+        int cont2 = 0;
+        int cont3 = 0;
+        int cont4 = 0;
+        int cont5 = 0;
+        int cont6 = 0;
+        int cont7 = 0;
+        int cont8 = 0;
+        int cont9 = 0;
+        int cont10 = 0;
+        for (int i = 0; i < doctortitular.size(); i++) {
+            if((doctortitular.get(i).getAno_ingreso() <= year) && (doctortitular.get(i).isVigente() == true || doctortitular.get(i).getAnoRetiro() >= year)){
+                cont1+=1;
+            }
+        }
+        for (int i = 0; i < doctorasociado.size(); i++) {
+            if((doctorasociado.get(i).getAno_ingreso() <= year) && (doctorasociado.get(i).isVigente() == true || doctorasociado.get(i).getAnoRetiro() >= year)){
+                cont2+=1;
+            }
+        }
+        for (int i = 0; i < doctorasistente.size(); i++) {
+            if((doctorasistente.get(i).getAno_ingreso() <= year) && (doctorasistente.get(i).isVigente() == true || doctorasistente.get(i).getAnoRetiro() >= year)){
+                cont3+=1;
+            }
+        }
+        for (int i = 0; i < doctorinstructor.size(); i++) {
+            if((doctorinstructor.get(i).getAno_ingreso() <= year) && (doctorinstructor.get(i).isVigente() == true || doctorinstructor.get(i).getAnoRetiro() >= year)){
+                cont4+=1;
+            }
+        }
+        for (int i = 0; i < doctorayudante.size(); i++) {
+            if((doctorayudante.get(i).getAno_ingreso() <= year) && (doctorayudante.get(i).isVigente() == true || doctorayudante.get(i).getAnoRetiro() >= year)){
+                cont5+=1;
+            }
+        }
+        for (int i = 0; i < doctoradjcat1.size(); i++) {
+            if((doctoradjcat1.get(i).getAno_ingreso() <= year) && (doctoradjcat1.get(i).isVigente() == true || doctoradjcat1.get(i).getAnoRetiro() >= year)){
+                cont6+=1;
+            }
+        }
+        for (int i = 0; i < doctoradjcat2.size(); i++) {
+            if((doctoradjcat2.get(i).getAno_ingreso() <= year) && (doctoradjcat2.get(i).isVigente() == true || doctoradjcat2.get(i).getAnoRetiro() >= year)){
+                cont7+=1;
+            }
+        }
+        for (int i = 0; i < doctorinstructor1.size(); i++) {
+            if((doctorinstructor1.get(i).getAno_ingreso() <= year) && (doctorinstructor1.get(i).isVigente() == true || doctorinstructor1.get(i).getAnoRetiro() >= year)){
+                cont8+=1;
+            }
+        }
+        for (int i = 0; i < doctorinstructor2.size(); i++) {
+            if((doctorinstructor2.get(i).getAno_ingreso() <= year) && (doctorinstructor2.get(i).isVigente() == true || doctorinstructor2.get(i).getAnoRetiro() >= year)){
+                cont9+=1;
+            }
+        }
+        for (int i = 0; i < doctorayudantep.size(); i++) {
+            if((doctorayudantep.get(i).getAno_ingreso() <= year) && (doctorayudantep.get(i).isVigente() == true || doctorayudantep.get(i).getAnoRetiro() >= year)){
+                cont10+=1;
+            }
+        }
+        nuevod.setJerar1(cont1);
+        nuevod.setJerar2(cont2);
+        nuevod.setJerar3(cont3);
+        nuevod.setJerar4(cont4);
+        nuevod.setJerar5(cont5);
+        nuevod.setJerar6(cont6);
+        nuevod.setJerar7(cont7);
+        nuevod.setJerar8(cont8);
+        nuevod.setJerar9(cont9);
+        nuevod.setJerar10(cont10);
+        nuevod.setGrado("Doctor");
+        cont1 = 0; cont2 = 0; cont3 = 0; cont4 = 0; cont5 = 0; cont6 = 0; cont7 = 0; cont8 = 0; cont9 = 0; cont10 = 0;
+        for (int i = 0; i < magistertitular.size(); i++) {
+            if((magistertitular.get(i).getAno_ingreso() <= year) && (magistertitular.get(i).isVigente() == true || magistertitular.get(i).getAnoRetiro() >= year)){
+                cont1+=1;
+            }
+        }
+        for (int i = 0; i < doctorasociado.size(); i++) {
+            if((magisterasociado.get(i).getAno_ingreso() <= year) && (magisterasociado.get(i).isVigente() == true || magisterasociado.get(i).getAnoRetiro() >= year)){
+                cont2+=1;
+            }
+        }
+        for (int i = 0; i < magisterasistente.size(); i++) {
+            if((magisterasistente.get(i).getAno_ingreso() <= year) && (magisterasistente.get(i).isVigente() == true || magisterasistente.get(i).getAnoRetiro() >= year)){
+                cont3+=1;
+            }
+        }
+        for (int i = 0; i < magisterinstructor.size(); i++) {
+            if((magisterinstructor.get(i).getAno_ingreso() <= year) && (magisterinstructor.get(i).isVigente() == true || magisterinstructor.get(i).getAnoRetiro() >= year)){
+                cont4+=1;
+            }
+        }
+        for (int i = 0; i < magisterayudante.size(); i++) {
+            if((magisterayudante.get(i).getAno_ingreso() <= year) && (magisterayudante.get(i).isVigente() == true || magisterayudante.get(i).getAnoRetiro() >= year)){
+                cont5+=1;
+            }
+        }
+        for (int i = 0; i < magisteradjcat1.size(); i++) {
+            if((magisteradjcat1.get(i).getAno_ingreso() <= year) && (magisteradjcat1.get(i).isVigente() == true || magisteradjcat1.get(i).getAnoRetiro() >= year)){
+                cont6+=1;
+            }
+        }
+        for (int i = 0; i < doctoradjcat2.size(); i++) {
+            if((magisteradjcat2.get(i).getAno_ingreso() <= year) && (magisteradjcat2.get(i).isVigente() == true || magisteradjcat2.get(i).getAnoRetiro() >= year)){
+                cont7+=1;
+            }
+        }
+        for (int i = 0; i < magisterinstructor1.size(); i++) {
+            if((magisterinstructor1.get(i).getAno_ingreso() <= year) && (magisterinstructor1.get(i).isVigente() == true || magisterinstructor1.get(i).getAnoRetiro() >= year)){
+                cont8+=1;
+            }
+        }
+        for (int i = 0; i < magisterinstructor2.size(); i++) {
+            if((magisterinstructor2.get(i).getAno_ingreso() <= year) && (magisterinstructor2.get(i).isVigente() == true || magisterinstructor2.get(i).getAnoRetiro() >= year)){
+                cont9+=1;
+            }
+        }
+        for (int i = 0; i < magisterayudantep.size(); i++) {
+            if((magisterayudantep.get(i).getAno_ingreso() <= year) && (magisterayudantep.get(i).isVigente() == true || magisterayudantep.get(i).getAnoRetiro() >= year)){
+                cont10+=1;
+            }
+        }
+        nuevom.setJerar1(cont1);
+        nuevom.setJerar2(cont2);
+        nuevom.setJerar3(cont3);
+        nuevom.setJerar4(cont4);
+        nuevom.setJerar5(cont5);
+        nuevom.setJerar6(cont6);
+        nuevom.setJerar7(cont7);
+        nuevom.setJerar8(cont8);
+        nuevom.setJerar9(cont9);
+        nuevom.setJerar10(cont10);
+        nuevom.setGrado("Magister");
+        cont1 = 0; cont2 = 0; cont3 = 0; cont4 = 0; cont5 = 0; cont6 = 0; cont7 = 0; cont8 = 0; cont9 = 0; cont10 = 0;
+        for (int i = 0; i < licenciadotitular.size(); i++) {
+            if((licenciadotitular.get(i).getAno_ingreso() <= year) && (licenciadotitular.get(i).isVigente() == true || licenciadotitular.get(i).getAnoRetiro() >= year)){
+                cont1+=1;
+            }
+        }
+        for (int i = 0; i < licenciadoasociado.size(); i++) {
+            if((licenciadoasociado.get(i).getAno_ingreso() <= year) && (licenciadoasociado.get(i).isVigente() == true || licenciadoasociado.get(i).getAnoRetiro() >= year)){
+                cont2+=1;
+            }
+        }
+        for (int i = 0; i < licenciadoasistente.size(); i++) {
+            if((licenciadoasistente.get(i).getAno_ingreso() <= year) && (licenciadoasistente.get(i).isVigente() == true || licenciadoasistente.get(i).getAnoRetiro() >= year)){
+                cont3+=1;
+            }
+        }
+        for (int i = 0; i < licenciadoinstructor.size(); i++) {
+            if((licenciadoinstructor.get(i).getAno_ingreso() <= year) && (licenciadoinstructor.get(i).isVigente() == true || licenciadoinstructor.get(i).getAnoRetiro() >= year)){
+                cont4+=1;
+            }
+        }
+        for (int i = 0; i < licenciadoayudante.size(); i++) {
+            if((licenciadoayudante.get(i).getAno_ingreso() <= year) && (licenciadoayudante.get(i).isVigente() == true || licenciadoayudante.get(i).getAnoRetiro() >= year)){
+                cont5+=1;
+            }
+        }
+        for (int i = 0; i < licenciadoadjcat1.size(); i++) {
+            if((licenciadoadjcat1.get(i).getAno_ingreso() <= year) && (licenciadoadjcat1.get(i).isVigente() == true || licenciadoadjcat1.get(i).getAnoRetiro() >= year)){
+                cont6+=1;
+            }
+        }
+        for (int i = 0; i < licenciadoadjcat2.size(); i++) {
+            if((licenciadoadjcat2.get(i).getAno_ingreso() <= year) && (licenciadoadjcat2.get(i).isVigente() == true || licenciadoadjcat2.get(i).getAnoRetiro() >= year)){
+                cont7+=1;
+            }
+        }
+        for (int i = 0; i < licenciadoinstructor1.size(); i++) {
+            if((licenciadoinstructor1.get(i).getAno_ingreso() <= year) && (licenciadoinstructor1.get(i).isVigente() == true || licenciadoinstructor1.get(i).getAnoRetiro() >= year)){
+                cont8+=1;
+            }
+        }
+        for (int i = 0; i < licenciadoinstructor2.size(); i++) {
+            if((licenciadoinstructor2.get(i).getAno_ingreso() <= year) && (licenciadoinstructor2.get(i).isVigente() == true || licenciadoinstructor2.get(i).getAnoRetiro() >= year)){
+                cont9+=1;
+            }
+        }
+        for (int i = 0; i < licenciadoayudantep.size(); i++) {
+            if((licenciadoayudantep.get(i).getAno_ingreso() <= year) && (licenciadoayudantep.get(i).isVigente() == true || licenciadoayudantep.get(i).getAnoRetiro() >= year)){
+                cont10+=1;
+            }
+        }
+        nuevol.setJerar1(cont1);
+        nuevol.setJerar2(cont2);
+        nuevol.setJerar3(cont3);
+        nuevol.setJerar4(cont4);
+        nuevol.setJerar5(cont5);
+        nuevol.setJerar6(cont6);
+        nuevol.setJerar7(cont7);
+        nuevol.setJerar8(cont8);
+        nuevol.setJerar9(cont9);
+        nuevol.setJerar10(cont10);
+        nuevol.setGrado("Licenciado");
+        cont1 = 0; cont2 = 0; cont3 = 0; cont4 = 0; cont5 = 0; cont6 = 0; cont7 = 0; cont8 = 0; cont9 = 0; cont10 = 0;
+        for (int i = 0; i < tituladotitular.size(); i++) {
+            if((licenciadotitular.get(i).getAno_ingreso() <= year) && (licenciadotitular.get(i).isVigente() == true || licenciadotitular.get(i).getAnoRetiro() >= year)){
+                cont1+=1;
+            }
+        }
+        for (int i = 0; i < tituladoasociado.size(); i++) {
+            if((tituladoasociado.get(i).getAno_ingreso() <= year) && (tituladoasociado.get(i).isVigente() == true || tituladoasociado.get(i).getAnoRetiro() >= year)){
+                cont2+=1;
+            }
+        }
+        for (int i = 0; i < tituladoasistente.size(); i++) {
+            if((tituladoasistente.get(i).getAno_ingreso() <= year) && (tituladoasistente.get(i).isVigente() == true || tituladoasistente.get(i).getAnoRetiro() >= year)){
+                cont3+=1;
+            }
+        }
+        for (int i = 0; i < tituladoinstructor.size(); i++) {
+            if((tituladoinstructor.get(i).getAno_ingreso() <= year) && (tituladoinstructor.get(i).isVigente() == true || tituladoinstructor.get(i).getAnoRetiro() >= year)){
+                cont4+=1;
+            }
+        }
+        for (int i = 0; i < tituladoayudante.size(); i++) {
+            if((tituladoayudante.get(i).getAno_ingreso() <= year) && (tituladoayudante.get(i).isVigente() == true || tituladoayudante.get(i).getAnoRetiro() >= year)){
+                cont5+=1;
+            }
+        }
+        for (int i = 0; i < tituladoadjcat1.size(); i++) {
+            if((tituladoadjcat1.get(i).getAno_ingreso() <= year) && (tituladoadjcat1.get(i).isVigente() == true || tituladoadjcat1.get(i).getAnoRetiro() >= year)){
+                cont6+=1;
+            }
+        }
+        for (int i = 0; i < tituladoadjcat2.size(); i++) {
+            if((tituladoadjcat2.get(i).getAno_ingreso() <= year) && (tituladoadjcat2.get(i).isVigente() == true || tituladoadjcat2.get(i).getAnoRetiro() >= year)){
+                cont7+=1;
+            }
+        }
+        for (int i = 0; i < tituladoinstructor1.size(); i++) {
+            if((tituladoinstructor1.get(i).getAno_ingreso() <= year) && (tituladoinstructor1.get(i).isVigente() == true || tituladoinstructor1.get(i).getAnoRetiro() >= year)){
+                cont8+=1;
+            }
+        }
+        for (int i = 0; i < tituladoinstructor2.size(); i++) {
+            if((tituladoinstructor2.get(i).getAno_ingreso() <= year) && (tituladoinstructor2.get(i).isVigente() == true || tituladoinstructor2.get(i).getAnoRetiro() >= year)){
+                cont9+=1;
+            }
+        }
+        for (int i = 0; i < tituladoayudantep.size(); i++) {
+            if((tituladoayudantep.get(i).getAno_ingreso() <= year) && (tituladoayudantep.get(i).isVigente() == true || tituladoayudantep.get(i).getAnoRetiro() >= year)){
+                cont10+=1;
+            }
+        }
+        nuevot.setJerar1(cont1);
+        nuevot.setJerar2(cont2);
+        nuevot.setJerar3(cont3);
+        nuevot.setJerar4(cont4);
+        nuevot.setJerar5(cont5);
+        nuevot.setJerar6(cont6);
+        nuevot.setJerar7(cont7);
+        nuevot.setJerar8(cont8);
+        nuevot.setJerar9(cont9);
+        nuevot.setJerar10(cont10);
+        nuevod.setTotal(cont1+cont2+cont3+cont4+cont5+cont6+cont7+cont8+cont9+cont10);
+        nuevot.setGrado("Titulado");
+        nuevototal.setGrado("Total");
+        nuevototal.setJerar1(nuevod.getJerar1()+nuevom.getJerar1()+nuevol.getJerar1()+nuevot.getJerar1());
+        nuevototal.setJerar2(nuevod.getJerar2()+nuevom.getJerar2()+nuevol.getJerar2()+nuevot.getJerar2());
+        nuevototal.setJerar3(nuevod.getJerar3()+nuevom.getJerar3()+nuevol.getJerar3()+nuevot.getJerar3());
+        nuevototal.setJerar4(nuevod.getJerar4()+nuevom.getJerar4()+nuevol.getJerar4()+nuevot.getJerar4());
+        nuevototal.setJerar5(nuevod.getJerar5()+nuevom.getJerar5()+nuevol.getJerar5()+nuevot.getJerar5());
+        nuevototal.setJerar6(nuevod.getJerar6()+nuevom.getJerar6()+nuevol.getJerar6()+nuevot.getJerar6());
+        nuevototal.setJerar7(nuevod.getJerar7()+nuevom.getJerar7()+nuevol.getJerar7()+nuevot.getJerar7());
+        nuevototal.setJerar8(nuevod.getJerar8()+nuevom.getJerar8()+nuevol.getJerar8()+nuevot.getJerar8());
+        nuevototal.setJerar9(nuevod.getJerar9()+nuevom.getJerar9()+nuevol.getJerar9()+nuevot.getJerar9());
+        nuevototal.setJerar10(nuevod.getJerar10()+nuevom.getJerar10()+nuevol.getJerar10()+nuevot.getJerar10());
+        nuevototal.setTotal(nuevod.getTotal()+nuevom.getTotal()+nuevol.getTotal()+nuevot.getTotal());
+        cant_jerar_grado_vespertino.add(nuevod);
+        cant_jerar_grado_vespertino.add(nuevom);
+        cant_jerar_grado_vespertino.add(nuevol);
+        cant_jerar_grado_vespertino.add(nuevot);
+        cant_jerar_grado_vespertino.add(nuevototal);
+        return cant_jerar_grado_vespertino;
+    }
+
+    public void setCant_jerar_grado_vespertino(List<CantJerarquiaGrado> cant_jerar_grado_vespertino) {
+        this.cant_jerar_grado_vespertino = cant_jerar_grado_vespertino;
+    }
+
+    public List<GradoCant> getGrado_cant_ano_1_diurno() {
+        grado_cant_ano_1_diurno = new ArrayList<>();
+        GradoAcademico gdoctor = (GradoAcademico) ejbFacade.findByNombre("DOCTOR");
+        GradoAcademico gmagister = (GradoAcademico) ejbFacade.findByNombre("MAGISTER");
+        GradoAcademico glicenciado = (GradoAcademico) ejbFacade.findByNombre("LICENCIADO-TITULADO");
+        GradoAcademico gtitulado = (GradoAcademico) ejbFacade.findByNombre("NO TITULADO");
+        List<Profesor> doctor = profeFacade.findByGradoYDiurnoVespertino(gdoctor,"DIURNO");
+        List<Profesor> magister = profeFacade.findByGradoYDiurnoVespertino(gmagister,"DIURNO");
+        List<Profesor> licenciado = profeFacade.findByGradoYDiurnoVespertino(glicenciado,"DIURNO");
+        List<Profesor> titulado = profeFacade.findByGradoYDiurnoVespertino(gtitulado,"DIURNO");
         GradoCant nuevod = new GradoCant();
         GradoCant nuevom = new GradoCant();
         GradoCant nuevol = new GradoCant();
@@ -588,40 +985,842 @@ public class GradoAcademicoController implements Serializable {
         nuevototal.setCant3(nuevod.getCant3()+nuevom.getCant3()+nuevol.getCant3()+nuevot.getCant3());
         nuevototal.setCant4(nuevod.getCant4()+nuevom.getCant4()+nuevol.getCant4()+nuevot.getCant4());
         nuevototal.setGrado("Total");
-        grado_cant_ano_1.add(nuevod);
-        grado_cant_ano_1.add(nuevom);
-        grado_cant_ano_1.add(nuevol);
-        grado_cant_ano_1.add(nuevot);
-        grado_cant_ano_1.add(nuevototal);
-        return grado_cant_ano_1;
+        grado_cant_ano_1_diurno.add(nuevod);
+        grado_cant_ano_1_diurno.add(nuevom);
+        grado_cant_ano_1_diurno.add(nuevol);
+        grado_cant_ano_1_diurno.add(nuevot);
+        grado_cant_ano_1_diurno.add(nuevototal);
+        return grado_cant_ano_1_diurno;
     }
 
-    public void setGrado_cant_ano_1(List<GradoCant> grado_cant_ano_1) {
-        this.grado_cant_ano_1 = grado_cant_ano_1;
+    public void setGrado_cant_ano_1_diurno(List<GradoCant> grado_cant_ano_1_diurno) {
+        this.grado_cant_ano_1_diurno = grado_cant_ano_1_diurno;
     }
 
-    public List<GradoCant> getGrado_cant_ano_2() {
-        return grado_cant_ano_2;
+    public List<GradoCant> getGrado_cant_ano_2_diurno() {
+        grado_cant_ano_2_diurno = new ArrayList<>();
+        GradoAcademico gdoctor = (GradoAcademico) ejbFacade.findByNombre("DOCTOR");
+        GradoAcademico gmagister = (GradoAcademico) ejbFacade.findByNombre("MAGISTER");
+        GradoAcademico glicenciado = (GradoAcademico) ejbFacade.findByNombre("LICENCIADO-TITULADO");
+        GradoAcademico gtitulado = (GradoAcademico) ejbFacade.findByNombre("NO TITULADO");
+        List<Profesor> doctor = profeFacade.findByGradoYDiurnoVespertino(gdoctor,"DIURNO");
+        List<Profesor> magister = profeFacade.findByGradoYDiurnoVespertino(gmagister,"DIURNO");
+        List<Profesor> licenciado = profeFacade.findByGradoYDiurnoVespertino(glicenciado,"DIURNO");
+        List<Profesor> titulado = profeFacade.findByGradoYDiurnoVespertino(gtitulado,"DIURNO");
+        GradoCant nuevod = new GradoCant();
+        GradoCant nuevom = new GradoCant();
+        GradoCant nuevol = new GradoCant();
+        GradoCant nuevot = new GradoCant();
+        GradoCant nuevototal = new GradoCant();
+        int cont1 = 0;
+        int cont2 = 0;
+        int cont3 = 0;
+        int cont4 = 0;
+        Date fecha = new Date();
+        int year;
+        year = fecha.getYear() + 1898;
+        for (int i = 0; i < doctor.size(); i++) {
+            if((doctor.get(i).getAno_ingreso() <= year && doctor.get(i).getContrato().equals("Completa")) && (doctor.get(i).isVigente() == true || doctor.get(i).getAnoRetiro() >= year)){
+                cont1+=1;
+            }
+            else if((doctor.get(i).getAno_ingreso() <= year && doctor.get(i).getDedicacion_contratada()<=10) && (doctor.get(i).isVigente() == true || doctor.get(i).getAnoRetiro() >= year)){
+                cont2+=1;
+            }
+            else if((doctor.get(i).getAno_ingreso() <= year && doctor.get(i).getDedicacion_contratada()>=11 && doctor.get(i).getDedicacion_contratada()<=21) && (doctor.get(i).isVigente() == true || doctor.get(i).getAnoRetiro() >= year)){
+                cont3+=1;
+            }
+            else if((doctor.get(i).getAno_ingreso() <= year && doctor.get(i).getDedicacion_contratada()>=22) && (doctor.get(i).isVigente() == true || doctor.get(i).getAnoRetiro() >= year)){
+                cont4+=1;
+            }
+        }
+        nuevod.setCant1(cont1);
+        nuevod.setCant2(cont2);
+        nuevod.setCant3(cont3);
+        nuevod.setCant4(cont4);
+        nuevod.setGrado("Doctor");
+        cont1 = 0; cont2 = 0; cont3 = 0; cont4 = 0;
+        for (int i = 0; i < magister.size(); i++) {
+            if((magister.get(i).getAno_ingreso() <= year && magister.get(i).getContrato().equals("Completa")) && (magister.get(i).isVigente() == true || magister.get(i).getAnoRetiro() >= year)){
+                cont1+=1;
+            }
+            else if((magister.get(i).getAno_ingreso() <= year && magister.get(i).getDedicacion_contratada()<=10) && (magister.get(i).isVigente() == true || magister.get(i).getAnoRetiro() >= year)){
+                cont2+=1;
+            }
+            else if((magister.get(i).getAno_ingreso() <= year && magister.get(i).getDedicacion_contratada()>=11 && magister.get(i).getDedicacion_contratada()<=21) && (magister.get(i).isVigente() == true || magister.get(i).getAnoRetiro() >= year)){
+                cont3+=1;
+            }
+            else if((magister.get(i).getAno_ingreso() <= year && magister.get(i).getDedicacion_contratada()>=22) && (magister.get(i).isVigente() == true || magister.get(i).getAnoRetiro() >= year)){
+                cont4+=1;
+            }
+        }
+        nuevom.setCant1(cont1);
+        nuevom.setCant2(cont2);
+        nuevom.setCant3(cont3);
+        nuevom.setCant4(cont4);
+        nuevom.setGrado("Magister");
+        cont1 = 0; cont2 = 0; cont3 = 0; cont4 = 0;
+        for (int i = 0; i < licenciado.size(); i++) {
+            if((licenciado.get(i).getAno_ingreso() <= year && licenciado.get(i).getContrato().equals("Completa")) && (licenciado.get(i).isVigente() == true || licenciado.get(i).getAnoRetiro() >= year)){
+                cont1+=1;
+            }
+            else if((licenciado.get(i).getAno_ingreso() <= year && licenciado.get(i).getDedicacion_contratada()<=10) && (licenciado.get(i).isVigente() == true || licenciado.get(i).getAnoRetiro() >= year)){
+                cont2+=1;
+            }
+            else if((licenciado.get(i).getAno_ingreso() <= year && licenciado.get(i).getDedicacion_contratada()>=11 && licenciado.get(i).getDedicacion_contratada()<=21) && (licenciado.get(i).isVigente() == true || licenciado.get(i).getAnoRetiro() >= year)){
+                cont3+=1;
+            }
+            else if((licenciado.get(i).getAno_ingreso() <= year && licenciado.get(i).getDedicacion_contratada()>=22) && (licenciado.get(i).isVigente() == true || licenciado.get(i).getAnoRetiro() >= year)){
+                cont4+=1;
+            }
+        }
+        nuevol.setCant1(cont1);
+        nuevol.setCant2(cont2);
+        nuevol.setCant3(cont3);
+        nuevol.setCant4(cont4);
+        nuevol.setGrado("Licenciado");
+        cont1 = 0; cont2 = 0; cont3 = 0; cont4 = 0;
+        for (int i = 0; i < titulado.size(); i++) {
+            if((titulado.get(i).getAno_ingreso() <= year && titulado.get(i).getContrato().equals("Completa")) && (titulado.get(i).isVigente() == true || titulado.get(i).getAnoRetiro() >= year)){
+                cont1+=1;
+            }
+            else if((titulado.get(i).getAno_ingreso() <= year && titulado.get(i).getDedicacion_contratada()<=10) && (titulado.get(i).isVigente() == true || titulado.get(i).getAnoRetiro() >= year)){
+                cont2+=1;
+            }
+            else if((titulado.get(i).getAno_ingreso() <= year && titulado.get(i).getDedicacion_contratada()>=11 && titulado.get(i).getDedicacion_contratada()<=21) && (titulado.get(i).isVigente() == true || titulado.get(i).getAnoRetiro() >= year)){
+                cont3+=1;
+            }
+            else if((titulado.get(i).getAno_ingreso() <= year && titulado.get(i).getDedicacion_contratada()>=22) && (titulado.get(i).isVigente() == true || titulado.get(i).getAnoRetiro() >= year)){
+                cont4+=1;
+            }
+        }
+        nuevot.setCant1(cont1);
+        nuevot.setCant2(cont2);
+        nuevot.setCant3(cont3);
+        nuevot.setCant4(cont4);
+        nuevot.setGrado("Titulado");
+        nuevototal.setCant1(nuevod.getCant1()+nuevom.getCant1()+nuevol.getCant1()+nuevot.getCant1());
+        nuevototal.setCant2(nuevod.getCant2()+nuevom.getCant2()+nuevol.getCant2()+nuevot.getCant2());
+        nuevototal.setCant3(nuevod.getCant3()+nuevom.getCant3()+nuevol.getCant3()+nuevot.getCant3());
+        nuevototal.setCant4(nuevod.getCant4()+nuevom.getCant4()+nuevol.getCant4()+nuevot.getCant4());
+        nuevototal.setGrado("Total");
+        grado_cant_ano_2_diurno.add(nuevod);
+        grado_cant_ano_2_diurno.add(nuevom);
+        grado_cant_ano_2_diurno.add(nuevol);
+        grado_cant_ano_2_diurno.add(nuevot);
+        grado_cant_ano_2_diurno.add(nuevototal);
+        return grado_cant_ano_2_diurno;
     }
 
-    public void setGrado_cant_ano_2(List<GradoCant> grado_cant_ano_2) {
-        this.grado_cant_ano_2 = grado_cant_ano_2;
+    public void setGrado_cant_ano_2_diurno(List<GradoCant> grado_cant_ano_2_diurno) {
+        this.grado_cant_ano_2_diurno = grado_cant_ano_2_diurno;
     }
 
-    public List<GradoCant> getGrado_cant_ano_3() {
-        return grado_cant_ano_3;
+    public List<GradoCant> getGrado_cant_ano_3_diurno() {
+        grado_cant_ano_3_diurno = new ArrayList<>();
+        GradoAcademico gdoctor = (GradoAcademico) ejbFacade.findByNombre("DOCTOR");
+        GradoAcademico gmagister = (GradoAcademico) ejbFacade.findByNombre("MAGISTER");
+        GradoAcademico glicenciado = (GradoAcademico) ejbFacade.findByNombre("LICENCIADO-TITULADO");
+        GradoAcademico gtitulado = (GradoAcademico) ejbFacade.findByNombre("NO TITULADO");
+        List<Profesor> doctor = profeFacade.findByGradoYDiurnoVespertino(gdoctor,"DIURNO");
+        List<Profesor> magister = profeFacade.findByGradoYDiurnoVespertino(gmagister,"DIURNO");
+        List<Profesor> licenciado = profeFacade.findByGradoYDiurnoVespertino(glicenciado,"DIURNO");
+        List<Profesor> titulado = profeFacade.findByGradoYDiurnoVespertino(gtitulado,"DIURNO");
+        GradoCant nuevod = new GradoCant();
+        GradoCant nuevom = new GradoCant();
+        GradoCant nuevol = new GradoCant();
+        GradoCant nuevot = new GradoCant();
+        GradoCant nuevototal = new GradoCant();
+        int cont1 = 0;
+        int cont2 = 0;
+        int cont3 = 0;
+        int cont4 = 0;
+        Date fecha = new Date();
+        int year;
+        year = fecha.getYear() + 1897;
+        for (int i = 0; i < doctor.size(); i++) {
+            if((doctor.get(i).getAno_ingreso() <= year && doctor.get(i).getContrato().equals("Completa")) && (doctor.get(i).isVigente() == true || doctor.get(i).getAnoRetiro() >= year)){
+                cont1+=1;
+            }
+            else if((doctor.get(i).getAno_ingreso() <= year && doctor.get(i).getDedicacion_contratada()<=10) && (doctor.get(i).isVigente() == true || doctor.get(i).getAnoRetiro() >= year)){
+                cont2+=1;
+            }
+            else if((doctor.get(i).getAno_ingreso() <= year && doctor.get(i).getDedicacion_contratada()>=11 && doctor.get(i).getDedicacion_contratada()<=21) && (doctor.get(i).isVigente() == true || doctor.get(i).getAnoRetiro() >= year)){
+                cont3+=1;
+            }
+            else if((doctor.get(i).getAno_ingreso() <= year && doctor.get(i).getDedicacion_contratada()>=22) && (doctor.get(i).isVigente() == true || doctor.get(i).getAnoRetiro() >= year)){
+                cont4+=1;
+            }
+        }
+        nuevod.setCant1(cont1);
+        nuevod.setCant2(cont2);
+        nuevod.setCant3(cont3);
+        nuevod.setCant4(cont4);
+        nuevod.setGrado("Doctor");
+        cont1 = 0; cont2 = 0; cont3 = 0; cont4 = 0;
+        for (int i = 0; i < magister.size(); i++) {
+            if((magister.get(i).getAno_ingreso() <= year && magister.get(i).getContrato().equals("Completa")) && (magister.get(i).isVigente() == true || magister.get(i).getAnoRetiro() >= year)){
+                cont1+=1;
+            }
+            else if((magister.get(i).getAno_ingreso() <= year && magister.get(i).getDedicacion_contratada()<=10) && (magister.get(i).isVigente() == true || magister.get(i).getAnoRetiro() >= year)){
+                cont2+=1;
+            }
+            else if((magister.get(i).getAno_ingreso() <= year && magister.get(i).getDedicacion_contratada()>=11 && magister.get(i).getDedicacion_contratada()<=21) && (magister.get(i).isVigente() == true || magister.get(i).getAnoRetiro() >= year)){
+                cont3+=1;
+            }
+            else if((magister.get(i).getAno_ingreso() <= year && magister.get(i).getDedicacion_contratada()>=22) && (magister.get(i).isVigente() == true || magister.get(i).getAnoRetiro() >= year)){
+                cont4+=1;
+            }
+        }
+        nuevom.setCant1(cont1);
+        nuevom.setCant2(cont2);
+        nuevom.setCant3(cont3);
+        nuevom.setCant4(cont4);
+        nuevom.setGrado("Magister");
+        cont1 = 0; cont2 = 0; cont3 = 0; cont4 = 0;
+        for (int i = 0; i < licenciado.size(); i++) {
+            if((licenciado.get(i).getAno_ingreso() <= year && licenciado.get(i).getContrato().equals("Completa")) && (licenciado.get(i).isVigente() == true || licenciado.get(i).getAnoRetiro() >= year)){
+                cont1+=1;
+            }
+            else if((licenciado.get(i).getAno_ingreso() <= year && licenciado.get(i).getDedicacion_contratada()<=10) && (licenciado.get(i).isVigente() == true || licenciado.get(i).getAnoRetiro() >= year)){
+                cont2+=1;
+            }
+            else if((licenciado.get(i).getAno_ingreso() <= year && licenciado.get(i).getDedicacion_contratada()>=11 && licenciado.get(i).getDedicacion_contratada()<=21) && (licenciado.get(i).isVigente() == true || licenciado.get(i).getAnoRetiro() >= year)){
+                cont3+=1;
+            }
+            else if((licenciado.get(i).getAno_ingreso() <= year && licenciado.get(i).getDedicacion_contratada()>=22) && (licenciado.get(i).isVigente() == true || licenciado.get(i).getAnoRetiro() >= year)){
+                cont4+=1;
+            }
+        }
+        nuevol.setCant1(cont1);
+        nuevol.setCant2(cont2);
+        nuevol.setCant3(cont3);
+        nuevol.setCant4(cont4);
+        nuevol.setGrado("Licenciado");
+        cont1 = 0; cont2 = 0; cont3 = 0; cont4 = 0;
+        for (int i = 0; i < titulado.size(); i++) {
+            if((titulado.get(i).getAno_ingreso() <= year && titulado.get(i).getContrato().equals("Completa")) && (titulado.get(i).isVigente() == true || titulado.get(i).getAnoRetiro() >= year)){
+                cont1+=1;
+            }
+            else if((titulado.get(i).getAno_ingreso() <= year && titulado.get(i).getDedicacion_contratada()<=10) && (titulado.get(i).isVigente() == true || titulado.get(i).getAnoRetiro() >= year)){
+                cont2+=1;
+            }
+            else if((titulado.get(i).getAno_ingreso() <= year && titulado.get(i).getDedicacion_contratada()>=11 && titulado.get(i).getDedicacion_contratada()<=21) && (titulado.get(i).isVigente() == true || titulado.get(i).getAnoRetiro() >= year)){
+                cont3+=1;
+            }
+            else if((titulado.get(i).getAno_ingreso() <= year && titulado.get(i).getDedicacion_contratada()>=22) && (titulado.get(i).isVigente() == true || titulado.get(i).getAnoRetiro() >= year)){
+                cont4+=1;
+            }
+        }
+        nuevot.setCant1(cont1);
+        nuevot.setCant2(cont2);
+        nuevot.setCant3(cont3);
+        nuevot.setCant4(cont4);
+        nuevot.setGrado("Titulado");
+        nuevototal.setCant1(nuevod.getCant1()+nuevom.getCant1()+nuevol.getCant1()+nuevot.getCant1());
+        nuevototal.setCant2(nuevod.getCant2()+nuevom.getCant2()+nuevol.getCant2()+nuevot.getCant2());
+        nuevototal.setCant3(nuevod.getCant3()+nuevom.getCant3()+nuevol.getCant3()+nuevot.getCant3());
+        nuevototal.setCant4(nuevod.getCant4()+nuevom.getCant4()+nuevol.getCant4()+nuevot.getCant4());
+        nuevototal.setGrado("Total");
+        grado_cant_ano_3_diurno.add(nuevod);
+        grado_cant_ano_3_diurno.add(nuevom);
+        grado_cant_ano_3_diurno.add(nuevol);
+        grado_cant_ano_3_diurno.add(nuevot);
+        grado_cant_ano_3_diurno.add(nuevototal);
+        return grado_cant_ano_3_diurno;
     }
 
-    public void setGrado_cant_ano_3(List<GradoCant> grado_cant_ano_3) {
-        this.grado_cant_ano_3 = grado_cant_ano_3;
+    public void setGrado_cant_ano_3_diurno(List<GradoCant> grado_cant_ano_3_diurno) {
+        this.grado_cant_ano_3_diurno = grado_cant_ano_3_diurno;
     }
 
-    public List<GradoCant> getGrado_cant_ano_4() {
-        return grado_cant_ano_4;
+    public List<GradoCant> getGrado_cant_ano_4_diurno() {
+        grado_cant_ano_4_diurno = new ArrayList<>();
+        GradoAcademico gdoctor = (GradoAcademico) ejbFacade.findByNombre("DOCTOR");
+        GradoAcademico gmagister = (GradoAcademico) ejbFacade.findByNombre("MAGISTER");
+        GradoAcademico glicenciado = (GradoAcademico) ejbFacade.findByNombre("LICENCIADO-TITULADO");
+        GradoAcademico gtitulado = (GradoAcademico) ejbFacade.findByNombre("NO TITULADO");
+        List<Profesor> doctor = profeFacade.findByGradoYDiurnoVespertino(gdoctor,"DIURNO");
+        List<Profesor> magister = profeFacade.findByGradoYDiurnoVespertino(gmagister,"DIURNO");
+        List<Profesor> licenciado = profeFacade.findByGradoYDiurnoVespertino(glicenciado,"DIURNO");
+        List<Profesor> titulado = profeFacade.findByGradoYDiurnoVespertino(gtitulado,"DIURNO");
+        GradoCant nuevod = new GradoCant();
+        GradoCant nuevom = new GradoCant();
+        GradoCant nuevol = new GradoCant();
+        GradoCant nuevot = new GradoCant();
+        GradoCant nuevototal = new GradoCant();
+        int cont1 = 0;
+        int cont2 = 0;
+        int cont3 = 0;
+        int cont4 = 0;
+        Date fecha = new Date();
+        int year;
+        year = fecha.getYear() + 1896;
+        for (int i = 0; i < doctor.size(); i++) {
+            if((doctor.get(i).getAno_ingreso() <= year && doctor.get(i).getContrato().equals("Completa")) && (doctor.get(i).isVigente() == true || doctor.get(i).getAnoRetiro() >= year)){
+                cont1+=1;
+            }
+            else if((doctor.get(i).getAno_ingreso() <= year && doctor.get(i).getDedicacion_contratada()<=10) && (doctor.get(i).isVigente() == true || doctor.get(i).getAnoRetiro() >= year)){
+                cont2+=1;
+            }
+            else if((doctor.get(i).getAno_ingreso() <= year && doctor.get(i).getDedicacion_contratada()>=11 && doctor.get(i).getDedicacion_contratada()<=21) && (doctor.get(i).isVigente() == true || doctor.get(i).getAnoRetiro() >= year)){
+                cont3+=1;
+            }
+            else if((doctor.get(i).getAno_ingreso() <= year && doctor.get(i).getDedicacion_contratada()>=22) && (doctor.get(i).isVigente() == true || doctor.get(i).getAnoRetiro() >= year)){
+                cont4+=1;
+            }
+        }
+        nuevod.setCant1(cont1);
+        nuevod.setCant2(cont2);
+        nuevod.setCant3(cont3);
+        nuevod.setCant4(cont4);
+        nuevod.setGrado("Doctor");
+        cont1 = 0; cont2 = 0; cont3 = 0; cont4 = 0;
+        for (int i = 0; i < magister.size(); i++) {
+            if((magister.get(i).getAno_ingreso() <= year && magister.get(i).getContrato().equals("Completa")) && (magister.get(i).isVigente() == true || magister.get(i).getAnoRetiro() >= year)){
+                cont1+=1;
+            }
+            else if((magister.get(i).getAno_ingreso() <= year && magister.get(i).getDedicacion_contratada()<=10) && (magister.get(i).isVigente() == true || magister.get(i).getAnoRetiro() >= year)){
+                cont2+=1;
+            }
+            else if((magister.get(i).getAno_ingreso() <= year && magister.get(i).getDedicacion_contratada()>=11 && magister.get(i).getDedicacion_contratada()<=21) && (magister.get(i).isVigente() == true || magister.get(i).getAnoRetiro() >= year)){
+                cont3+=1;
+            }
+            else if((magister.get(i).getAno_ingreso() <= year && magister.get(i).getDedicacion_contratada()>=22) && (magister.get(i).isVigente() == true || magister.get(i).getAnoRetiro() >= year)){
+                cont4+=1;
+            }
+        }
+        nuevom.setCant1(cont1);
+        nuevom.setCant2(cont2);
+        nuevom.setCant3(cont3);
+        nuevom.setCant4(cont4);
+        nuevom.setGrado("Magister");
+        cont1 = 0; cont2 = 0; cont3 = 0; cont4 = 0;
+        for (int i = 0; i < licenciado.size(); i++) {
+            if((licenciado.get(i).getAno_ingreso() <= year && licenciado.get(i).getContrato().equals("Completa")) && (licenciado.get(i).isVigente() == true || licenciado.get(i).getAnoRetiro() >= year)){
+                cont1+=1;
+            }
+            else if((licenciado.get(i).getAno_ingreso() <= year && licenciado.get(i).getDedicacion_contratada()<=10) && (licenciado.get(i).isVigente() == true || licenciado.get(i).getAnoRetiro() >= year)){
+                cont2+=1;
+            }
+            else if((licenciado.get(i).getAno_ingreso() <= year && licenciado.get(i).getDedicacion_contratada()>=11 && licenciado.get(i).getDedicacion_contratada()<=21) && (licenciado.get(i).isVigente() == true || licenciado.get(i).getAnoRetiro() >= year)){
+                cont3+=1;
+            }
+            else if((licenciado.get(i).getAno_ingreso() <= year && licenciado.get(i).getDedicacion_contratada()>=22) && (licenciado.get(i).isVigente() == true || licenciado.get(i).getAnoRetiro() >= year)){
+                cont4+=1;
+            }
+        }
+        nuevol.setCant1(cont1);
+        nuevol.setCant2(cont2);
+        nuevol.setCant3(cont3);
+        nuevol.setCant4(cont4);
+        nuevol.setGrado("Licenciado");
+        cont1 = 0; cont2 = 0; cont3 = 0; cont4 = 0;
+        for (int i = 0; i < titulado.size(); i++) {
+            if((titulado.get(i).getAno_ingreso() <= year && titulado.get(i).getContrato().equals("Completa")) && (titulado.get(i).isVigente() == true || titulado.get(i).getAnoRetiro() >= year)){
+                cont1+=1;
+            }
+            else if((titulado.get(i).getAno_ingreso() <= year && titulado.get(i).getDedicacion_contratada()<=10) && (titulado.get(i).isVigente() == true || titulado.get(i).getAnoRetiro() >= year)){
+                cont2+=1;
+            }
+            else if((titulado.get(i).getAno_ingreso() <= year && titulado.get(i).getDedicacion_contratada()>=11 && titulado.get(i).getDedicacion_contratada()<=21) && (titulado.get(i).isVigente() == true || titulado.get(i).getAnoRetiro() >= year)){
+                cont3+=1;
+            }
+            else if((titulado.get(i).getAno_ingreso() <= year && titulado.get(i).getDedicacion_contratada()>=22) && (titulado.get(i).isVigente() == true || titulado.get(i).getAnoRetiro() >= year)){
+                cont4+=1;
+            }
+        }
+        nuevot.setCant1(cont1);
+        nuevot.setCant2(cont2);
+        nuevot.setCant3(cont3);
+        nuevot.setCant4(cont4);
+        nuevot.setGrado("Titulado");
+        nuevototal.setCant1(nuevod.getCant1()+nuevom.getCant1()+nuevol.getCant1()+nuevot.getCant1());
+        nuevototal.setCant2(nuevod.getCant2()+nuevom.getCant2()+nuevol.getCant2()+nuevot.getCant2());
+        nuevototal.setCant3(nuevod.getCant3()+nuevom.getCant3()+nuevol.getCant3()+nuevot.getCant3());
+        nuevototal.setCant4(nuevod.getCant4()+nuevom.getCant4()+nuevol.getCant4()+nuevot.getCant4());
+        nuevototal.setGrado("Total");
+        grado_cant_ano_4_diurno.add(nuevod);
+        grado_cant_ano_4_diurno.add(nuevom);
+        grado_cant_ano_4_diurno.add(nuevol);
+        grado_cant_ano_4_diurno.add(nuevot);
+        grado_cant_ano_4_diurno.add(nuevototal);
+        return grado_cant_ano_4_diurno;
     }
 
-    public void setGrado_cant_ano_4(List<GradoCant> grado_cant_ano_4) {
-        this.grado_cant_ano_4 = grado_cant_ano_4;
+    public void setGrado_cant_ano_4_diurno(List<GradoCant> grado_cant_ano_4_diurno) {
+        this.grado_cant_ano_4_diurno = grado_cant_ano_4_diurno;
+    }
+
+    public List<GradoCant> getGrado_cant_ano_1_vespertino() {
+        grado_cant_ano_1_vespertino = new ArrayList<>();
+        GradoAcademico gdoctor = (GradoAcademico) ejbFacade.findByNombre("DOCTOR");
+        GradoAcademico gmagister = (GradoAcademico) ejbFacade.findByNombre("MAGISTER");
+        GradoAcademico glicenciado = (GradoAcademico) ejbFacade.findByNombre("LICENCIADO-TITULADO");
+        GradoAcademico gtitulado = (GradoAcademico) ejbFacade.findByNombre("NO TITULADO");
+        List<Profesor> doctor = profeFacade.findByGradoYDiurnoVespertino(gdoctor,"VESPERTINO");
+        List<Profesor> magister = profeFacade.findByGradoYDiurnoVespertino(gmagister,"VESPERTINO");
+        List<Profesor> licenciado = profeFacade.findByGradoYDiurnoVespertino(glicenciado,"VESPERTINO");
+        List<Profesor> titulado = profeFacade.findByGradoYDiurnoVespertino(gtitulado,"VESPERTINO");
+        GradoCant nuevod = new GradoCant();
+        GradoCant nuevom = new GradoCant();
+        GradoCant nuevol = new GradoCant();
+        GradoCant nuevot = new GradoCant();
+        GradoCant nuevototal = new GradoCant();
+        int cont1 = 0;
+        int cont2 = 0;
+        int cont3 = 0;
+        int cont4 = 0;
+        Date fecha = new Date();
+        int year;
+        year = fecha.getYear() + 1899;
+        for (int i = 0; i < doctor.size(); i++) {
+            if((doctor.get(i).getAno_ingreso() <= year && doctor.get(i).getContrato().equals("Completa")) && (doctor.get(i).isVigente() == true || doctor.get(i).getAnoRetiro() >= year)){
+                cont1+=1;
+            }
+            else if((doctor.get(i).getAno_ingreso() <= year && doctor.get(i).getDedicacion_contratada()<=10) && (doctor.get(i).isVigente() == true || doctor.get(i).getAnoRetiro() >= year)){
+                cont2+=1;
+            }
+            else if((doctor.get(i).getAno_ingreso() <= year && doctor.get(i).getDedicacion_contratada()>=11 && doctor.get(i).getDedicacion_contratada()<=21) && (doctor.get(i).isVigente() == true || doctor.get(i).getAnoRetiro() >= year)){
+                cont3+=1;
+            }
+            else if((doctor.get(i).getAno_ingreso() <= year && doctor.get(i).getDedicacion_contratada()>=22) && (doctor.get(i).isVigente() == true || doctor.get(i).getAnoRetiro() >= year)){
+                cont4+=1;
+            }
+        }
+        nuevod.setCant1(cont1);
+        nuevod.setCant2(cont2);
+        nuevod.setCant3(cont3);
+        nuevod.setCant4(cont4);
+        nuevod.setGrado("Doctor");
+        cont1 = 0; cont2 = 0; cont3 = 0; cont4 = 0;
+        for (int i = 0; i < magister.size(); i++) {
+            if((magister.get(i).getAno_ingreso() <= year && magister.get(i).getContrato().equals("Completa")) && (magister.get(i).isVigente() == true || magister.get(i).getAnoRetiro() >= year)){
+                cont1+=1;
+            }
+            else if((magister.get(i).getAno_ingreso() <= year && magister.get(i).getDedicacion_contratada()<=10) && (magister.get(i).isVigente() == true || magister.get(i).getAnoRetiro() >= year)){
+                cont2+=1;
+            }
+            else if((magister.get(i).getAno_ingreso() <= year && magister.get(i).getDedicacion_contratada()>=11 && magister.get(i).getDedicacion_contratada()<=21) && (magister.get(i).isVigente() == true || magister.get(i).getAnoRetiro() >= year)){
+                cont3+=1;
+            }
+            else if((magister.get(i).getAno_ingreso() <= year && magister.get(i).getDedicacion_contratada()>=22) && (magister.get(i).isVigente() == true || magister.get(i).getAnoRetiro() >= year)){
+                cont4+=1;
+            }
+        }
+        nuevom.setCant1(cont1);
+        nuevom.setCant2(cont2);
+        nuevom.setCant3(cont3);
+        nuevom.setCant4(cont4);
+        nuevom.setGrado("Magister");
+        cont1 = 0; cont2 = 0; cont3 = 0; cont4 = 0;
+        for (int i = 0; i < licenciado.size(); i++) {
+            if((licenciado.get(i).getAno_ingreso() <= year && licenciado.get(i).getContrato().equals("Completa")) && (licenciado.get(i).isVigente() == true || licenciado.get(i).getAnoRetiro() >= year)){
+                cont1+=1;
+            }
+            else if((licenciado.get(i).getAno_ingreso() <= year && licenciado.get(i).getDedicacion_contratada()<=10) && (licenciado.get(i).isVigente() == true || licenciado.get(i).getAnoRetiro() >= year)){
+                cont2+=1;
+            }
+            else if((licenciado.get(i).getAno_ingreso() <= year && licenciado.get(i).getDedicacion_contratada()>=11 && licenciado.get(i).getDedicacion_contratada()<=21) && (licenciado.get(i).isVigente() == true || licenciado.get(i).getAnoRetiro() >= year)){
+                cont3+=1;
+            }
+            else if((licenciado.get(i).getAno_ingreso() <= year && licenciado.get(i).getDedicacion_contratada()>=22) && (licenciado.get(i).isVigente() == true || licenciado.get(i).getAnoRetiro() >= year)){
+                cont4+=1;
+            }
+        }
+        nuevol.setCant1(cont1);
+        nuevol.setCant2(cont2);
+        nuevol.setCant3(cont3);
+        nuevol.setCant4(cont4);
+        nuevol.setGrado("Licenciado");
+        cont1 = 0; cont2 = 0; cont3 = 0; cont4 = 0;
+        for (int i = 0; i < titulado.size(); i++) {
+            if((titulado.get(i).getAno_ingreso() <= year && titulado.get(i).getContrato().equals("Completa")) && (titulado.get(i).isVigente() == true || titulado.get(i).getAnoRetiro() >= year)){
+                cont1+=1;
+            }
+            else if((titulado.get(i).getAno_ingreso() <= year && titulado.get(i).getDedicacion_contratada()<=10) && (titulado.get(i).isVigente() == true || titulado.get(i).getAnoRetiro() >= year)){
+                cont2+=1;
+            }
+            else if((titulado.get(i).getAno_ingreso() <= year && titulado.get(i).getDedicacion_contratada()>=11 && titulado.get(i).getDedicacion_contratada()<=21) && (titulado.get(i).isVigente() == true || titulado.get(i).getAnoRetiro() >= year)){
+                cont3+=1;
+            }
+            else if((titulado.get(i).getAno_ingreso() <= year && titulado.get(i).getDedicacion_contratada()>=22) && (titulado.get(i).isVigente() == true || titulado.get(i).getAnoRetiro() >= year)){
+                cont4+=1;
+            }
+        }
+        nuevot.setCant1(cont1);
+        nuevot.setCant2(cont2);
+        nuevot.setCant3(cont3);
+        nuevot.setCant4(cont4);
+        nuevot.setGrado("Titulado");
+        nuevototal.setCant1(nuevod.getCant1()+nuevom.getCant1()+nuevol.getCant1()+nuevot.getCant1());
+        nuevototal.setCant2(nuevod.getCant2()+nuevom.getCant2()+nuevol.getCant2()+nuevot.getCant2());
+        nuevototal.setCant3(nuevod.getCant3()+nuevom.getCant3()+nuevol.getCant3()+nuevot.getCant3());
+        nuevototal.setCant4(nuevod.getCant4()+nuevom.getCant4()+nuevol.getCant4()+nuevot.getCant4());
+        nuevototal.setGrado("Total");
+        grado_cant_ano_1_vespertino.add(nuevod);
+        grado_cant_ano_1_vespertino.add(nuevom);
+        grado_cant_ano_1_vespertino.add(nuevol);
+        grado_cant_ano_1_vespertino.add(nuevot);
+        grado_cant_ano_1_vespertino.add(nuevototal);
+        return grado_cant_ano_1_vespertino;
+    }
+
+    public void setGrado_cant_ano_1_vespertino(List<GradoCant> grado_cant_ano_1_vespertino) {
+        this.grado_cant_ano_1_vespertino = grado_cant_ano_1_vespertino;
+    }
+
+    public List<GradoCant> getGrado_cant_ano_2_vespertino() {
+        grado_cant_ano_2_vespertino = new ArrayList<>();
+        GradoAcademico gdoctor = (GradoAcademico) ejbFacade.findByNombre("DOCTOR");
+        GradoAcademico gmagister = (GradoAcademico) ejbFacade.findByNombre("MAGISTER");
+        GradoAcademico glicenciado = (GradoAcademico) ejbFacade.findByNombre("LICENCIADO-TITULADO");
+        GradoAcademico gtitulado = (GradoAcademico) ejbFacade.findByNombre("NO TITULADO");
+        List<Profesor> doctor = profeFacade.findByGradoYDiurnoVespertino(gdoctor,"VESPERTINO");
+        List<Profesor> magister = profeFacade.findByGradoYDiurnoVespertino(gmagister,"VESPERTINO");
+        List<Profesor> licenciado = profeFacade.findByGradoYDiurnoVespertino(glicenciado,"VESPERTINO");
+        List<Profesor> titulado = profeFacade.findByGradoYDiurnoVespertino(gtitulado,"VESPERTINO");
+        GradoCant nuevod = new GradoCant();
+        GradoCant nuevom = new GradoCant();
+        GradoCant nuevol = new GradoCant();
+        GradoCant nuevot = new GradoCant();
+        GradoCant nuevototal = new GradoCant();
+        int cont1 = 0;
+        int cont2 = 0;
+        int cont3 = 0;
+        int cont4 = 0;
+        Date fecha = new Date();
+        int year;
+        year = fecha.getYear() + 1898;
+        for (int i = 0; i < doctor.size(); i++) {
+            if((doctor.get(i).getAno_ingreso() <= year && doctor.get(i).getContrato().equals("Completa")) && (doctor.get(i).isVigente() == true || doctor.get(i).getAnoRetiro() >= year)){
+                cont1+=1;
+            }
+            else if((doctor.get(i).getAno_ingreso() <= year && doctor.get(i).getDedicacion_contratada()<=10) && (doctor.get(i).isVigente() == true || doctor.get(i).getAnoRetiro() >= year)){
+                cont2+=1;
+            }
+            else if((doctor.get(i).getAno_ingreso() <= year && doctor.get(i).getDedicacion_contratada()>=11 && doctor.get(i).getDedicacion_contratada()<=21) && (doctor.get(i).isVigente() == true || doctor.get(i).getAnoRetiro() >= year)){
+                cont3+=1;
+            }
+            else if((doctor.get(i).getAno_ingreso() <= year && doctor.get(i).getDedicacion_contratada()>=22) && (doctor.get(i).isVigente() == true || doctor.get(i).getAnoRetiro() >= year)){
+                cont4+=1;
+            }
+        }
+        nuevod.setCant1(cont1);
+        nuevod.setCant2(cont2);
+        nuevod.setCant3(cont3);
+        nuevod.setCant4(cont4);
+        nuevod.setGrado("Doctor");
+        cont1 = 0; cont2 = 0; cont3 = 0; cont4 = 0;
+        for (int i = 0; i < magister.size(); i++) {
+            if((magister.get(i).getAno_ingreso() <= year && magister.get(i).getContrato().equals("Completa")) && (magister.get(i).isVigente() == true || magister.get(i).getAnoRetiro() >= year)){
+                cont1+=1;
+            }
+            else if((magister.get(i).getAno_ingreso() <= year && magister.get(i).getDedicacion_contratada()<=10) && (magister.get(i).isVigente() == true || magister.get(i).getAnoRetiro() >= year)){
+                cont2+=1;
+            }
+            else if((magister.get(i).getAno_ingreso() <= year && magister.get(i).getDedicacion_contratada()>=11 && magister.get(i).getDedicacion_contratada()<=21) && (magister.get(i).isVigente() == true || magister.get(i).getAnoRetiro() >= year)){
+                cont3+=1;
+            }
+            else if((magister.get(i).getAno_ingreso() <= year && magister.get(i).getDedicacion_contratada()>=22) && (magister.get(i).isVigente() == true || magister.get(i).getAnoRetiro() >= year)){
+                cont4+=1;
+            }
+        }
+        nuevom.setCant1(cont1);
+        nuevom.setCant2(cont2);
+        nuevom.setCant3(cont3);
+        nuevom.setCant4(cont4);
+        nuevom.setGrado("Magister");
+        cont1 = 0; cont2 = 0; cont3 = 0; cont4 = 0;
+        for (int i = 0; i < licenciado.size(); i++) {
+            if((licenciado.get(i).getAno_ingreso() <= year && licenciado.get(i).getContrato().equals("Completa")) && (licenciado.get(i).isVigente() == true || licenciado.get(i).getAnoRetiro() >= year)){
+                cont1+=1;
+            }
+            else if((licenciado.get(i).getAno_ingreso() <= year && licenciado.get(i).getDedicacion_contratada()<=10) && (licenciado.get(i).isVigente() == true || licenciado.get(i).getAnoRetiro() >= year)){
+                cont2+=1;
+            }
+            else if((licenciado.get(i).getAno_ingreso() <= year && licenciado.get(i).getDedicacion_contratada()>=11 && licenciado.get(i).getDedicacion_contratada()<=21) && (licenciado.get(i).isVigente() == true || licenciado.get(i).getAnoRetiro() >= year)){
+                cont3+=1;
+            }
+            else if((licenciado.get(i).getAno_ingreso() <= year && licenciado.get(i).getDedicacion_contratada()>=22) && (licenciado.get(i).isVigente() == true || licenciado.get(i).getAnoRetiro() >= year)){
+                cont4+=1;
+            }
+        }
+        nuevol.setCant1(cont1);
+        nuevol.setCant2(cont2);
+        nuevol.setCant3(cont3);
+        nuevol.setCant4(cont4);
+        nuevol.setGrado("Licenciado");
+        cont1 = 0; cont2 = 0; cont3 = 0; cont4 = 0;
+        for (int i = 0; i < titulado.size(); i++) {
+            if((titulado.get(i).getAno_ingreso() <= year && titulado.get(i).getContrato().equals("Completa")) && (titulado.get(i).isVigente() == true || titulado.get(i).getAnoRetiro() >= year)){
+                cont1+=1;
+            }
+            else if((titulado.get(i).getAno_ingreso() <= year && titulado.get(i).getDedicacion_contratada()<=10) && (titulado.get(i).isVigente() == true || titulado.get(i).getAnoRetiro() >= year)){
+                cont2+=1;
+            }
+            else if((titulado.get(i).getAno_ingreso() <= year && titulado.get(i).getDedicacion_contratada()>=11 && titulado.get(i).getDedicacion_contratada()<=21) && (titulado.get(i).isVigente() == true || titulado.get(i).getAnoRetiro() >= year)){
+                cont3+=1;
+            }
+            else if((titulado.get(i).getAno_ingreso() <= year && titulado.get(i).getDedicacion_contratada()>=22) && (titulado.get(i).isVigente() == true || titulado.get(i).getAnoRetiro() >= year)){
+                cont4+=1;
+            }
+        }
+        nuevot.setCant1(cont1);
+        nuevot.setCant2(cont2);
+        nuevot.setCant3(cont3);
+        nuevot.setCant4(cont4);
+        nuevot.setGrado("Titulado");
+        nuevototal.setCant1(nuevod.getCant1()+nuevom.getCant1()+nuevol.getCant1()+nuevot.getCant1());
+        nuevototal.setCant2(nuevod.getCant2()+nuevom.getCant2()+nuevol.getCant2()+nuevot.getCant2());
+        nuevototal.setCant3(nuevod.getCant3()+nuevom.getCant3()+nuevol.getCant3()+nuevot.getCant3());
+        nuevototal.setCant4(nuevod.getCant4()+nuevom.getCant4()+nuevol.getCant4()+nuevot.getCant4());
+        nuevototal.setGrado("Total");
+        grado_cant_ano_2_vespertino.add(nuevod);
+        grado_cant_ano_2_vespertino.add(nuevom);
+        grado_cant_ano_2_vespertino.add(nuevol);
+        grado_cant_ano_2_vespertino.add(nuevot);
+        grado_cant_ano_2_vespertino.add(nuevototal);
+        return grado_cant_ano_2_vespertino;
+    }
+
+    public void setGrado_cant_ano_2_vespertino(List<GradoCant> grado_cant_ano_2_vespertino) {
+        this.grado_cant_ano_2_vespertino = grado_cant_ano_2_vespertino;
+    }
+
+    public List<GradoCant> getGrado_cant_ano_3_vespertino() {
+        grado_cant_ano_3_vespertino = new ArrayList<>();
+        GradoAcademico gdoctor = (GradoAcademico) ejbFacade.findByNombre("DOCTOR");
+        GradoAcademico gmagister = (GradoAcademico) ejbFacade.findByNombre("MAGISTER");
+        GradoAcademico glicenciado = (GradoAcademico) ejbFacade.findByNombre("LICENCIADO-TITULADO");
+        GradoAcademico gtitulado = (GradoAcademico) ejbFacade.findByNombre("NO TITULADO");
+        List<Profesor> doctor = profeFacade.findByGradoYDiurnoVespertino(gdoctor,"VESPERTINO");
+        List<Profesor> magister = profeFacade.findByGradoYDiurnoVespertino(gmagister,"VESPERTINO");
+        List<Profesor> licenciado = profeFacade.findByGradoYDiurnoVespertino(glicenciado,"VESPERTINO");
+        List<Profesor> titulado = profeFacade.findByGradoYDiurnoVespertino(gtitulado,"VESPERTINO");
+        GradoCant nuevod = new GradoCant();
+        GradoCant nuevom = new GradoCant();
+        GradoCant nuevol = new GradoCant();
+        GradoCant nuevot = new GradoCant();
+        GradoCant nuevototal = new GradoCant();
+        int cont1 = 0;
+        int cont2 = 0;
+        int cont3 = 0;
+        int cont4 = 0;
+        Date fecha = new Date();
+        int year;
+        year = fecha.getYear() + 1897;
+        for (int i = 0; i < doctor.size(); i++) {
+            if((doctor.get(i).getAno_ingreso() <= year && doctor.get(i).getContrato().equals("Completa")) && (doctor.get(i).isVigente() == true || doctor.get(i).getAnoRetiro() >= year)){
+                cont1+=1;
+            }
+            else if((doctor.get(i).getAno_ingreso() <= year && doctor.get(i).getDedicacion_contratada()<=10) && (doctor.get(i).isVigente() == true || doctor.get(i).getAnoRetiro() >= year)){
+                cont2+=1;
+            }
+            else if((doctor.get(i).getAno_ingreso() <= year && doctor.get(i).getDedicacion_contratada()>=11 && doctor.get(i).getDedicacion_contratada()<=21) && (doctor.get(i).isVigente() == true || doctor.get(i).getAnoRetiro() >= year)){
+                cont3+=1;
+            }
+            else if((doctor.get(i).getAno_ingreso() <= year && doctor.get(i).getDedicacion_contratada()>=22) && (doctor.get(i).isVigente() == true || doctor.get(i).getAnoRetiro() >= year)){
+                cont4+=1;
+            }
+        }
+        nuevod.setCant1(cont1);
+        nuevod.setCant2(cont2);
+        nuevod.setCant3(cont3);
+        nuevod.setCant4(cont4);
+        nuevod.setGrado("Doctor");
+        cont1 = 0; cont2 = 0; cont3 = 0; cont4 = 0;
+        for (int i = 0; i < magister.size(); i++) {
+            if((magister.get(i).getAno_ingreso() <= year && magister.get(i).getContrato().equals("Completa")) && (magister.get(i).isVigente() == true || magister.get(i).getAnoRetiro() >= year)){
+                cont1+=1;
+            }
+            else if((magister.get(i).getAno_ingreso() <= year && magister.get(i).getDedicacion_contratada()<=10) && (magister.get(i).isVigente() == true || magister.get(i).getAnoRetiro() >= year)){
+                cont2+=1;
+            }
+            else if((magister.get(i).getAno_ingreso() <= year && magister.get(i).getDedicacion_contratada()>=11 && magister.get(i).getDedicacion_contratada()<=21) && (magister.get(i).isVigente() == true || magister.get(i).getAnoRetiro() >= year)){
+                cont3+=1;
+            }
+            else if((magister.get(i).getAno_ingreso() <= year && magister.get(i).getDedicacion_contratada()>=22) && (magister.get(i).isVigente() == true || magister.get(i).getAnoRetiro() >= year)){
+                cont4+=1;
+            }
+        }
+        nuevom.setCant1(cont1);
+        nuevom.setCant2(cont2);
+        nuevom.setCant3(cont3);
+        nuevom.setCant4(cont4);
+        nuevom.setGrado("Magister");
+        cont1 = 0; cont2 = 0; cont3 = 0; cont4 = 0;
+        for (int i = 0; i < licenciado.size(); i++) {
+            if((licenciado.get(i).getAno_ingreso() <= year && licenciado.get(i).getContrato().equals("Completa")) && (licenciado.get(i).isVigente() == true || licenciado.get(i).getAnoRetiro() >= year)){
+                cont1+=1;
+            }
+            else if((licenciado.get(i).getAno_ingreso() <= year && licenciado.get(i).getDedicacion_contratada()<=10) && (licenciado.get(i).isVigente() == true || licenciado.get(i).getAnoRetiro() >= year)){
+                cont2+=1;
+            }
+            else if((licenciado.get(i).getAno_ingreso() <= year && licenciado.get(i).getDedicacion_contratada()>=11 && licenciado.get(i).getDedicacion_contratada()<=21) && (licenciado.get(i).isVigente() == true || licenciado.get(i).getAnoRetiro() >= year)){
+                cont3+=1;
+            }
+            else if((licenciado.get(i).getAno_ingreso() <= year && licenciado.get(i).getDedicacion_contratada()>=22) && (licenciado.get(i).isVigente() == true || licenciado.get(i).getAnoRetiro() >= year)){
+                cont4+=1;
+            }
+        }
+        nuevol.setCant1(cont1);
+        nuevol.setCant2(cont2);
+        nuevol.setCant3(cont3);
+        nuevol.setCant4(cont4);
+        nuevol.setGrado("Licenciado");
+        cont1 = 0; cont2 = 0; cont3 = 0; cont4 = 0;
+        for (int i = 0; i < titulado.size(); i++) {
+            if((titulado.get(i).getAno_ingreso() <= year && titulado.get(i).getContrato().equals("Completa")) && (titulado.get(i).isVigente() == true || titulado.get(i).getAnoRetiro() >= year)){
+                cont1+=1;
+            }
+            else if((titulado.get(i).getAno_ingreso() <= year && titulado.get(i).getDedicacion_contratada()<=10) && (titulado.get(i).isVigente() == true || titulado.get(i).getAnoRetiro() >= year)){
+                cont2+=1;
+            }
+            else if((titulado.get(i).getAno_ingreso() <= year && titulado.get(i).getDedicacion_contratada()>=11 && titulado.get(i).getDedicacion_contratada()<=21) && (titulado.get(i).isVigente() == true || titulado.get(i).getAnoRetiro() >= year)){
+                cont3+=1;
+            }
+            else if((titulado.get(i).getAno_ingreso() <= year && titulado.get(i).getDedicacion_contratada()>=22) && (titulado.get(i).isVigente() == true || titulado.get(i).getAnoRetiro() >= year)){
+                cont4+=1;
+            }
+        }
+        nuevot.setCant1(cont1);
+        nuevot.setCant2(cont2);
+        nuevot.setCant3(cont3);
+        nuevot.setCant4(cont4);
+        nuevot.setGrado("Titulado");
+        nuevototal.setCant1(nuevod.getCant1()+nuevom.getCant1()+nuevol.getCant1()+nuevot.getCant1());
+        nuevototal.setCant2(nuevod.getCant2()+nuevom.getCant2()+nuevol.getCant2()+nuevot.getCant2());
+        nuevototal.setCant3(nuevod.getCant3()+nuevom.getCant3()+nuevol.getCant3()+nuevot.getCant3());
+        nuevototal.setCant4(nuevod.getCant4()+nuevom.getCant4()+nuevol.getCant4()+nuevot.getCant4());
+        nuevototal.setGrado("Total");
+        grado_cant_ano_3_vespertino.add(nuevod);
+        grado_cant_ano_3_vespertino.add(nuevom);
+        grado_cant_ano_3_vespertino.add(nuevol);
+        grado_cant_ano_3_vespertino.add(nuevot);
+        grado_cant_ano_3_vespertino.add(nuevototal);
+        return grado_cant_ano_3_vespertino;
+    }
+
+    public void setGrado_cant_ano_3_vespertino(List<GradoCant> grado_cant_ano_3_vespertino) {
+        this.grado_cant_ano_3_vespertino = grado_cant_ano_3_vespertino;
+    }
+
+    public List<GradoCant> getGrado_cant_ano_4_vespertino() {
+        grado_cant_ano_4_vespertino = new ArrayList<>();
+        GradoAcademico gdoctor = (GradoAcademico) ejbFacade.findByNombre("DOCTOR");
+        GradoAcademico gmagister = (GradoAcademico) ejbFacade.findByNombre("MAGISTER");
+        GradoAcademico glicenciado = (GradoAcademico) ejbFacade.findByNombre("LICENCIADO-TITULADO");
+        GradoAcademico gtitulado = (GradoAcademico) ejbFacade.findByNombre("NO TITULADO");
+        List<Profesor> doctor = profeFacade.findByGradoYDiurnoVespertino(gdoctor,"VESPERTINO");
+        List<Profesor> magister = profeFacade.findByGradoYDiurnoVespertino(gmagister,"VESPERTINO");
+        List<Profesor> licenciado = profeFacade.findByGradoYDiurnoVespertino(glicenciado,"VESPERTINO");
+        List<Profesor> titulado = profeFacade.findByGradoYDiurnoVespertino(gtitulado,"VESPERTINO");
+        GradoCant nuevod = new GradoCant();
+        GradoCant nuevom = new GradoCant();
+        GradoCant nuevol = new GradoCant();
+        GradoCant nuevot = new GradoCant();
+        GradoCant nuevototal = new GradoCant();
+        int cont1 = 0;
+        int cont2 = 0;
+        int cont3 = 0;
+        int cont4 = 0;
+        Date fecha = new Date();
+        int year;
+        year = fecha.getYear() + 1899;
+        for (int i = 0; i < doctor.size(); i++) {
+            if((doctor.get(i).getAno_ingreso() <= year && doctor.get(i).getContrato().equals("Completa")) && (doctor.get(i).isVigente() == true || doctor.get(i).getAnoRetiro() >= year)){
+                cont1+=1;
+            }
+            else if((doctor.get(i).getAno_ingreso() <= year && doctor.get(i).getDedicacion_contratada()<=10) && (doctor.get(i).isVigente() == true || doctor.get(i).getAnoRetiro() >= year)){
+                cont2+=1;
+            }
+            else if((doctor.get(i).getAno_ingreso() <= year && doctor.get(i).getDedicacion_contratada()>=11 && doctor.get(i).getDedicacion_contratada()<=21) && (doctor.get(i).isVigente() == true || doctor.get(i).getAnoRetiro() >= year)){
+                cont3+=1;
+            }
+            else if((doctor.get(i).getAno_ingreso() <= year && doctor.get(i).getDedicacion_contratada()>=22) && (doctor.get(i).isVigente() == true || doctor.get(i).getAnoRetiro() >= year)){
+                cont4+=1;
+            }
+        }
+        nuevod.setCant1(cont1);
+        nuevod.setCant2(cont2);
+        nuevod.setCant3(cont3);
+        nuevod.setCant4(cont4);
+        nuevod.setGrado("Doctor");
+        cont1 = 0; cont2 = 0; cont3 = 0; cont4 = 0;
+        for (int i = 0; i < magister.size(); i++) {
+            if((magister.get(i).getAno_ingreso() <= year && magister.get(i).getContrato().equals("Completa")) && (magister.get(i).isVigente() == true || magister.get(i).getAnoRetiro() >= year)){
+                cont1+=1;
+            }
+            else if((magister.get(i).getAno_ingreso() <= year && magister.get(i).getDedicacion_contratada()<=10) && (magister.get(i).isVigente() == true || magister.get(i).getAnoRetiro() >= year)){
+                cont2+=1;
+            }
+            else if((magister.get(i).getAno_ingreso() <= year && magister.get(i).getDedicacion_contratada()>=11 && magister.get(i).getDedicacion_contratada()<=21) && (magister.get(i).isVigente() == true || magister.get(i).getAnoRetiro() >= year)){
+                cont3+=1;
+            }
+            else if((magister.get(i).getAno_ingreso() <= year && magister.get(i).getDedicacion_contratada()>=22) && (magister.get(i).isVigente() == true || magister.get(i).getAnoRetiro() >= year)){
+                cont4+=1;
+            }
+        }
+        nuevom.setCant1(cont1);
+        nuevom.setCant2(cont2);
+        nuevom.setCant3(cont3);
+        nuevom.setCant4(cont4);
+        nuevom.setGrado("Magister");
+        cont1 = 0; cont2 = 0; cont3 = 0; cont4 = 0;
+        for (int i = 0; i < licenciado.size(); i++) {
+            if((licenciado.get(i).getAno_ingreso() <= year && licenciado.get(i).getContrato().equals("Completa")) && (licenciado.get(i).isVigente() == true || licenciado.get(i).getAnoRetiro() >= year)){
+                cont1+=1;
+            }
+            else if((licenciado.get(i).getAno_ingreso() <= year && licenciado.get(i).getDedicacion_contratada()<=10) && (licenciado.get(i).isVigente() == true || licenciado.get(i).getAnoRetiro() >= year)){
+                cont2+=1;
+            }
+            else if((licenciado.get(i).getAno_ingreso() <= year && licenciado.get(i).getDedicacion_contratada()>=11 && licenciado.get(i).getDedicacion_contratada()<=21) && (licenciado.get(i).isVigente() == true || licenciado.get(i).getAnoRetiro() >= year)){
+                cont3+=1;
+            }
+            else if((licenciado.get(i).getAno_ingreso() <= year && licenciado.get(i).getDedicacion_contratada()>=22) && (licenciado.get(i).isVigente() == true || licenciado.get(i).getAnoRetiro() >= year)){
+                cont4+=1;
+            }
+        }
+        nuevol.setCant1(cont1);
+        nuevol.setCant2(cont2);
+        nuevol.setCant3(cont3);
+        nuevol.setCant4(cont4);
+        nuevol.setGrado("Licenciado");
+        cont1 = 0; cont2 = 0; cont3 = 0; cont4 = 0;
+        for (int i = 0; i < titulado.size(); i++) {
+            if((titulado.get(i).getAno_ingreso() <= year && titulado.get(i).getContrato().equals("Completa")) && (titulado.get(i).isVigente() == true || titulado.get(i).getAnoRetiro() >= year)){
+                cont1+=1;
+            }
+            else if((titulado.get(i).getAno_ingreso() <= year && titulado.get(i).getDedicacion_contratada()<=10) && (titulado.get(i).isVigente() == true || titulado.get(i).getAnoRetiro() >= year)){
+                cont2+=1;
+            }
+            else if((titulado.get(i).getAno_ingreso() <= year && titulado.get(i).getDedicacion_contratada()>=11 && titulado.get(i).getDedicacion_contratada()<=21) && (titulado.get(i).isVigente() == true || titulado.get(i).getAnoRetiro() >= year)){
+                cont3+=1;
+            }
+            else if((titulado.get(i).getAno_ingreso() <= year && titulado.get(i).getDedicacion_contratada()>=22) && (titulado.get(i).isVigente() == true || titulado.get(i).getAnoRetiro() >= year)){
+                cont4+=1;
+            }
+        }
+        nuevot.setCant1(cont1);
+        nuevot.setCant2(cont2);
+        nuevot.setCant3(cont3);
+        nuevot.setCant4(cont4);
+        nuevot.setGrado("Titulado");
+        nuevototal.setCant1(nuevod.getCant1()+nuevom.getCant1()+nuevol.getCant1()+nuevot.getCant1());
+        nuevototal.setCant2(nuevod.getCant2()+nuevom.getCant2()+nuevol.getCant2()+nuevot.getCant2());
+        nuevototal.setCant3(nuevod.getCant3()+nuevom.getCant3()+nuevol.getCant3()+nuevot.getCant3());
+        nuevototal.setCant4(nuevod.getCant4()+nuevom.getCant4()+nuevol.getCant4()+nuevot.getCant4());
+        nuevototal.setGrado("Total");
+        grado_cant_ano_4_vespertino.add(nuevod);
+        grado_cant_ano_4_vespertino.add(nuevom);
+        grado_cant_ano_4_vespertino.add(nuevol);
+        grado_cant_ano_4_vespertino.add(nuevot);
+        grado_cant_ano_4_vespertino.add(nuevototal);
+        return grado_cant_ano_4_vespertino;
+    }
+
+    public void setGrado_cant_ano_4_vespertino(List<GradoCant> grado_cant_ano_4_vespertino) {
+        this.grado_cant_ano_4_vespertino = grado_cant_ano_4_vespertino;
     }
     
     public List<JerarquiaGrado> getListaJT(){

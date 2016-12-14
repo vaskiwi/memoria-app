@@ -35,6 +35,10 @@ public interface ProfesorFacadeLocal {
     
     public List<Profesor> findByJerarYGrado(Jerarquia j, GradoAcademico g);
     
+    public List<Profesor> findByGradoYDiurnoVespertino(GradoAcademico g, String dv);
+    
+    public List<Profesor> findByJerarYGradoYDiurnoVespertino(Jerarquia j, GradoAcademico g, String dv);
+     
     public List<Profesor> findByJerarYContrato(Jerarquia j, String c);
     
     public List<Profesor> findByAno(int ano);

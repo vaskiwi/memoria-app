@@ -105,6 +105,12 @@
                             </f:facet>
                             <h:outputText value="#{item.comuna_profesor}"/>
                         </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Jornada"/>
+                            </f:facet>
+                            <h:outputText value="#{item.diurno_vespertino}"/>
+                        </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="Nuevo" actionListener="#{profesorController.prepareCreate}" update=":ProfesorCreateForm" oncomplete="PF('ProfesorCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="Ver" update=":ProfesorViewForm" oncomplete="PF('ProfesorViewDialog').show()" disabled="#{empty profesorController.selected}"/>

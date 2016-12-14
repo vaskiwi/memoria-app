@@ -30,8 +30,16 @@
 
                                 <p:submenu label="Información según Grado A." icon="ui-icon-document" styleClass="ui-priority-primary">
                                     <p:menuitem value="Número de docentes" outcome="/administrador/tablas/PorGradoNum" />
-                                    <p:menuitem value="Docentes según jerarquía" outcome="/administrador/tablas/JerarGrado" />
-                                    <p:menuitem value="Docentes año actual -1" outcome="/administrador/tablas/GradoAno-1" />
+                                    <p:menuitem value="Docentes de jornada diurna según jerarquía para el año #{profesorController.fecha_actual.year+1900}" outcome="/administrador/tablas/JerarGradoDiurno" />
+                                    <p:menuitem value="Docentes de jornada vespertina según jerarquía para el año #{profesorController.fecha_actual.year+1900}" outcome="/administrador/tablas/JerarGradoVespertino" />
+                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1899} de jornada Diurna" outcome="/administrador/tablas/GradoAno-1-Diurno" />
+                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1898} de jornada Diurna" outcome="/administrador/tablas/GradoAno-2-Diurno" />
+                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1897} de jornada Diurna" outcome="/administrador/tablas/GradoAno-3-Diurno" />
+                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1896} de jornada Diurna" outcome="/administrador/tablas/GradoAno-4-Diurno" />
+                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1899} de jornada Vespertina" outcome="/administrador/tablas/GradoAno-1-Vespertino" />
+                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1898} de jornada Vespertina" outcome="/administrador/tablas/GradoAno-2-Vespertino" />
+                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1897} de jornada Vespertina" outcome="/administrador/tablas/GradoAno-3-Vespertino" />
+                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1896} de jornada Vespertina" outcome="/administrador/tablas/GradoAno-4-Vespertino" />
                                     <p:menuitem value="Total de horas" outcome="/administrador/tablas/PorGradoHoras" />
                                     <p:menuitem value="Número de docentes según Contrato y Grado" outcome="/administrador/tablas/PorGradoDlg" />
                                     

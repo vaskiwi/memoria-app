@@ -26,6 +26,8 @@ public interface DetalleBibliografiaFacadeLocal {
     List<DetalleBibliografia> findAll();
 
     List<DetalleBibliografia> findRange(int[] range);
+    
+    DetalleBibliografia findById(Long id);
 
     int count();
     

@@ -18,13 +18,12 @@
             <h:form id="GradoAcademicoListForm">
                 <p:breadCrumb>
                             <p:menuitem value="Portada" url="/faces/administrador/index1.xhtml" />
-                            <p:menuitem value="Tablas por grado académico" url="/faces/administrador/tablas/PorGrado.xhtml" />
-                            <p:menuitem value="Tabla Docentes por Grado" url="/faces/administrador/tablas/GradoAno-1.xhtml" />
+                            <p:menuitem value="Tabla Docentes por Grado" url="/faces/administrador/tablas/GradoAno-4-Vespertino.xhtml" />
                              
                             
                 </p:breadCrumb>
-                <p:panel header="DOCENTES DE LA CARRERA O PROGRAMA PARA EL AÑO ACTUAL -1">
-                    <p:dataTable id="datalist" value="#{gradoAcademicoController.grado_cant_ano_1}" var="item"
+                <p:panel header="DOCENTES DE JORNADA VESPERTINA DE LA CARRERA O PROGRAMA PARA EL AÑO #{profesorController.fecha_actual.year+1896}">
+                    <p:dataTable id="datalist" value="#{gradoAcademicoController.grado_cant_ano_4_vespertino}" var="item"
                                  
                                  paginator="true"
                                  rows="10"
@@ -80,7 +79,7 @@
                     </p:dataTable>
                     <div style="text-align:center">  
                         <h:commandButton value="Exportar">
-                            <p:dataExporter type="xls" target="datalist" fileName="Docentes de la carrera o programa para el ano actual -1"/>
+                            <p:dataExporter type="xls" target="datalist" fileName="Docentes de la carrera o programa para el ano #{profesorController.fecha_actual.year+1896}"/>
                         </h:commandButton>  
                     </div>  
                 </p:panel>

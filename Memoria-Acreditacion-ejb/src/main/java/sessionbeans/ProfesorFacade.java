@@ -60,6 +60,25 @@ public class ProfesorFacade extends AbstractFacade<Profesor> implements Profesor
     }
     
     @Override
+    public List<Profesor> findByGradoYDiurnoVespertino(GradoAcademico g, String dv){
+        Query query;
+        query = em.createNamedQuery("Profesor.findByGradoYDiurnoVespertino")
+                .setParameter("grado", g)
+                .setParameter("diurno_vespertino", dv);
+        return query.getResultList();
+    }
+    
+    @Override
+    public List<Profesor> findByJerarYGradoYDiurnoVespertino(Jerarquia j, GradoAcademico g, String dv){
+        Query query;
+        query = em.createNamedQuery("Profesor.findByJerarYGradoYDiurnoVespertino")
+                .setParameter("jerarquia", j)
+                .setParameter("grado", g)
+                .setParameter("diurno_vespertino", dv);
+        return query.getResultList();
+    }
+    
+    @Override
     public List<Profesor> findByJerarYContrato(Jerarquia j, String c){
         Query query;
         query = em.createNamedQuery("Profesor.findByJerarYContrato")
