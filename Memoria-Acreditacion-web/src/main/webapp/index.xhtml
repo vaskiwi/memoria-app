@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+    <h:head>
+        <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+        <title>Acreditación Informática</title>
+            
+    </h:head>
+    <h:body>
+        
+        <ui:composition template="./template.xhtml">
+            <ui:define name="body">
+            
+                <div class="login">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3><h:graphicImage value="/resources/logo-usach.png" width="60" /></h3>
+                
+                </div>
+                <div class="panel-body">
+                                 
+            <center><h:form id="loginForm">          
+                    
+            <p:growl id="msg" showDetail="true" life="3000" >
+                    
+                <h:panelGrid columns="2" cellpadding="5" >
+                    
+                    
+                    
+                    <!-- <h:outputText value="Username" /> -->
+                    <div class="textoLogin">Nombre de usuario:&nbsp;&nbsp;&nbsp;</div>
+                    <p:inputText id="username" value="#{loginController.nombre}" ></p:inputText>
+ 
+                    <p:spacer></p:spacer>
+ 
+                    <p:message for="username" ></p:message>
+ 
+                    <!-- <h:outputText value="Password" /> -->
+                    <div class="textoLogin"> Contraseña: </div>
+ 
+                    <p:password id="password" value="#{loginController.password}"  feedback="false"></p:password>
+ 
+                    <p:spacer></p:spacer>
+ 
+                    <p:message for="password"></p:message>
+ 
+                    <p:spacer></p:spacer>
+ 
+                    <p:commandButton action="#{loginController.login}" value="Iniciar sesión" update="loginForm" ajax="true"></p:commandButton>
+                   
+                    
+                </h:panelGrid> 
+            </p:growl>     
+                
+            
+ 
+        </h:form></center> </div>
+              </div>
+        </div>
+                    
+            </ui:define>
+     </ui:composition>
+    </h:body>
+  </f:view>
+</html>
+

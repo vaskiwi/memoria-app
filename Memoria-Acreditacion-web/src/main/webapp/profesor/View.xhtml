@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      object.style.alignmentAdjust="true">
+
+    <ui:composition>
+
+        <p:dialog id="ProfesorViewDlg" closeOnEscape="true" widgetVar="ProfesorViewDialog" modal="true" resizable="false" appendTo="@(body)" height="300" header= "INFORMACIÓN DEL PROFESOR">
+            <h:form id="ProfesorViewForm">
+                <h:panelGroup id="display" >
+                    <p:panelGrid columns="2" rendered="#{profesorController.selected != null}">
+                        <h:outputText value="RUN: "/>
+                        <h:outputText value="#{profesorController.selected.rut_profesor}" title="#{bundle.ViewProfesorTitle_rut_profesor}"/>
+                        <h:outputText value="Nombres: "/>
+                        <h:outputText value="#{profesorController.selected.nombre_profesor}" title="#{bundle.ViewProfesorTitle_nombre}"/>
+                        <h:outputText value="Apellido paterno: "/>
+                        <h:outputText value="#{profesorController.selected.apellido_pat}" title="apellidopat"/>
+                        <h:outputText value="Apellido materno: "/>
+                        <h:outputText value="#{profesorController.selected.apellido_mat}" title="apellidomat"/>
+                        <h:outputText value="Título Profesional: "/>
+                        <h:outputText value="#{profesorController.selected.titulo_profesor}" title="titulo"/>
+                        <h:outputText value="Unidad: "/>
+                        <h:outputText value="#{profesorController.selected.unidad_profesor}" title="unidad"/>
+                        <h:outputText value="Comuna: "/>
+                        <h:outputText value="#{profesorController.selected.comuna_profesor}" title="comuna"/>
+                        <h:outputText value="Año de Ingreso: "/>
+                        <h:outputText value="#{profesorController.selected.ano_ingreso}" title="#{bundle.ViewProfesorTitle_ano_ingreso}"/>
+                        <h:outputText value="Tipo de Contrato: "/>
+                        <h:outputText value="#{profesorController.selected.contrato}" title="#{bundle.ViewProfesorTitle_contrato}"/>
+                        <h:outputText value="Jornada: "/>
+                        <h:outputText value="#{profesorController.selected.diurno_vespertino}" title="jornada"/>
+                        <h:outputText value="Tipo de Jerarquía: "/>
+                        <h:outputText value="#{profesorController.selected.jerarquia.nombre_jerarquia}" title="#{bundle.ViewProfesorTitle_jerarquia}"/>
+                        <h:outputText value="Grado Académico: "/>
+                        <h:outputText value="#{profesorController.selected.grado.nombre_grado_academico}" title="#{bundle.ViewProfesorTitle_grado}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ProfesorViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -19,14 +19,24 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>faces/index1.xhtml</welcome-file>
+        <welcome-file>faces/index.xhtml</welcome-file>
     </welcome-file-list>
     <security-constraint>
         <display-name>Pages_Administrador</display-name>
         <web-resource-collection>
             <web-resource-name>Pages_Administrador</web-resource-name>
             <description/>
-            <url-pattern>/faces/administrador/*</url-pattern>
+            <url-pattern>/faces/index1.xhtml</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>Asignatura</web-resource-name>
+            <description/>
+            <url-pattern>/faces/asignatura/*</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>Carrera</web-resource-name>
+            <description/>
+            <url-pattern>/faces/carrera/</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <description/>

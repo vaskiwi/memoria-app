@@ -85,6 +85,10 @@ public class LoginController implements Serializable{
     public void setError(boolean error) {
         this.error = error;
     }
+    
+    public Boolean usuarioLogueado(){
+        return usuarioLogeado!= null;
+    }
 
     public LoginController(){
         HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
@@ -155,15 +159,7 @@ public class LoginController implements Serializable{
                         request.login(this.nombre, this.password);
                         usuarioLogeado = usuario;
                         context.addMessage(null, new FacesMessage("Usuario autentificado correctamente"));           
-                        if(userCtrl.encontrarUsuarioPorCorreoRol(this.nombre).equals("ADMINISTRADOR")){
-                            FacesContext.getCurrentInstance().getExternalContext().redirect("/Memoria-Acreditacion-web/faces/administrador/index1.xhtml");
-                        }
-                        else if(userCtrl.encontrarUsuarioPorCorreoRol(this.nombre).equals("COORDINADOR")){
-                            FacesContext.getCurrentInstance().getExternalContext().redirect("/Memoria-Acreditacion-web/faces/coordinador/index1.xhtml");
-                        }
-                        else if(userCtrl.encontrarUsuarioPorCorreoRol(this.nombre).equals("COMITE")){
-                            FacesContext.getCurrentInstance().getExternalContext().redirect("/Memoria-Acreditacion-web/faces/comite/index1.xhtml");
-                        }
+                        FacesContext.getCurrentInstance().getExternalContext().redirect("/Memoria-Acreditacion-web/faces/index1.xhtml");
                     } catch (ServletException e) {//si request.login fallo y la password o el usuario no corresponden
                         context.addMessage(null, new FacesMessage("El correo y la contraseña ingresados no coinciden"));
                         return "/faces/index1.xhtml";
@@ -190,9 +186,9 @@ public class LoginController implements Serializable{
             //la comprobación se hace por parte de Wildfly(se configuraron Roles y rol)
         } catch (ServletException e) {//si request.login fallo y la password o el usuario no corresponden
             context.addMessage(null, new FacesMessage("El correo y la contraseña ingresados no coinciden"));
-            return "/faces/index1.xhtml";
+            return "/faces/index.xhtml";
         }
-        return "/faces/";
+        return "/faces/index.xhtml";
     }
 
     /**
