@@ -23,15 +23,12 @@
                         <p:growl id="messages"/>
  
                             <p:menubar>
-                                <p:submenu label="Información según Contrato"  icon="ui-icon-document" styleClass="ui-priority-primary">
-                                    <p:menuitem value="Número y horas docentes" outcome="/administrador/tablas/PorContratoNumHoras" />
-                                    
-                                </p:submenu>
-
-                                <p:submenu label="Información según Grado A." icon="ui-icon-document" styleClass="ui-priority-primary">
-                                    <p:menuitem value="Número de docentes" outcome="/administrador/tablas/PorGradoNum" />
+                                <p:submenu label="Información de profesores para el año #{profesorController.fecha_actual.year+1900}"  icon="ui-icon-document" styleClass="ui-priority-primary">
                                     <p:menuitem value="Docentes de jornada diurna según jerarquía para el año #{profesorController.fecha_actual.year+1900}" outcome="/administrador/tablas/JerarGradoDiurno" />
                                     <p:menuitem value="Docentes de jornada vespertina según jerarquía para el año #{profesorController.fecha_actual.year+1900}" outcome="/administrador/tablas/JerarGradoVespertino" />
+                                </p:submenu>
+
+                                <p:submenu label="Información de profesores de los 5 últimos años" icon="ui-icon-document" styleClass="ui-priority-primary">
                                     <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1899} de jornada Diurna" outcome="/administrador/tablas/GradoAno-1-Diurno" />
                                     <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1898} de jornada Diurna" outcome="/administrador/tablas/GradoAno-2-Diurno" />
                                     <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1897} de jornada Diurna" outcome="/administrador/tablas/GradoAno-3-Diurno" />
@@ -40,34 +37,20 @@
                                     <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1898} de jornada Vespertina" outcome="/administrador/tablas/GradoAno-2-Vespertino" />
                                     <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1897} de jornada Vespertina" outcome="/administrador/tablas/GradoAno-3-Vespertino" />
                                     <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1896} de jornada Vespertina" outcome="/administrador/tablas/GradoAno-4-Vespertino" />
-                                    <p:menuitem value="Total de horas" outcome="/administrador/tablas/PorGradoHoras" />
-                                    <p:menuitem value="Número de docentes según Contrato y Grado" outcome="/administrador/tablas/PorGradoDlg" />
                                     
                                 </p:submenu>
 
-                                <p:submenu label="Información según Jerarquía" icon="ui-icon-document" styleClass="ui-priority-primary">
-                                    <p:menuitem value="Docentes Titular" id="NumTit" outcome="/administrador/tablas/jerarquia/Titular" />
-                                    <p:menuitem value="Docentes Asociado" id="NumAsoc" outcome="/administrador/tablas/jerarquia/Asociado" />
-                                    <p:menuitem value="Docentes Asistente" id="NumAsis" outcome="/administrador/tablas/jerarquia/Asistente" />
-                                    <p:menuitem value="Docentes Instructor" id="NumIns" outcome="/administrador/tablas/jerarquia/Instructor" />
-                                    <p:menuitem value="Docentes Ayudante" id="NumAyud" outcome="/administrador/tablas/jerarquia/Ayudante" />
-                                    <p:menuitem value="Docentes Adjunto Categoría I" id="NumAdj1" outcome="/administrador/tablas/jerarquia/Adjunto1" />
-                                    <p:menuitem value="Docentes Adjunto Categoría II" id="NumAdj2" outcome="/administrador/tablas/jerarquia/Adjunto2" />
-                                    <p:menuitem value="Docentes Instructor Categoría I" id="NumIns1" outcome="/administrador/tablas/jerarquia/Instructor1" />
-                                    <p:menuitem value="Docentes Instructor Categoría II" id="NumIns2" outcome="/administrador/tablas/jerarquia/Instructor2"  />
-                                    <p:menuitem value="Docentes Ayudante Profesor" id="NumAyudProf"  outcome="/administrador/tablas/jerarquia/AyudProfe" />
-                                
+                                <p:submenu label="Información de los profesores según jornada" icon="ui-icon-document">
+                                    <p:menuitem outcome="/administrador/profesorDiurno/profesores.xhtml"  value="Menú Profesores Diurno"/>
+                                    <p:menuitem outcome="/administrador/profesorVespertino/profesores.xhtml"  value="Menú Profesores Vespertino"/>
                                 </p:submenu>
-
-                                <p:submenu label="Información adicional" icon="ui-icon-document">
-                                    <p:menuitem value="Docentes Jornada Completa según renta" id="DocRenta" outcome="/administrador/tablas/PorRenta"  />
                                 
+                                <p:submenu label="Información adicional"  icon="ui-icon-document" styleClass="ui-priority-primary">
+                                    <p:menuitem value="Detalle Bibliografía Totales" outcome="/administrador/tablas/DetalleBibliografiaTotal" />
                                 </p:submenu>
                                 
                                 <p:submenu label="Administrador" icon="ui-icon-pencil">
                                     <p:menuitem outcome="/administrador/profesor/List"  value="Menú Profesores"/>
-                                    <p:menuitem outcome="/administrador/profesorDiurno/profesores.xhtml"  value="Menú Profesores Diurno"/>
-                                    <p:menuitem outcome="/administrador/profesorVespertino/profesores.xhtml"  value="Menú Profesores Vespertino"/>
                                     <p:menuitem outcome="/administrador/asignatura/List" value="Menú Asignaturas"/>
                                     <p:menuitem outcome="/administrador/tipoAsignatura/List" value="Menú Tipos de Asignaturas"/>
                                     <p:menuitem outcome="/administrador/carrera/List" value="Menú Carreras" />
@@ -78,16 +61,8 @@
                                     <p:menuitem outcome="/administrador/detalleBibliografia/List" value="Menú Detalle Bibliografías" />  
                                     <p:menuitem outcome="/administrador/instalacion/List" value="Menú Instalaciones" />   
 
-                                </p:submenu>
-
-                                
-
-                                
-                                
+                                </p:submenu>                            
                             </p:menubar>
-                                                                   
-                           
-
                             <p:separator />
                             <br/>
                             

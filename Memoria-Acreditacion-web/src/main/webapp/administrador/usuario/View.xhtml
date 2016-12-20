@@ -14,14 +14,10 @@
                     <p:panelGrid columns="2" rendered="#{usuarioController.selected != null}">
                         <h:outputText value="#{bundle.ViewUsuarioLabel_roles}"/>
                         <h:outputText value="#{usuarioController.selected.rol}" title="#{bundle.ViewUsuarioTitle_roles}"/>
-                        <h:outputText value="#{bundle.ViewUsuarioLabel_uid}"/>
-                        <h:outputText value="#{usuarioController.selected.uid}" title="#{bundle.ViewUsuarioTitle_uid}"/>
                         <h:outputText value="#{bundle.ViewUsuarioLabel_rutUsuario}"/>
                         <h:outputText value="#{usuarioController.selected.rutUsuario}" title="#{bundle.ViewUsuarioTitle_rutUsuario}"/>
                         <h:outputText value="#{bundle.ViewUsuarioLabel_nombreUsuario}"/>
                         <h:outputText value="#{usuarioController.selected.nombreUsuario}" title="#{bundle.ViewUsuarioTitle_nombreUsuario}"/>
-                        <h:outputText value="#{bundle.ViewUsuarioLabel_apellidoUsuario}"/>
-                        <h:outputText value="#{usuarioController.selected.apellidoUsuario}" title="#{bundle.ViewUsuarioTitle_apellidoUsuario}"/>
                         <h:outputText value="#{bundle.ViewUsuarioLabel_activo}"/>
                         <p:selectBooleanCheckbox value="#{usuarioController.selected.activo}" disabled="true"/>
                     </p:panelGrid>

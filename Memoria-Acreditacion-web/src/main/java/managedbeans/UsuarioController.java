@@ -150,6 +150,16 @@ public class UsuarioController implements Serializable {
     }
 
     public void update() {
+        if (new_password.length() > 0) {
+            boolean succes = selected.cambiarPassword(old_password, new_password);
+
+            if (succes) {
+                selected.setUser_password(new_password);
+                JsfUtil.addSuccessMessage("Contraseña cambiada con éxito");
+            } else {
+                JsfUtil.addErrorMessage("No se pudo cambiar la contraseña");
+            }
+        }
         persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("UsuarioUpdated"));
     }
 

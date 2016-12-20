@@ -192,7 +192,7 @@ public class LoginController implements Serializable{
             context.addMessage(null, new FacesMessage("El correo y la contraseña ingresados no coinciden"));
             return "/faces/index1.xhtml";
         }
-        return "/faces/index1.xhtml";
+        return "/faces/";
     }
 
     /**

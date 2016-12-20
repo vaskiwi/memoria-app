@@ -16,7 +16,6 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -34,12 +33,9 @@ import javax.inject.Inject;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 import sessionbeans.AsignaturaFacadeLocal;
-import sessionbeans.GradoAcademicoFacade;
 import sessionbeans.GradoAcademicoFacadeLocal;
-import sessionbeans.JerarquiaFacade;
 import sessionbeans.JerarquiaFacadeLocal;
 import sessionbeans.ProfesorAsignaturaFacadeLocal;
-import sessionbeans.RolFacadeLocal;
 
 @Named("profesorController")
 @SessionScoped

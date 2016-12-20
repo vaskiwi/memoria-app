@@ -30,7 +30,7 @@
         </web-resource-collection>
         <auth-constraint>
             <description/>
-            <role-name>ADMINISTRADOR</role-name>
+            <role-name>1</role-name>
         </auth-constraint>
     </security-constraint>
     <security-constraint>
@@ -42,7 +42,7 @@
         </web-resource-collection>
         <auth-constraint>
             <description/>
-            <role-name>COORDINADOR</role-name>
+            <role-name>2</role-name>
         </auth-constraint>
     </security-constraint>
     <security-constraint>
@@ -54,7 +54,7 @@
         </web-resource-collection>
         <auth-constraint>
             <description/>
-            <role-name>COMITE</role-name>
+            <role-name>3</role-name>
         </auth-constraint>
     </security-constraint>
     <login-config>
@@ -67,14 +67,14 @@
     </login-config>
     <security-role>
         <description/>
-        <role-name>ADMINISTRADOR</role-name>
+        <role-name>1</role-name>
     </security-role>
     <security-role>
         <description/>
-        <role-name>COORDINADOR</role-name>
+        <role-name>2</role-name>
     </security-role>
     <security-role>
         <description/>
-        <role-name>COMITE</role-name>
+        <role-name>3</role-name>
     </security-role>
 </web-app>

@@ -8,9 +8,8 @@
 
     <ui:composition>
         <br/>
-        <p:dialog id="ProfesorCreateDlg" widgetVar="ProfesorCreateDialog"  closeOnEscape="true" modal="true" resizable="false" appendTo="@(body)"  height="300" header="Nuevo Profesor">
-            <h:form id="ProfesorCreateForm">
-                
+        <p:dialog id="ProfesorCreateDlg" widgetVar="ProfesorCreateDialog" modal="true" resizable="false" appendTo="@(body)"  height="300" header="Nuevo Profesor">
+            <h:form id="ProfesorCreateForm">              
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{profesorController.selected != null}">
                        <p:outputLabel value="Nombres: " for="nombre" />

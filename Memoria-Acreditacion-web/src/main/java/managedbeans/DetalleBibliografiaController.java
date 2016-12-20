@@ -7,6 +7,7 @@ package managedbeans;
 
 import entities.DetalleBibliografia;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -39,7 +40,8 @@ public class DetalleBibliografiaController implements Serializable {
     private List<DetalleBibliografia> items = null;
     private DetalleBibliografia selected;
     private List<DetalleBibliografia> lista_nombres = null;
-     @EJB
+    private List<DetalleBibliografiaTotal> items_total = null;
+    @EJB
     private AsignaturaFacadeLocal AsignaturaFacade;
     
     public DetalleBibliografiaController() {
@@ -76,6 +78,50 @@ public class DetalleBibliografiaController implements Serializable {
 
     public void setItems(List<DetalleBibliografia> items) {
         this.items = items;
+    }
+
+    public List<DetalleBibliografiaTotal> getItems_total() {
+        items_total=new ArrayList<>();
+        if (items == null) {
+            items = getFacade().findAll();
+        }
+        int cont1=0;
+        int cont2=0;
+        int cont3=0;
+        int cont4=0;
+        float cont5=0;
+        float cont6=0;
+        for (DetalleBibliografia item : items) {
+            DetalleBibliografiaTotal d_b = new DetalleBibliografiaTotal();
+            cont1+=item.getCantBibliografiaComplementaria();
+            cont2+=item.getCantBibliografiaObligatoria();
+            cont3+=item.getCantEjemplaresFisicos();
+            cont4+=item.getCantTitulosFisicos();
+            cont5+=item.getPromAlumnosCurso();
+            cont6+=item.getRelEjemplaresAlumnos();
+            d_b.setAsignatura(item.getAsignatura().getNombre_asignatura());
+            d_b.setCantBibliografiaComplementaria(item.getCantBibliografiaComplementaria());
+            d_b.setCantBibliografiaObligatoria(item.getCantBibliografiaObligatoria());
+            d_b.setCantEjemplaresFisicos(item.getCantEjemplaresFisicos());
+            d_b.setCantTitulosFisicos(item.getCantTitulosFisicos());
+            d_b.setPromAlumnosCurso(item.getPromAlumnosCurso());
+            d_b.setRelEjemplaresAlumnos(item.getRelEjemplaresAlumnos());
+            items_total.add(d_b);
+        }
+        DetalleBibliografiaTotal totales = new DetalleBibliografiaTotal();
+        totales.setAsignatura("Total");
+        totales.setCantBibliografiaComplementaria(cont1);
+        totales.setCantBibliografiaObligatoria(cont2);
+        totales.setCantEjemplaresFisicos(cont3);
+        totales.setCantTitulosFisicos(cont4);
+        totales.setPromAlumnosCurso(cont5);
+        totales.setRelEjemplaresAlumnos(cont6);
+        items_total.add(totales);
+        return items_total;
+    }
+
+    public void setItems_total(List<DetalleBibliografiaTotal> items_total) {
+        this.items_total = items_total;
     }
 
     public DetalleBibliografia getSelected() {
@@ -139,13 +185,6 @@ public class DetalleBibliografiaController implements Serializable {
         if (!JsfUtil.isValidationFailed()) {
             items = null;
         }
-        DetalleBibliografia total = ejbFacade.findById(Long.valueOf(99900));
-        total.setCantBibliografiaComplementaria(selected.getCantBibliografiaComplementaria()+total.getCantBibliografiaComplementaria());
-        total.setCantBibliografiaObligatoria(selected.getCantBibliografiaObligatoria()+total.getCantBibliografiaObligatoria());
-        total.setCantEjemplaresFisicos(selected.getCantEjemplaresFisicos()+total.getCantEjemplaresFisicos());
-        total.setCantTitulosFisicos(selected.getCantTitulosFisicos()+total.getCantTitulosFisicos());
-        total.setPromAlumnosCurso(selected.getPromAlumnosCurso()+total.getPromAlumnosCurso());
-        total.setRelEjemplaresAlumnos(selected.getRelEjemplaresAlumnos()+total.getRelEjemplaresAlumnos());
     }
 
     public void update() {

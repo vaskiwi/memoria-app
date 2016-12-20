@@ -2,16 +2,16 @@
 <!DOCTYPE glassfish-web-app PUBLIC "-//GlassFish.org//DTD GlassFish Application Server 3.1 Servlet 3.0//EN" "http://glassfish.org/dtds/glassfish-web-app_3_0-1.dtd">
 <glassfish-web-app error-url="">
   <security-role-mapping>
-    <role-name>ADMINISTRADOR</role-name>
-    <group-name>ADMINISTRADOR</group-name>
+    <role-name>1</role-name>
+    <group-name>1</group-name>
   </security-role-mapping>
   <security-role-mapping>
-    <role-name>COORDINADOR</role-name>
-    <group-name>COORDINADOR</group-name>
+    <role-name>2</role-name>
+    <group-name>2</group-name>
   </security-role-mapping>
   <security-role-mapping>
-    <role-name>COMITE</role-name>
-    <group-name>COMITE</group-name>
+    <role-name>3</role-name>
+    <group-name>3</group-name>
   </security-role-mapping>
   <class-loader delegate="true"/>
   <jsp-config>

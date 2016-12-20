@@ -25,17 +25,10 @@
                     <p:dataTable id="datalist" value="#{usuarioController.items}" var="item"
                                  selectionMode="single" selection="#{usuarioController.selected}"
                                  paginator="true"
-                                 rowKey="#{item.rutUsuario}"
+                                 rowKey="#{item.uid}"
                                  rows="10"
                                  rowsPerPageTemplate="10,20,30,40,50"
                                  >
-
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Nombre de usuario"/>
-                            </f:facet>
-                            <h:outputText value="#{item.uid}"/>
-                        </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="Rut usuario"/>
@@ -47,12 +40,6 @@
                                 <h:outputText value="Nombre"/>
                             </f:facet>
                             <h:outputText value="#{item.nombreUsuario}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Apellido"/>
-                            </f:facet>
-                            <h:outputText value="#{item.apellidoUsuario}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">

@@ -43,12 +43,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Usuario.findByActivo", query = "SELECT u FROM Usuario u WHERE u.activo = :activo")})
 public class Usuario implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 20)
-    @Column(name = "uid")
-    private String uid;
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long uid;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
@@ -75,16 +72,16 @@ public class Usuario implements Serializable {
         this.rutUsuario = rutUsuario;
     }
 
-    public Usuario(String rutUsuario, String uid) {
+    public Usuario(String rutUsuario, Long uid) {
         this.rutUsuario = rutUsuario;
         this.uid = uid;
     }
     
-    public String getUid() {
+    public Long getUid() {
         return uid;
     }
 
-    public void setUid(String uid) {
+    public void setUid(Long uid) {
         this.uid = uid;
     }
 
@@ -143,6 +140,14 @@ public class Usuario implements Serializable {
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
+    }
+    
+    public boolean cambiarPassword(String old_password, String new_password) {
+        if (MD5(old_password).compareTo(this.user_password) == 0) {
+            setUser_password(new_password);
+            return true;
+        }
+        return false;
     }
 
     @Override

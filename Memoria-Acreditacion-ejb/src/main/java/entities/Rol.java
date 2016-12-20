@@ -31,9 +31,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     
 public class Rol implements Serializable {
     private static final long serialVersionUID = 1L;
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id_rol;
-    @Id
     private String nombre;
     
     @OneToMany(mappedBy = "rol")
@@ -85,7 +85,7 @@ public class Rol implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.Rol[ id=" + id_rol + " ]";
+        return nombre;
     }
 
 

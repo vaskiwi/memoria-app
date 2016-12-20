@@ -8,82 +8,76 @@
 
     <ui:composition template="/template.xhtml">
 
-
+        <br></br>
         <ui:define name="title">
-            <h:outputText value="#{bundle.ListGradoAcademicoTitle}"></h:outputText>
+            <h:outputText value="#{bundle.ListDetalleBibliografiaTitle}"></h:outputText>
         </ui:define>
-
+        
         <ui:define name="body">
             <br/>
-            <h:form id="GradoAcademicoListForm">
+            <h:form id="DetalleBibliografiaListForm">
                 <p:breadCrumb>
                             <p:menuitem value="Portada" url="/faces/administrador/index1.xhtml" />
-                            <p:menuitem value="Tabla Docentes por Grado" url="/faces/administrador/tablas/GradoAno-1-Diurno.xhtml" />
-                             
-                            
+                            <p:menuitem value="Administrador" url="/faces/administrador/index2.xhtml" />
+                            <p:menuitem value="Detalles Bibliografía" url="/faces/administrador/tablas/DetalleBibliografiaTotal.xhtml" />
                 </p:breadCrumb>
-                <p:panel header="DOCENTES DE JORNADA DIURNA DE LA CARRERA O PROGRAMA PARA EL AÑO #{profesorController.fecha_actual.year+1899}">
-                    <p:dataTable id="datalist" value="#{gradoAcademicoController.grado_cant_ano_1_diurno}" var="item"                                 
+                <p:panel header="DETALLES BIBLIOGRAFÍA EXISTENTES">
+                    <p:dataTable id="datalist" value="#{detalleBibliografiaController.items_total}" var="item"
                                  paginator="true"
                                  rows="10"
                                  rowsPerPageTemplate="10,20,30,40,50"
                                  >
 
-
-                        
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Título o grado académico más alto"/>
+                                <h:outputText value="Asignatura"/>
                             </f:facet>
-                            <h:outputText value="#{item.grado}"/>
+                            <h:outputText  value="#{item.asignatura}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Jornada completa"/>
+                                <h:outputText value="Cantidad de títulos físicos"/>
                             </f:facet>
-                            <h:outputText value="#{item.cant1}"/>
+                            <h:outputText value="#{item.cantTitulosFisicos}" style="center"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Jornada parcial 1"/>
+                                <h:outputText value="Cantidad de ejemplares físicos"/>
                             </f:facet>
-                            <h:outputText value="#{item.cant2}"/>
+                            <h:outputText value="#{item.cantEjemplaresFisicos}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Jornada parcial 2"/>
+                                <h:outputText value="Cantidad de bibliografía obligatoria"/>
                             </f:facet>
-                            <h:outputText value="#{item.cant3}"/>
+                            <h:outputText value="#{item.cantBibliografiaObligatoria}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Jornada parcial 3"/>
+                                <h:outputText value="Cantidad de bibliografía complementaria"/>
                             </f:facet>
-                            <h:outputText value="#{item.cant4}"/>
+                            <h:outputText value="#{item.cantBibliografiaComplementaria}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Sub total"/>
+                                <h:outputText value="Promedio de alumnos por curso"/>
                             </f:facet>
-                            <h:outputText value="#{item.sub_total}"/>
+                            <h:outputText value="#{item.promAlumnosCurso}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Total"/>
+                                <h:outputText value="Relación entre ejemplares y alumnos"/>
                             </f:facet>
-                            <h:outputText value="#{item.total}"/>
+                            <h:outputText value="#{item.relEjemplaresAlumnos}"/>
                         </p:column>
-                        <f:facet name="footer">                       
-                        </f:facet>
-                    </p:dataTable>
-                    <div style="text-align:center">  
+                                </p:dataTable>
+                                <div style="text-align:center">  
                         <h:commandButton value="Exportar">
-                            <p:dataExporter type="xls" target="datalist" fileName="Docentes de la carrera o programa para el ano #{profesorController.fecha_actual.year+1899}"/>
+                            <p:dataExporter type="xls" target="datalist" fileName="Detalle Bibliografia"/>
                         </h:commandButton>  
-                    </div>  
-                </p:panel>
-            </h:form>
-
+                    </div>
+                            </p:panel>
+                        </h:form>
         </ui:define>
     </ui:composition>
 
