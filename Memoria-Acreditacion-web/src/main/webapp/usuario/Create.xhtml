@@ -12,7 +12,7 @@
             <h:form id="UsuarioCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{usuarioController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateUsuario_roles}" for="rol" />
+                        <p:outputLabel value="#{bundle.CreateUsuarioLabel_roles}" for="rol" />
                         <p:selectOneMenu id="rol" required="true" value="#{usuarioController.selected.rol}" >
                             <f:selectItem itemLabel="Seleccione Rol" itemValue=""/>
                             <f:selectItems value="#{rolController.itemsAvailableSelectOne}" var="rolItem" itemValue="#{rolItem}"/>

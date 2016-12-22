@@ -6,32 +6,19 @@
 package managedbeans;
 
 import entities.Rol;
-import sessionbeans.UsuarioFacadeLocal;
 import entities.Usuario;
-import java.io.IOException;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import managedbeans.util.JsfUtil;
-import org.apache.http.HttpResponse;
 import sessionbeans.UsuarioFacadeLocal;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.BasicResponseHandler;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-import org.primefaces.json.JSONObject;
 
 /**
  *
@@ -182,8 +169,8 @@ public class LoginController implements Serializable{
         FacesContext context = FacesContext.getCurrentInstance();
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
         try {
-            request.logout(); //comprueba en el servidor si la pass y el usuario corresponden
-            //la comprobación se hace por parte de Wildfly(se configuraron Roles y rol)
+            request.logout();
+            usuarioLogeado=null;
         } catch (ServletException e) {//si request.login fallo y la password o el usuario no corresponden
             context.addMessage(null, new FacesMessage("El correo y la contraseña ingresados no coinciden"));
             return "/faces/index.xhtml";
@@ -208,5 +195,14 @@ public class LoginController implements Serializable{
             } catch (Exception e) {//si hay algun error
             }
         return rol;
+    }
+    public boolean esAdministrador(){
+        return "ADMINISTRADOR".equals(userCtrl.encontrarUsuarioPorCorreoRol(nombre));
+    }
+    public boolean esComite(){
+        return "COMITÉ".equals(userCtrl.encontrarUsuarioPorCorreoRol(nombre));
+    }
+    public boolean noesComite(){
+        return !"COMITÉ".equals(userCtrl.encontrarUsuarioPorCorreoRol(nombre));
     }
 }

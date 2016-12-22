@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view contentType="text/html">
+    <h:head>
+        <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+        <title>Acreditación Informática</title>
+            
+    </h:head>
+    <h:body>
+    <ui:composition template="./template.xhtml">
+
+        <ui:define name="body">
+            <br /><br />
+            <p:column id="loginError" styleClass="col-centered col-md-5">
+                <b>Objeto no encontrado</b><br />
+                Favor intentar nuevamente, o regresar al <a href="#{facesContext.externalContext.requestContextPath}/" >inicio</a>
+            </p:column>
+            <p:columns value="#{jerarquiaController.items}" var="item" headerText="#{item.nombre_jerarquia}"></p:columns>
+            <br /><br />
+        </ui:define>
+    </ui:composition>
+    </h:body>
+  </f:view>
+</html>

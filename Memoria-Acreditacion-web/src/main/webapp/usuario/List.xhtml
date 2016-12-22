@@ -47,6 +47,12 @@
                             </f:facet>
                             <p:selectBooleanCheckbox value="#{item.activo}" disabled="true"/>
                         </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Rol"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.rol.nombre}" disabled="true"/>
+                        </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="Nuevo" actionListener="#{usuarioController.prepareCreate}" update=":UsuarioCreateForm" oncomplete="PF('UsuarioCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="Ver" update=":UsuarioViewForm" oncomplete="PF('UsuarioViewDialog').show()" disabled="#{empty usuarioController.selected}"/>

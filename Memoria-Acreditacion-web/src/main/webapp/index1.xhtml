@@ -24,44 +24,47 @@
  
                             <p:menubar>
                                 <p:submenu label="Información de profesores para el año #{profesorController.fecha_actual.year+1900}"  icon="ui-icon-document" styleClass="ui-priority-primary">
-                                    <p:menuitem value="Docentes de jornada diurna según jerarquía para el año #{profesorController.fecha_actual.year+1900}" outcome="/administrador/tablas/JerarGradoDiurno" />
-                                    <p:menuitem value="Docentes de jornada vespertina según jerarquía para el año #{profesorController.fecha_actual.year+1900}" outcome="/administrador/tablas/JerarGradoVespertino" />
+                                    <p:menuitem value="Docentes de jornada diurna según jerarquía para el año #{profesorController.fecha_actual.year+1900}" outcome="/tablas/JerarGradoDiurno" />
+                                    <p:menuitem value="Docentes de jornada vespertina según jerarquía para el año #{profesorController.fecha_actual.year+1900}" outcome="/tablas/JerarGradoVespertino" />
                                 </p:submenu>
 
                                 <p:submenu label="Información de profesores de los 5 últimos años" icon="ui-icon-document" styleClass="ui-priority-primary">
-                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1899} de jornada Diurna" outcome="/administrador/tablas/GradoAno-1-Diurno" />
-                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1898} de jornada Diurna" outcome="/administrador/tablas/GradoAno-2-Diurno" />
-                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1897} de jornada Diurna" outcome="/administrador/tablas/GradoAno-3-Diurno" />
-                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1896} de jornada Diurna" outcome="/administrador/tablas/GradoAno-4-Diurno" />
-                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1899} de jornada Vespertina" outcome="/administrador/tablas/GradoAno-1-Vespertino" />
-                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1898} de jornada Vespertina" outcome="/administrador/tablas/GradoAno-2-Vespertino" />
-                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1897} de jornada Vespertina" outcome="/administrador/tablas/GradoAno-3-Vespertino" />
-                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1896} de jornada Vespertina" outcome="/administrador/tablas/GradoAno-4-Vespertino" />
+                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1899} de jornada Diurna" outcome="/tablas/GradoAno-1-Diurno" />
+                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1898} de jornada Diurna" outcome="/tablas/GradoAno-2-Diurno" />
+                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1897} de jornada Diurna" outcome="/tablas/GradoAno-3-Diurno" />
+                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1896} de jornada Diurna" outcome="/tablas/GradoAno-4-Diurno" />
+                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1899} de jornada Vespertina" outcome="/tablas/GradoAno-1-Vespertino" />
+                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1898} de jornada Vespertina" outcome="/tablas/GradoAno-2-Vespertino" />
+                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1897} de jornada Vespertina" outcome="/tablas/GradoAno-3-Vespertino" />
+                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1896} de jornada Vespertina" outcome="/tablas/GradoAno-4-Vespertino" />
                                     
                                 </p:submenu>
 
                                 <p:submenu label="Información de los profesores según jornada" icon="ui-icon-document">
-                                    <p:menuitem outcome="/administrador/profesorDiurno/profesores.xhtml"  value="Menú Profesores Diurno"/>
-                                    <p:menuitem outcome="/administrador/profesorVespertino/profesores.xhtml"  value="Menú Profesores Vespertino"/>
+                                    <p:menuitem outcome="/profesorDiurno/profesores.xhtml"  value="Menú Profesores Diurno"/>
+                                    <p:menuitem outcome="/profesorVespertino/profesores.xhtml"  value="Menú Profesores Vespertino"/>
                                 </p:submenu>
                                 
                                 <p:submenu label="Información adicional"  icon="ui-icon-document" styleClass="ui-priority-primary">
-                                    <p:menuitem value="Detalle Bibliografía Totales" outcome="/administrador/tablas/DetalleBibliografiaTotal" />
+                                    <p:menuitem value="Detalle Bibliografía Totales" outcome="/tablas/DetalleBibliografiaTotal" />
                                 </p:submenu>
                                 
-                                <p:submenu label="Administrador" icon="ui-icon-pencil">
-                                    <p:menuitem outcome="/administrador/profesor/List"  value="Menú Profesores"/>
-                                    <p:menuitem outcome="/administrador/asignatura/List" value="Menú Asignaturas"/>
-                                    <p:menuitem outcome="/administrador/tipoAsignatura/List" value="Menú Tipos de Asignaturas"/>
-                                    <p:menuitem outcome="/administrador/carrera/List" value="Menú Carreras" />
-                                    <p:menuitem outcome="/administrador/rol/List" value="Menú Roles" />
-                                    <p:menuitem outcome="/administrador/gradoAcademico/List" value="Menú Grado Académico" />
-                                    <p:menuitem outcome="/administrador/jerarquia/List" value="Menú Jerarquías" />
-                                    <p:menuitem outcome="/administrador/usuario/List" value="Menú Usuarios" />
-                                    <p:menuitem outcome="/administrador/detalleBibliografia/List" value="Menú Detalle Bibliografías" />  
-                                    <p:menuitem outcome="/administrador/instalacion/List" value="Menú Instalaciones" />   
-
-                                </p:submenu>                            
+                                <p:submenu label="Administrador" icon="ui-icon-pencil" rendered="#{loginController.noesComite()}">
+                                    <p:menuitem outcome="/profesor/List"  value="Menú Profesores"/>
+                                    <p:menuitem outcome="/asignatura/List" value="Menú Asignaturas"/>
+                                    <p:menuitem outcome="/tipoAsignatura/List" value="Menú Tipos de Asignaturas"/>
+                                    <p:menuitem outcome="/carrera/List" value="Menú Carreras" />
+                                    <p:menuitem outcome="/rol/List" value="Menú Roles" />
+                                    <p:menuitem outcome="/gradoAcademico/List" value="Menú Grado Académico" />
+                                    <p:menuitem outcome="/jerarquia/List" value="Menú Jerarquías" />
+                                    <p:menuitem outcome="/usuario/List" value="Menú Usuarios" rendered="#{loginController.esAdministrador()}"/>
+                                    <p:menuitem outcome="/detalleBibliografia/List" value="Menú Detalle Bibliografías" />  
+                                    <p:menuitem outcome="/instalacion/List" value="Menú Instalaciones" />   
+                                </p:submenu>   
+                                <p:submenu label="Comité" icon="ui-icon-pencil" rendered="#{loginController.esComite()}">
+                                    <p:menuitem outcome="/comite/Asignatura" value="Menú Asignaturas"/> 
+                                    <p:menuitem outcome="/comite/Instalacion" value="Menú Instalaciones" />   
+                                </p:submenu>
                             </p:menubar>
                             <p:separator />
                             <br/>

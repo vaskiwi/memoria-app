@@ -38,66 +38,12 @@
                             </f:facet>
                             <h:outputText value="#{item.grado}"/>
                         </p:column>
-                        <p:column>
+                        <p:columns value="#{jerarquiaController.items}" var="jerar" columnIndexVar="cont">
                             <f:facet name="header">
-                                <h:outputText value="Titular"/>
+                                <h:outputText value="#{jerar.nombre_jerarquia}"/>
                             </f:facet>
-                            <h:outputText value="#{item.jerar1}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Asociado"/>
-                            </f:facet>
-                            <h:outputText value="#{item.jerar2}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Asistente"/>
-                            </f:facet>
-                            <h:outputText value="#{item.jerar3}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Instructor"/>
-                            </f:facet>
-                            <h:outputText value="#{item.jerar4}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Ayudante"/>
-                            </f:facet>
-                            <h:outputText value="#{item.jerar5}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Adjunto categoría I"/>
-                            </f:facet>
-                            <h:outputText value="#{item.jerar6}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Adjunto categoría II"/>
-                            </f:facet>
-                            <h:outputText value="#{item.jerar7}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Instructor categoría I"/>
-                            </f:facet>
-                            <h:outputText value="#{item.jerar8}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Instructor categoría II"/>
-                            </f:facet>
-                            <h:outputText value="#{item.jerar9}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Ayudante profesor"/>
-                            </f:facet>
-                            <h:outputText value="#{item.jerar10}"/>
-                        </p:column>
+                            <h:outputText value="#{item.getCantjerarIndex(cont)}"/>
+                        </p:columns>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="Total"/>
