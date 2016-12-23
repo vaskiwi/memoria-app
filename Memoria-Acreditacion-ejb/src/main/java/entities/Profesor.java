@@ -47,7 +47,8 @@ public class Profesor implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long rut_profesor;
+    private Long id_profesor;
+    private String rut_profesor;
     private int anoRetiro;
     private String nombre_profesor;
     private String apellido_pat;
@@ -70,11 +71,20 @@ public class Profesor implements Serializable {
     
     @OneToMany(mappedBy = "rut_profesor",targetEntity=ProfesorAsignatura.class,fetch=FetchType.EAGER)
     private Set<ProfesorAsignatura> profesor_asignatura; 
-    public Long getRut_profesor() {
+
+    public Long getId_profesor() {
+        return id_profesor;
+    }
+
+    public void setId_profesor(Long id_profesor) {
+        this.id_profesor = id_profesor;
+    }
+    
+    public String getRut_profesor() {
         return rut_profesor;
     }
 
-    public void setRut_profesor(Long rut_profesor) {
+    public void setRut_profesor(String rut_profesor) {
         this.rut_profesor = rut_profesor;
     }
 

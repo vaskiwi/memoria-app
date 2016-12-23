@@ -5,6 +5,7 @@
  */
 package sessionbeans;
 
+import entities.Asignatura;
 import entities.Profesor;
 import entities.ProfesorAsignatura;
 import java.util.List;
@@ -50,6 +51,14 @@ public class ProfesorAsignaturaFacade extends AbstractFacade<ProfesorAsignatura>
         query = em.createNamedQuery("ProfesorAsignatura.findByProfesor")
                 .setParameter("rut_profesor", rut);
         query.setParameter("ano_profesor_asignatura", ano);
+        return query.getResultList();
+    }
+    @Override
+    public List<ProfesorAsignatura> findByProfesorAsignatura(Profesor rut, Asignatura asignatura){
+        Query query;
+        query = em.createNamedQuery("ProfesorAsignatura.findByProfesorAsignatura")
+                .setParameter("rut_profesor", rut);
+        query.setParameter("id_asignatura", asignatura);
         return query.getResultList();
     }
 }

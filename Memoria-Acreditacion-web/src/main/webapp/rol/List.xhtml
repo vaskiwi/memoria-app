@@ -17,9 +17,9 @@
             <br/>
             <h:form id="RolListForm">
                 <p:breadCrumb>
-                            <p:menuitem value="Portada" url="/faces/administrador/index1.xhtml" />
-                            <p:menuitem value="Administrador" url="/faces/administrador/index2.xhtml" />
-                            <p:menuitem value="Roles" url="/faces/administrador/rol/List.xhtml" />
+                            <p:menuitem value="Portada" url="/faces/index1.xhtml" />
+                            <p:menuitem value="Administrador" url="/faces/index2.xhtml" />
+                            <p:menuitem value="Roles" url="/faces/rol/List.xhtml" />
                 </p:breadCrumb>
                 <p:panel header="ROLES DEL SISTEMA">
                     <p:dataTable id="datalist" value="#{rolController.items}" var="item"
@@ -30,8 +30,8 @@
                                  rowsPerPageTemplate="10,20,30,40,50"
                                  >
 
-                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
-                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowSelect"   update="viewButton"/>
+                        <p:ajax event="rowUnselect" update="viewButton"/>
 
                         <p:column>
                             <f:facet name="header">
@@ -48,9 +48,6 @@
                     </p:dataTable>
                 </p:panel>
             </h:form>
-
-            <ui:include src="Create.xhtml"/>
-            <ui:include src="Edit.xhtml"/>
             <ui:include src="View.xhtml"/>
         </ui:define>
     </ui:composition>

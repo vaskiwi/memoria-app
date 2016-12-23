@@ -25,7 +25,7 @@ public class ListaProfesor implements Serializable {
      */
     public ListaProfesor() {
     }
-    private Long rut_profesor;
+    private String rut_profesor;
     private int anoRetiro;
     private String nombre_profesor;
     private String apellido_pat;
@@ -46,11 +46,11 @@ public class ListaProfesor implements Serializable {
     private List<String> asignaturas_profesor_ano_4;
     private List<String> asignaturas_profesor_ano_5;
 
-    public Long getRut_profesor() {
+    public String getRut_profesor() {
         return rut_profesor;
     }
 
-    public void setRut_profesor(Long rut_profesor) {
+    public void setRut_profesor(String rut_profesor) {
         this.rut_profesor = rut_profesor;
     }
 

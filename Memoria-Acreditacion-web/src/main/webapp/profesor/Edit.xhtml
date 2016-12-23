@@ -34,13 +34,15 @@
                         <p:inputText id="comuna" value="#{profesorController.selected.comuna_profesor}" title="comuna" required="true" >
                             <f:validator validatorId="custom.nombreValidador"/>
                         </p:inputText>
+                        <p:outputLabel value="Dedicación horaria: " for="dedicacion" />
+                        <p:inputText id="dedicacion" value="#{profesorController.selected.dedicacion_contratada}" title="Dedicacion contratada" />
                         <p:outputLabel for="contrato" value="Contrato: " />
                         <p:selectOneMenu id="contrato" value="#{profesorController.selected.contrato}"  required="true" style="width:190px">
                                     <f:selectItem itemLabel="Seleccione Contrato" itemValue=""/>
-                                    <f:selectItem itemLabel="Completa" itemValue="Completa"/>
-                                    <f:selectItem itemLabel="Parcial" itemValue="Parcial"/>
-                                    <f:selectItem itemLabel="Por Hora" itemValue="Por Hora"/>
-                                </p:selectOneMenu>
+                                    <f:selectItem itemLabel="POR JORNADA" itemValue="POR JORNADA"/>
+                                    <f:selectItem itemLabel="INVESTIGADORES ASOCIADOS" itemValue="INVESTIGADORES ASOCIADOS"/>
+                                    <f:selectItem itemLabel="PROFESORES POR HORA" itemValue="PROFESORES POR HORA"/>
+                        </p:selectOneMenu>
                         <p:outputLabel for="jornada" value="Jornada: " />
                         <p:selectOneMenu id="jornada" value="#{profesorController.selected.diurno_vespertino}"  required="true" style="width:190px">
                                     <f:selectItem itemLabel="Seleccione Jornada" itemValue=""/>

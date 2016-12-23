@@ -16,9 +16,9 @@
             <br/>
             <h:form id="ProfesorListForm">
                 <p:breadCrumb>
-                            <p:menuitem value="Portada" url="/faces/administrador/index1.xhtml" />
-                            <p:menuitem value="Administrador" url="/faces/administrador/index2.xhtml" />
-                            <p:menuitem value="Profesores" url="/faces/administrador/profesorDiurno/profesores.xhtml" />
+                            <p:menuitem value="Portada" url="/faces/index1.xhtml" />
+                            <p:menuitem value="Administrador" url="/faces/index2.xhtml" />
+                            <p:menuitem value="Profesores" url="/faces/profesorDiurno/profesores.xhtml" />
                 </p:breadCrumb>
                 <p:panel header="PROFESORES EXISTENTES">
                     <p:dataTable id="datalist" value="#{profesorController.lista_profesor_diurno}" var="item"
@@ -131,7 +131,7 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="AÑO ACTUAL #{profesorController.fecha_actual.year+1896}"/>
+                                <h:outputText value="AÑO #{profesorController.fecha_actual.year+1896}"/>
                             </f:facet>
                             <h:outputText value="#{item.asignaturas_profesor_ano_5}"/>
                         </p:column>

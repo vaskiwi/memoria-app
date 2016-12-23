@@ -18,9 +18,9 @@
                 <h:form id="CarreraListForm">
                     
                     <p:breadCrumb>
-                            <p:menuitem value="Portada" url="/faces/administrador/index1.xhtml" />
-                            <p:menuitem value="Administrador" url="/faces/administrador/index2.xhtml" />
-                            <p:menuitem value="Carreras" url="/faces/administrador/carrera/List.xhtml" />
+                            <p:menuitem value="Portada" url="/faces/index1.xhtml" />
+                            <p:menuitem value="Administrador" url="/faces/index2.xhtml" />
+                            <p:menuitem value="Carreras" url="/faces/carrera/List.xhtml" />
                     </p:breadCrumb>
                     <p:panel header="CARRERAS DISPONIBLES">
                         <p:dataTable id="datalist" value="#{carreraController.items}" var="item"
@@ -34,12 +34,6 @@
                             <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                             <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                            <p:column width="80">
-                                <f:facet name="header">
-                                    <h:outputText value="Código"/>
-                                </f:facet>
-                                <div align="center"><h:outputText value="#{item.id_carrera}"/></div>
-                            </p:column>
                             <p:column width="200">
                                 <f:facet name="header">
                                     <h:outputText value="Nombre"/>

@@ -12,22 +12,14 @@
             <h:form id="InstalacionEditForm">
               <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{instalacionController.selected != null}">
-                    <p:outputLabel value="Instalaciones de apoyo a la docencia: " for="nombre" />
-                       <p:inputText id="nombre" value="#{instalacionController.selected.nombre_instalacion}" required="true" title="Instalaciones de apoyo a la docencia:" >
-                            <f:validator validatorId="custom.nombreValidador"/>
-                       </p:inputText>
+                       <p:outputLabel value="Instalaciones de apoyo a la docencia: " for="nombre" />
+                       <p:inputTextarea rows="5" cols="60" maxlength="254" autoResize="false" id="nombre" value="#{instalacionController.selected.nombre_instalacion}" required="true" title="Instalaciones de apoyo a la docencia:" />
                        <p:outputLabel value="Dirección: " for="direccion" />
-                       <p:inputText id="direccion" value="#{instalacionController.selected.direccion_instalacion}" required="true" title="Dirección:" >
-                            <f:validator validatorId="custom.nombreValidador"/>
-                       </p:inputText>
+                       <p:inputTextarea rows="5" cols="60" maxlength="254" autoResize="false" id="direccion" value="#{instalacionController.selected.direccion_instalacion}" title="Dirección:" />
                        <p:outputLabel value="Breve descripción: " for="descripcion" />
-                       <p:inputText id="descripcion" value="#{instalacionController.selected.descripcion_instalacion}" required="true" title="Breve descripción:" >
-                            <f:validator validatorId="custom.nombreValidador"/>
-                       </p:inputText>
+                       <p:inputTextarea rows="5" cols="60" maxlength="254" autoResize="false" id="descripcion" value="#{instalacionController.selected.descripcion_instalacion}" title="Breve descripción:" />
                        <p:outputLabel value="Horarios de atención: " for="horario" />
-                       <p:inputText id="horario" value="#{instalacionController.selected.horario_instalación}" required="true" title="Horarios de atención:" >
-                            <f:validator validatorId="custom.nombreValidador"/>
-                       </p:inputText>
+                       <p:inputTextarea rows="5" cols="60" maxlength="254" autoResize="false" id="horario" value="#{instalacionController.selected.horario_instalación}" title="Horarios de atención:" />
                     </p:panelGrid>
                   <div align="center">
                       <p:commandButton actionListener="#{instalacionController.update}" value="Guardar" iconPos="right" update="display,:InstalacionListForm:datalist,:growl" oncomplete="handleSubmit(args, 'instalacionEditDialog');"/>

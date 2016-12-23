@@ -17,9 +17,9 @@
             <h:form id="UsuarioListForm">
                 
                 <p:breadCrumb>
-                            <p:menuitem value="Portada" url="/faces/administrador/index1.xhtml" />
-                            <p:menuitem value="Administrador" url="/faces/administrador/index2.xhtml" />
-                            <p:menuitem value="Profesores" url="/faces/administrador/usuario/List.xhtml" />
+                            <p:menuitem value="Portada" url="/faces/index1.xhtml" />
+                            <p:menuitem value="Administrador" url="/faces/index2.xhtml" />
+                            <p:menuitem value="Usuarios" url="/faces/usuario/List.xhtml" />
                 </p:breadCrumb>
                 <p:panel header="#{bundle.ListUsuarioTitle}">
                     <p:dataTable id="datalist" value="#{usuarioController.items}" var="item"
@@ -51,7 +51,7 @@
                             <f:facet name="header">
                                 <h:outputText value="Rol"/>
                             </f:facet>
-                            <p:selectBooleanCheckbox value="#{item.rol.nombre}" disabled="true"/>
+                            <h:outputText value="#{item.rol.nombre}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="Nuevo" actionListener="#{usuarioController.prepareCreate}" update=":UsuarioCreateForm" oncomplete="PF('UsuarioCreateDialog').show()"/>

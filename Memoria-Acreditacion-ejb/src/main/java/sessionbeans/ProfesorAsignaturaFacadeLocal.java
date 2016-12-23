@@ -5,6 +5,7 @@
  */
 package sessionbeans;
 
+import entities.Asignatura;
 import entities.Profesor;
 import entities.ProfesorAsignatura;
 import java.util.List;
@@ -33,7 +34,9 @@ public interface ProfesorAsignaturaFacadeLocal {
     List<ProfesorAsignatura> findByProfesorNoFecha(Profesor rut);
     
     List<ProfesorAsignatura> findByProfesor(Profesor rut, Integer ano);
-
+    
+    List<ProfesorAsignatura> findByProfesorAsignatura(Profesor rut, Asignatura asignatura);
+    
     int count();
     
 }

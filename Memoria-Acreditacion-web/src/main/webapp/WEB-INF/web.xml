@@ -44,7 +44,42 @@
         <web-resource-collection>
             <web-resource-name>Carrera</web-resource-name>
             <description/>
-            <url-pattern>/faces/carrera/</url-pattern>
+            <url-pattern>/faces/carrera/*</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>DetalleBibliografia</web-resource-name>
+            <description/>
+            <url-pattern>/faces/detalleBibliografia/*</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>GradoAcademico</web-resource-name>
+            <description/>
+            <url-pattern>/faces/gradoAcademico/*</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>Instalacion</web-resource-name>
+            <description/>
+            <url-pattern>/faces/instalacion</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>Jerarquia</web-resource-name>
+            <description/>
+            <url-pattern>/faces/jerarquia/*</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>Profesor</web-resource-name>
+            <description/>
+            <url-pattern>/faces/profesor/*</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>TipoAsignatura</web-resource-name>
+            <description/>
+            <url-pattern>/faces/tipoAsignatura/*</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>Usuario</web-resource-name>
+            <description/>
+            <url-pattern>/faces/usuario/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <description/>
@@ -56,7 +91,47 @@
         <web-resource-collection>
             <web-resource-name>Pages_Coordinador</web-resource-name>
             <description/>
-            <url-pattern>/faces/coordinador/*</url-pattern>
+            <url-pattern>/faces/index1.xhtml</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>Asignatura</web-resource-name>
+            <description/>
+            <url-pattern>/faces/asignatura/*</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>Carrera</web-resource-name>
+            <description/>
+            <url-pattern>/faces/carrera/*</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>DetalleBibliografia</web-resource-name>
+            <description/>
+            <url-pattern>/faces/detalleBibliografia/*</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>GradoAcademico</web-resource-name>
+            <description/>
+            <url-pattern>/faces/gradoAcademico/*</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>Instalacion</web-resource-name>
+            <description/>
+            <url-pattern>/faces/instalacion</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>Jerarquia</web-resource-name>
+            <description/>
+            <url-pattern>/faces/jerarquia/*</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>Profesor</web-resource-name>
+            <description/>
+            <url-pattern>/faces/profesor/*</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>TipoAsignatura</web-resource-name>
+            <description/>
+            <url-pattern>/faces/tipoAsignatura/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <description/>
@@ -68,7 +143,7 @@
         <web-resource-collection>
             <web-resource-name>Pages_Comite</web-resource-name>
             <description/>
-            <url-pattern>/faces/comite/*</url-pattern>
+            <url-pattern>/faces/index1.xhtml</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <description/>

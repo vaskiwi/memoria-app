@@ -12,7 +12,7 @@
             <h:form id="ProfesorCreateForm">              
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{profesorController.selected != null}">
-                       <p:outputLabel value="Nombres: " for="nombre" />
+                       <p:outputLabel value="Nombre(s): " for="nombre" />
                        <p:inputText id="nombre" value="#{profesorController.selected.nombre_profesor}" title="#{bundle.CreateProfesorTitle_nombre}" required="true" >
                            <f:validator validatorId="custom.nombreValidador"/>
                        </p:inputText>
@@ -39,10 +39,7 @@
                             <f:validator validatorId="custom.nombreValidador"/>
                         </p:inputText>
                         <p:outputLabel value="RUN: " for="rut_profesor" />
-                        <p:inputMask id="rut_profesor" value="#{profesorController.selected.rut_profesor}" required="true" mask="999999999" title="#{bundle.CreateProfesorTitle_rut_profesor}" >                    
-                            <f:validator validatorId="custom.numeroValidador"/>
-                            <f:validateLength minimum="9" maximum="9"/>
-                        </p:inputMask>   
+                        <p:inputText id="rut_profesor" value="#{profesorController.selected.rut_profesor}" required="true" title="#{bundle.CreateProfesorTitle_rut_profesor}"/>                      
                         <p:outputLabel value="Año de ingreso: " for="ano_ingreso" />
                         <p:inputMask id="ano_ingreso" value="#{profesorController.selected.ano_ingreso}" required="true"  mask="9999" title="#{bundle.CreateProfesorTitle_ano_ingreso}" >
                             <f:validator validatorId="custom.numeroValidador"/>
@@ -51,9 +48,9 @@
                         <p:outputLabel for="contrato" value="Contrato: " />
                         <p:selectOneMenu id="contrato" value="#{profesorController.selected.contrato}"  required="true" style="width:190px">
                                     <f:selectItem itemLabel="Seleccione Contrato" itemValue=""/>
-                                    <f:selectItem itemLabel="Completa" itemValue="Completa"/>
-                                    <f:selectItem itemLabel="Parcial" itemValue="Parcial"/>
-                                    <f:selectItem itemLabel="Por Hora" itemValue="Por Hora"/>
+                                    <f:selectItem itemLabel="POR JORNADA" itemValue="POR JORNADA"/>
+                                    <f:selectItem itemLabel="INVESTIGADORES ASOCIADOS" itemValue="INVESTIGADORES ASOCIADOS"/>
+                                    <f:selectItem itemLabel="PROFESORES POR HORA" itemValue="PROFESORES POR HORA"/>
                                 </p:selectOneMenu>
                         <p:outputLabel for="jornada" value="Jornada: " />
                         <p:selectOneMenu id="jornada" value="#{profesorController.selected.diurno_vespertino}"  required="true" style="width:190px">

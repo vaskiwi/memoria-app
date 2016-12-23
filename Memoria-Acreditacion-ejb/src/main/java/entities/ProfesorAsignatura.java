@@ -24,7 +24,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "ProfesorAsignatura.findByAsignatura", query = "SELECT a FROM ProfesorAsignatura a WHERE a.id_asignatura = :id_asignatura"),
     @NamedQuery(name = "ProfesorAsignatura.findByProfesorNoFecha", query = "SELECT a FROM ProfesorAsignatura a WHERE a.rut_profesor = :rut_profesor"),
-    @NamedQuery(name = "ProfesorAsignatura.findByProfesor", query = "SELECT a FROM ProfesorAsignatura a WHERE a.rut_profesor = :rut_profesor AND a.ano_profesor_asignatura =:ano_profesor_asignatura")
+    @NamedQuery(name = "ProfesorAsignatura.findByProfesor", query = "SELECT a FROM ProfesorAsignatura a WHERE a.rut_profesor = :rut_profesor AND a.ano_profesor_asignatura =:ano_profesor_asignatura"),
+    @NamedQuery(name = "ProfesorAsignatura.findByProfesorAsignatura", query = "SELECT a FROM ProfesorAsignatura a WHERE a.rut_profesor = :rut_profesor AND a.id_asignatura =:id_asignatura")
 })
 public class ProfesorAsignatura implements Serializable {
 

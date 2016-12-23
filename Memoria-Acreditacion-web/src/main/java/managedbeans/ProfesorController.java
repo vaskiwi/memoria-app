@@ -67,9 +67,6 @@ public class ProfesorController implements Serializable {
     private Date fecha_actual;
     private List<Profesor> profe_jerarq = null;
     private List<Profesor> profe_grado = null;
-    private List<renta> listR = null;
-    private List<ContratoNumHora> listCNH = null;
-    private List<edad> listEdad = null;
     private List<ProfesorAsignatura> profeAsig = null;
     private List<ProfesorAsignatura> profeAsig_profe = null;
     private ProfesorAsignaturaAno profeAsigAno = null;
@@ -152,14 +149,6 @@ public class ProfesorController implements Serializable {
 
     public void setProfeJerarGrado(List<Profesor> profeJerarGrado) {
         this.profeJerarGrado = profeJerarGrado;
-    }
-
-    public List<edad> getListEdad() {
-        return listEdad;
-    }
-
-    public void setListEdad(List<edad> listEdad) {
-        this.listEdad = listEdad;
     }
 
     public ProfesorAsignaturaController getProfeasigCtrl() {
@@ -365,7 +354,7 @@ public class ProfesorController implements Serializable {
              texto = linea.split(";");
              Profesor profesorNuevo = new Profesor();
              if( ejbFacade.find(Long.parseLong(texto[0]))!=null )continue ;
-             profesorNuevo.setRut_profesor(Long.parseLong(texto[0]) );
+             //profesorNuevo.setRut_profesor(Long.parseLong(texto[0]) );
              profesorNuevo.setApellido_pat(texto[1]);
              profesorNuevo.setApellido_mat(texto[2]);
              profesorNuevo.setNombre_profesor(texto[3]);
@@ -439,270 +428,6 @@ public class ProfesorController implements Serializable {
       }
         
     }
-
-    public List<renta> getListR() {
-        listR = new ArrayList<>();
-        Date fecha = new Date();
-        int year;
-        int year2;
-        int year3;
-        year = fecha.getYear() + 1900;
-        year2 = year - 1;
-        year3 = year - 2;
-        renta nuevo = new renta();
-        renta nuevo2 = new renta();
-        nuevo.nombre = "Promedio de renta para jornada completa (UF)";
-        nuevo2.nombre = "Promedio del valor hora contrato (UF)";
-        float renta1 = 0;
-        float renta2 = 0;
-        float renta3 = 0;
-        int cont = 0;
-        double horaContrato;
-        double horaContrato2;
-        double horaContrato3;
-        
-        List <Profesor> pyear1aux1 = getFacade().findByAno(year3);
-        List <Profesor> pyear1aux2 = getFacade().findByAnoRetiro(year3);
-        List <Profesor> pyear1 = new ArrayList<Profesor>();
-        pyear1.addAll(pyear1aux1);
-        pyear1.addAll(pyear1aux2);
-        List <Profesor> pyear2aux1 = getFacade().findByAno(year2);
-        List <Profesor> pyear2aux2 = getFacade().findByAnoRetiro(year2);
-        List <Profesor> pyear2 = new ArrayList<Profesor>();
-        pyear2.addAll(pyear2aux1);
-        pyear2.addAll(pyear2aux2);
-        List <Profesor> pyear3aux1 = getFacade().findByAno(year);
-        List <Profesor> pyear3aux2 = getFacade().findByAnoRetiro(year);
-        List <Profesor> pyear3 = new ArrayList<Profesor>();
-        pyear3.addAll(pyear3aux1);
-        pyear3.addAll(pyear3aux2);
-        
-        for (int i = 0; i < pyear1.size(); i++) {
-            if ("Completa".equals(pyear1.get(i).getContrato())) {
-                renta1+= pyear1.get(i).getRenta();
-                cont+= 1;
-            }
-
-        }
-        renta1 = renta1 / cont;
-        cont = 0;
-        for (int i = 0; i < pyear2.size(); i++) {
-            if ("Completa".equals(pyear2.get(i).getContrato())) {
-                renta2+= pyear2.get(i).getRenta();
-                cont+= 1;
-            }
-            
-        }
-        renta2 = renta2 / cont;
-        cont = 0;
-        for (int i = 0; i < pyear3.size(); i++) {
-            if ("Completa".equals(pyear3.get(i).getContrato())) {
-                renta3+= pyear3.get(i).getRenta();
-                cont+= 1;
-            }
-        
-        }
-        renta3 = renta3 / cont;
-        cont = 0;
-        
-        horaContrato = renta1/44;
-        horaContrato2 = renta2/44;
-        horaContrato3 = renta3/44;
-        nuevo.renta1 = Math.rint(renta1*100)/100;
-        nuevo.renta2 = Math.rint(renta2*100)/100;
-        nuevo.renta3 = Math.rint(renta3*100)/100;
-        nuevo2.renta1 = Math.rint(horaContrato*100)/100;
-        nuevo2.renta2 = Math.rint(horaContrato2*100)/100;
-        nuevo2.renta3 = Math.rint(horaContrato3*100)/100;
-        listR.add(nuevo);
-        listR.add(nuevo2);
-        return listR;
-    }
-    
-    /*************************LISTO***********************
-     * 
-     *****************************************************/
-    public List<ContratoNumHora> getListCNH(){
-        listCNH = new ArrayList<>();
-        Date fecha = new Date();
-        int year;
-        int year2;
-        int year3;
-        year = fecha.getYear() + 1900;
-        year2 = year - 1;
-        year3 = year - 2;
-        int totald = 0;
-        int totalc1 = 0; int totalc2 = 0; int totalc3 = 0;
-        int totalp1 = 0; int totalp2 = 0; int totalp3 = 0;
-        int totalh1 = 0; int totalh2 = 0; int totalh3 = 0;
-        float horasc1 = 0; float horasc2 = 0; float horasc3 = 0;
-        float horasp1 = 0; float horasp2 = 0; float horasp3 = 0;
-        float horash1 = 0; float horash2 = 0; float horash3 = 0;
-        float totalhoras = 0;
-        
-        List<Profesor> total = getFacade().findAll();
-        for (int i = 0; i < total.size() ; i++) {
-            
-            if("Completa".equals(total.get(i).getContrato())){
-                    if((total.get(i).getAno_ingreso() <= year3) &&  (total.get(i).isVigente() == true || total.get(i).getAnoRetiro()>= year3)){
-                        totalc1+= 1;
-                        }
-                    if((total.get(i).getAno_ingreso() <= year2) &&  (total.get(i).isVigente() == true || total.get(i).getAnoRetiro() >= year2)){
-                        totalc2+= 1;
-                        }
-                    if((total.get(i).getAno_ingreso() <= year) &&  (total.get(i).isVigente() == true || total.get(i).getAnoRetiro() >= year)) {
-                        totalc3+= 1;
-
-                        }
-                    }
-            if("Parcial".equals(total.get(i).getContrato())){
-                    if((total.get(i).getAno_ingreso() <= year3) &&  (total.get(i).isVigente() == true || total.get(i).getAnoRetiro() >= year3)){
-                        totalp1+= 1;
-                        }
-                    if((total.get(i).getAno_ingreso() <= year2) &&  (total.get(i).isVigente() == true || total.get(i).getAnoRetiro() >= year2)){
-                        totalp2+= 1;
-                        }
-                    if((total.get(i).getAno_ingreso() <= year) &&  (total.get(i).isVigente() == true || total.get(i).getAnoRetiro() >= year)){
-                        totalp3+= 1;
-
-                        }
-
-                    }
-            
-            if("Por Hora".equals(total.get(i).getContrato())){
-                    if((total.get(i).getAno_ingreso() <= year3) &&  (total.get(i).isVigente() == true || total.get(i).getAnoRetiro() >= year3)){
-                       totalh1+= 1;
-                        }
-                    if((total.get(i).getAno_ingreso() <= year2) &&  (total.get(i).isVigente() == true || total.get(i).getAnoRetiro() >= year2)){
-                        totalh2+= 1;
-                        }
-                    if((total.get(i).getAno_ingreso() <= year) &&  (total.get(i).isVigente() == true || total.get(i).getAnoRetiro() >= year)){
-                        totalh3+= 1;
-
-                        }
-
-                    }
-            /*
-            for (int j = 0; j < total.get(i).getAsignaturaList().size(); j++) {
-                
-                if("Completa".equals(total.get(i).getContrato())){
-                    if((total.get(i).getAno_ingreso() <= year3) &&  (total.get(i).isVigente() == true || total.get(i).getAnoRetiro()>= year3)){
-                        horasc1 += total.get(i).getAsignaturaList().get(j).getCant_horas_presenciales();
-                        }
-                    if((total.get(i).getAno_ingreso() <= year2) &&  (total.get(i).isVigente() == true || total.get(i).getAnoRetiro() >= year2)){
-                        horasc2+=total.get(i).getAsignaturaList().get(j).getCant_horas_presenciales();
-                        }
-                    if((total.get(i).getAno_ingreso() <= year) &&  (total.get(i).isVigente() == true || total.get(i).getAnoRetiro() >= year)) {
-                        horasc3+=total.get(i).getAsignaturaList().get(j).getCant_horas_presenciales();
-
-                        }
-                    }
-                
-            
-                if("Parcial".equals(total.get(i).getContrato())){
-                    if((total.get(i).getAno_ingreso() <= year3) &&  (total.get(i).isVigente() == true || total.get(i).getAnoRetiro() >= year3)){
-                        horasp1 = total.get(i).getAsignaturaList().get(j).getCant_horas_presenciales();
-                        }
-                    if((total.get(i).getAno_ingreso() <= year2) &&  (total.get(i).isVigente() == true || total.get(i).getAnoRetiro() >= year2)){
-                        horasp2+=total.get(i).getAsignaturaList().get(j).getCant_horas_presenciales();
-                        }
-                    if((total.get(i).getAno_ingreso() <= year) &&  (total.get(i).isVigente() == true || total.get(i).getAnoRetiro() >= year)){
-                        horasp3+=total.get(i).getAsignaturaList().get(j).getCant_horas_presenciales();
-                        }
-
-                    }
-                
-        
-                if("Por Hora".equals(total.get(i).getContrato())){
-                    if((total.get(i).getAno_ingreso() <= year3) &&  (total.get(i).isVigente() == true || total.get(i).getAnoRetiro() >= year3)){
-                        horash1 += total.get(i).getAsignaturaList().get(j).getCant_horas_presenciales();
-                        totalh1+= 1;
-                        }
-                    if((total.get(i).getAno_ingreso() <= year2) &&  (total.get(i).isVigente() == true || total.get(i).getAnoRetiro() >= year2)){
-                        horash2+=total.get(i).getAsignaturaList().get(j).getCant_horas_presenciales();
-                        totalh2+= 1;
-                        }
-                    if((total.get(i).getAno_ingreso() <= year) &&  (total.get(i).isVigente() == true || total.get(i).getAnoRetiro() >= year)){
-                        horash3+=total.get(i).getAsignaturaList().get(j).getCant_horas_presenciales();
-                        totalh3+= 1;
-
-                        }
-
-                    }
-                }*/
-        
-                
-            }
-        
-        int totald1 = totalc1 + totalp1 + totalh1;
-        int totald2 = totalc2 + totalp2 + totalh2;
-        int totald3 = totalc3 + totalp3 + totalh3;
-        float totalhoras1 = horasc1 + horasp1 + horash1;
-        float totalhoras2 = horasc2 + horasp2 + horash2;
-        float totalhoras3 = horasc3 + horasp3 + horash3; 
-        
-        ContratoNumHora nuevo1 = new ContratoNumHora();
-        ContratoNumHora nuevo2 = new ContratoNumHora();
-        ContratoNumHora nuevo3 = new ContratoNumHora();
-        ContratoNumHora nuevo4 = new ContratoNumHora();
-        ContratoNumHora nuevo5 = new ContratoNumHora();
-        ContratoNumHora nuevo6 = new ContratoNumHora();
-        nuevo1.nombre = "Número de docentes Jornada Completa";
-        nuevo2.nombre = "Horas de docentes Jornada Completa";
-        nuevo3.nombre = "Número de docentes Jornada Parcial";
-        nuevo4.nombre = "Horas de docentes Jornada Parcial";
-        nuevo5.nombre = "Número de docentes Jornada Por Hora";
-        nuevo6.nombre = "Horas de docentes contratados Por Hora";
-        
-        nuevo1.horast1 = totalc1;
-        nuevo1.horast2 = totalc2;
-        nuevo1.horast3 = totalc3;
-        nuevo2.horast1 = horasc1;
-        nuevo2.horast2 = horasc2;
-        nuevo2.horast3 = horasc3;
-        nuevo3.horast1 = totalp1;
-        nuevo3.horast2 = totalp2;
-        nuevo3.horast3 = totalp3;
-        nuevo4.horast1 = horasp1;
-        nuevo4.horast2 = horasp2;
-        nuevo4.horast3 = horasp3;
-        nuevo5.horast1 = totalh1;
-        nuevo5.horast2 = totalh2;
-        nuevo5.horast3 = totalh3;
-        nuevo6.horast1 = horash1;
-        nuevo6.horast2 = horash2;
-        nuevo6.horast3 = horash3;
-        
-        listCNH.add(nuevo1);
-        listCNH.add(nuevo2);
-        listCNH.add(nuevo3);
-        listCNH.add(nuevo4);
-        listCNH.add(nuevo5);
-        listCNH.add(nuevo6);
-        
-        ContratoNumHora docentes = new ContratoNumHora();
-        ContratoNumHora horas = new ContratoNumHora();
-        
-        docentes.nombre = "TOTAL DOCENTES";
-        docentes.horast1 = totald1;
-        docentes.horast2 = totald2;
-        docentes.horast3 = totald3;
-        
-        horas.nombre = "TOTAL HORAS";
-        horas.horast1 = totalhoras1;
-        horas.horast2 = totalhoras2;
-        horas.horast3 = totalhoras3;
-        
-        
-        listCNH.add(docentes);
-        listCNH.add(horas);
-        totalhoras = 0;
-        
-        
-        
-        return listCNH;
-    }
-    
     
     public void desvincular(){
         selected.setVigente(false);
@@ -796,9 +521,10 @@ public class ProfesorController implements Serializable {
         float horas_profesor;
         float horas_asignatura;
         float horas_total;
-        if(selected.getContrato().equals("Completa")==false){
+        List<ProfesorAsignatura> existe=profeAsigFacade.findByProfesorAsignatura(selected, curso_add);
+        if(selected.getContrato().equals("POR JORNADA")==false && selected.getContrato().equals("INVESTIGADORES ASOCIADOS")==false && existe.isEmpty()){
             horas_profesor=selected.getDedicacion_contratada();
-            horas_asignatura=curso_add.getCant_horas_presenciales()/5;
+            horas_asignatura=curso_add.getCant_horas_presenciales();
             horas_total=horas_profesor+horas_asignatura;
             selected.setDedicacion_contratada(horas_total);
             persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("ProfesorUpdated"));
@@ -814,46 +540,21 @@ public class ProfesorController implements Serializable {
         float horas_profesor;
         float horas_asignatura;
         float horas_total;
-        if(selected.getContrato().equals("Completa")==false){
+        profeasigCtrl.setSelected(curso_del);
+        profeasigCtrl.destroy();
+        List<ProfesorAsignatura> existe=profeAsigFacade.findByProfesorAsignatura(selected, curso_add);
+        if(selected.getContrato().equals("POR JORNADA")==false && selected.getContrato().equals("INVESTIGADORES ASOCIADOS")==false && existe.isEmpty()){
             horas_profesor=selected.getDedicacion_contratada();
-            horas_asignatura=curso_del.getId_asignatura().getCant_horas_presenciales()/5;
+            horas_asignatura=curso_del.getId_asignatura().getCant_horas_presenciales();
             horas_total=horas_profesor-horas_asignatura;
             selected.setDedicacion_contratada(horas_total);
             persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("ProfesorUpdated"));
         }
-        profeasigCtrl.setSelected(curso_del);
-        profeasigCtrl.destroy();
     }
     
     public void editProfeAsignatura(){
         profeasigCtrl.setSelected(curso_del);
         profeasigCtrl.update();
-    }
-
-    public int calcularHorasJerarquia(){
-        int horas = 0;
-        /*
-        for (int i = 0; i < profe_jerarq.size(); i++) {
-            for (int j = 0; j < profe_jerarq.get(i).getAsignaturaList().size(); j++) {
-                horas = (int) (horas + profe_jerarq.get(i).getAsignaturaList().get(j).getCant_horas_presenciales());
-            }
-        }
-        */
-        return horas;
-    }
-    
-    
-    
-    public int calcularHorasGrado(){
-        int horas = 0;
-        /*
-        for (int i = 0; i < profe_grado.size(); i++) {
-            for (int j = 0; j < profe_grado.get(i).getAsignaturaList().size(); j++) {
-                horas = (int) (horas + profe_grado.get(i).getAsignaturaList().get(j).getCant_horas_presenciales());
-            }
-        }
-        */
-        return horas;
     }
     
     public Profesor prepareCreate() {
@@ -863,7 +564,7 @@ public class ProfesorController implements Serializable {
     }
 
     public void create() {
-        if ("Completa".equals(selected.getContrato())) {
+        if ("POR JORNADA".equals(selected.getContrato()) || "INVESTIGADORES ASOCIADOS".equals(selected.getContrato())) {
             selected.setDedicacion_contratada(45);
         }
         else{    
@@ -934,7 +635,6 @@ public class ProfesorController implements Serializable {
             ano.add(profeAsig.get(i).getId_asignatura().getNombre_asignatura());
             ano5.add(profeAsig.get(i).getId_asignatura().getNombre_asignatura());
         }
-        System.out.println(profeAsigAno);
         return profeAsigAno;
     }
 
@@ -1028,7 +728,7 @@ public class ProfesorController implements Serializable {
             }
             if (object instanceof Profesor) {
                 Profesor o = (Profesor) object;
-                return getStringKey(o.getRut_profesor());
+                return getStringKey(o.getId_profesor());
             } else {
                 Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Profesor.class.getName()});
                 return null;

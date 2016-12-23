@@ -17,15 +17,15 @@
             <br/>
             <h:form id="ProfesorListForm">
                 <p:breadCrumb>
-                            <p:menuitem value="Portada" url="/faces/administrador/index1.xhtml" />
-                            <p:menuitem value="Administrador" url="/faces/administrador/index2.xhtml" />
-                            <p:menuitem value="Profesores" url="/faces/administrador/profesor/List.xhtml" />
+                            <p:menuitem value="Portada" url="/faces/index1.xhtml" />
+                            <p:menuitem value="Administrador" url="/faces/index2.xhtml" />
+                            <p:menuitem value="Profesores" url="/faces/profesor/List.xhtml" />
                 </p:breadCrumb>
                 <p:panel header="PROFESORES EXISTENTES">
                     <p:dataTable id="datalist" value="#{profesorController.items}" var="item"
                                  selectionMode="single" selection="#{profesorController.selected}"
                                  paginator="true"
-                                 rowKey="#{item.rut_profesor}"
+                                 rowKey="#{item.id_profesor}"
                                  rows="10"
                                  rowsPerPageTemplate="10,20,30,40,50"
                                  >
