@@ -22,7 +22,7 @@
                        <p:inputTextarea rows="5" cols="60" maxlength="254" autoResize="false" id="horario" value="#{instalacionController.selected.horario_instalación}" title="Horarios de atención:" />
                     </p:panelGrid>
                   <div align="center">
-                      <p:commandButton actionListener="#{instalacionController.update}" value="Guardar" iconPos="right" update="display,:InstalacionListForm:datalist,:growl" oncomplete="handleSubmit(args, 'instalacionEditDialog');"/>
+                      <p:commandButton actionListener="#{instalacionController.update}" value="Guardar" iconPos="right" update="display,:InstalacionListForm:datalist,:growl"/>
                     <p:commandButton value="Cancelar" onclick="InstalacionEditDialog.hide()"/></div>
                 </h:panelGroup>
             </h:form>

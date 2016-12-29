@@ -13,28 +13,28 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{asignaturaController.selected != null}">
                         <p:outputLabel value="Semestre: " for="semestre" />
-                        <p:inputMask id="semestre" value="#{asignaturaController.selected.semestre}" required="true" mask="9" title="#{bundle.CreateAsignaturaTitle_semestre}" >
+                        <p:inputText id="semestre" value="#{asignaturaController.selected.semestre}" required="true" title="Semestre">
                             <f:validator validatorId="custom.numeroValidador"/>
                             <f:validateLength minimum="1" maximum="2"/>
-                        </p:inputMask>
+                        </p:inputText>
                         <p:outputLabel value="Código: " for="codigo" />
-                        <p:inputMask id="codigo" required="true" value="#{asignaturaController.selected.codigo}" mask="99999" title="#{bundle.CreateAsignaturaTitle_codigo}" >
+                        <p:inputText id="codigo" required="true" value="#{asignaturaController.selected.codigo}" title="Código" >
                             <f:validator validatorId="custom.numeroValidador"/>
-                            <f:validateLength minimum="5" maximum="5"/>
-                        </p:inputMask> 
+                            <f:validateLength minimum="4" maximum="5"/>
+                        </p:inputText> 
                         <p:outputLabel value="Nombre: " for="nombre" />
-                        <p:inputText id="nombre" value="#{asignaturaController.selected.nombre_asignatura}" required="true" title="#{bundle.CreateAsignaturaTitle_nombre}" >
+                        <p:inputText id="nombre" value="#{asignaturaController.selected.nombre_asignatura}" required="true" title="Nombre" >
                             <f:validator validatorId="custom.nombreValidador"/>
                         </p:inputText>  
                         <p:outputLabel value="Contribución al perfil de egreso: " for="contr_perfil_egreso" />
-                        <p:inputMask id="contr_perfil_egreso" required="true" value="#{asignaturaController.selected.contr_perfil_egreso}" mask="99" title="#{bundle.CreateAsignaturaTitle_contr_perfil_egreso}" >
+                        <p:inputText id="contr_perfil_egreso" required="true" value="#{asignaturaController.selected.contr_perfil_egreso}" title="Contribución al perfil de egreso" >
                             <f:validator validatorId="custom.numeroValidador"/>
                             <f:validateLength minimum="1" maximum="2"/>
-                        </p:inputMask> 
+                        </p:inputText> 
                         <p:outputLabel value="Total de Horas Presenciales: " for="cant_horas_presenciales"  />
-                        <p:inputText id="cant_horas_presenciales"  required="true" value="#{asignaturaController.selected.cant_horas_presenciales}" title="#{bundle.CreateAsignaturaTitle_cant_horas_presenciales}" />
+                        <p:inputText id="cant_horas_presenciales"  required="true" value="#{asignaturaController.selected.cant_horas_presenciales}" title="Cantidad de horas presenciales" />
                         <p:outputLabel value="Total de Horas No Presenciales: " for="cant_horas_no_presenciales"  />
-                        <p:inputText id="cant_horas_no_presenciales"  required="true" value="#{asignaturaController.selected.cant_horas_no_presenciales}" title="#{bundle.CreateAsignaturaTitle_cant_horas_no_presenciales}" />
+                        <p:inputText id="cant_horas_no_presenciales"  required="true" value="#{asignaturaController.selected.cant_horas_no_presenciales}" title="Cantidad de horas no presenciales" />
                         <p:outputLabel value="Tipo de Asignatura: " for="tipo_asignatura" />
                         <p:selectOneMenu id="tipo_asignatura" required="true" value="#{asignaturaController.selected.tipo_asignatura}" >
                             <f:selectItems value="#{tipoAsignaturaController.itemsAvailableSelectOne}"
@@ -42,7 +42,7 @@
                                            itemValue="#{tipo_asignatura.item}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="Creditos que otorga: " for="creditos_asignatura" />
-                        <p:inputMask id="creditos_asignatura" value="#{asignaturaController.selected.creditos_asignatura}" required="true" mask="9" title="#{bundle.CreateAsignaturaTitle_semestre}" >
+                        <p:inputMask id="creditos_asignatura" value="#{asignaturaController.selected.creditos_asignatura}" required="true" mask="9" title="Creditos que otorga" >
                             <f:validator validatorId="custom.numeroValidador"/>
                             <f:validateLength minimum="1" maximum="2"/>
                         </p:inputMask>
@@ -53,7 +53,7 @@
                                            itemValue="#{carrera.item}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{asignaturaController.create}" value="Guardar" update="display,:AsignaturaListForm:datalist,:growl" oncomplete="handleSubmit(args,'AsignaturaCreateDialog');"/>
+                    <p:commandButton actionListener="#{asignaturaController.create}" value="Guardar" update="display,:AsignaturaListForm:datalist,:growl"/>
                     <p:commandButton value="Cancelar" onclick="AsignaturaCreateDialog.hide()"/>
                 </h:panelGroup>
             </h:form>

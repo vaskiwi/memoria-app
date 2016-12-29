@@ -31,10 +31,10 @@
 
                             <div align="left">
                                 <table cellpadding="0" cellspacing="0"><tr>
-                                    <td><h:graphicImage value="/resources/logo-usach.png"/></td>	
+                                    <td><p:graphicImage value="/faces/resources/logo-usach.png"/></td>		
                                     <td><h1 style="color:white">Sistema de Gestión de la Acreditación</h1></td>
                                     <td>
-                                        <p:commandButton rendered="#{loginController.usuarioLogueado()}" label="Cerrar Sesión" title="Cerrar sesión" icon="ui-icon-extlink" action="#{loginController.logout}"  ajax="false" style=" border-bottom-color: #1b65bd;  border: solid #1b65bd; background: #1b65bd; color: #FFF;"></p:commandButton>
+                                        <p:commandButton rendered="#{loginController.hay_usuario_logeado}" label="Cerrar Sesión" title="Cerrar sesión" icon="ui-icon-extlink" action="#{loginController.logout}"  ajax="false" style=" border-bottom-color: #1b65bd;  border: solid #1b65bd; background: #1b65bd; color: #FFF;"></p:commandButton>
                                     </td>
                                     </tr></table>
                             </div>

@@ -13,11 +13,11 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{jerarquiaController.selected != null}">
                         <p:outputLabel value="Nombre: " for="nombre" />
-                        <p:inputText id="nombre" required="true" value="#{jerarquiaController.selected.nombre_jerarquia}" title="#{bundle.CreateJerarquiaTitle_nombre}" >
+                        <p:inputText id="nombre" required="true" value="#{jerarquiaController.selected.nombre_jerarquia}" title="nombre" >
                             <f:validator validatorId="custom.nombreValidador"/>
                         </p:inputText>    
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{jerarquiaController.create}" value="Guardar" update="display,:JerarquiaListForm:datalist,:growl" oncomplete="handleSubmit(args,'JerarquiaCreateDialog');"/>
+                    <p:commandButton actionListener="#{jerarquiaController.create}" value="Guardar" update="display,:JerarquiaListForm:datalist,:growl"/>
                     <p:commandButton value="Cancelar" onclick="JerarquiaCreateDialog.hide()"/>
                 </h:panelGroup>
             </h:form>

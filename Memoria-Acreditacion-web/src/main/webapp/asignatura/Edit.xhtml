@@ -13,10 +13,10 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{asignaturaController.selected != null}">
                         <p:outputLabel value="Semestre: " for="semestre" />
-                        <p:inputMask id="semestre" value="#{asignaturaController.selected.semestre}" required="true" mask="9" title="#{bundle.CreateAsignaturaTitle_semestre}" >
+                        <p:inputText id="semestre" value="#{asignaturaController.selected.semestre}" required="true" title="#{bundle.CreateAsignaturaTitle_semestre}" >
                             <f:validator validatorId="custom.numeroValidador"/>
                             <f:validateLength minimum="1" maximum="2"/>
-                        </p:inputMask>
+                        </p:inputText>
                         <p:outputLabel value="Código: " for="codigo" />
                         <p:inputMask id="codigo" required="true" value="#{asignaturaController.selected.codigo}" mask="99999" title="#{bundle.CreateAsignaturaTitle_codigo}" >
                             <f:validator validatorId="custom.numeroValidador"/>
@@ -53,7 +53,7 @@
                                            itemValue="#{carrera.item}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{asignaturaController.update}" value="Guardar" update="display,:AsignaturaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'AsignaturaEditDialog');"/>
+                    <p:commandButton actionListener="#{asignaturaController.update}" value="Guardar" update="display,:AsignaturaListForm:datalist,:growl"/>
                     <p:commandButton value="Cancelar" onclick="AsignaturaEditDialog.hide()"/>
                 </h:panelGroup>
             </h:form>

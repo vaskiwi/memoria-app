@@ -85,7 +85,7 @@
                                <h:outputText value="#{item_curso.ano_profesor_asignatura}"/>
                            </p:column>
                            <f:facet name="footer">
-                               <p:commandButton id="editButton"   icon="ui-icon-pencil" value="Editar año" update=":ProfesorAsignaturaEditForm" oncomplete="PF('ProfesorAsignaturaEditDialog').show()" disabled="#{empty profesorController.curso_del}"/>
+                               <p:commandButton id="editButton"   icon="ui-icon-pencil" value="Editar año" update=":ProfesorAsignaturaEditForm" disabled="#{empty profesorController.curso_del}"/>
                                <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="Quitar Curso" actionListener="#{profesorController.delAsignatura()}" update=":ProfesorACreateForm, :ProfesorACreateForm2"  disabled="#{empty profesorController.curso_del}"/>
                            </f:facet>
                         </p:dataTable>

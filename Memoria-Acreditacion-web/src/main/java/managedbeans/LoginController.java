@@ -36,6 +36,7 @@ public class LoginController implements Serializable{
     private List<Rol> roles;
     private String rol;
     private Usuario usuarioLogeado = null;
+    private boolean hay_usuario_logeado=false;
     @EJB
     private UsuarioFacadeLocal usuarioFacade;
     @Inject
@@ -75,6 +76,22 @@ public class LoginController implements Serializable{
     
     public Boolean usuarioLogueado(){
         return usuarioLogeado!= null;
+    }
+
+    public Usuario getUsuarioLogeado() {
+        return usuarioLogeado;
+    }
+
+    public void setUsuarioLogeado(Usuario usuarioLogeado) {
+        this.usuarioLogeado = usuarioLogeado;
+    }
+
+    public boolean isHay_usuario_logeado() {
+        return hay_usuario_logeado;
+    }
+
+    public void setHay_usuario_logeado(boolean hay_usuario_logeado) {
+        this.hay_usuario_logeado = hay_usuario_logeado;
     }
 
     public LoginController(){
@@ -145,6 +162,7 @@ public class LoginController implements Serializable{
                     try {
                         request.login(this.nombre, this.password);
                         usuarioLogeado = usuario;
+                        hay_usuario_logeado=true;
                         context.addMessage(null, new FacesMessage("Usuario autentificado correctamente"));           
                         FacesContext.getCurrentInstance().getExternalContext().redirect("/Memoria-Acreditacion-web/faces/index1.xhtml");
                     } catch (ServletException e) {//si request.login fallo y la password o el usuario no corresponden
@@ -170,7 +188,7 @@ public class LoginController implements Serializable{
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
         try {
             request.logout();
-            usuarioLogeado=null;
+            hay_usuario_logeado=false;
         } catch (ServletException e) {//si request.login fallo y la password o el usuario no corresponden
             context.addMessage(null, new FacesMessage("El correo y la contraseña ingresados no coinciden"));
             return "/faces/index.xhtml";

@@ -16,7 +16,7 @@
                         <p:inputText id="ano" value="#{profesorController.curso_del.ano_profesor_asignatura}" title="Ano" />
                     </p:panelGrid>
                   <div align="center">
-                      <p:commandButton actionListener="#{profesorController.editProfeAsignatura()}" value="Guardar" iconPos="right" update=":ProfesorACreateForm, :ProfesorACreateForm2" oncomplete="handleSubmit(args, 'ProfesorAsignaturaEditDialog');"/>
+                      <p:commandButton actionListener="#{profesorController.editProfeAsignatura()}" value="Guardar" iconPos="right" update=":ProfesorACreateForm, :ProfesorACreateForm2"/>
                     <p:commandButton value="Cancelar" onclick="ProfesorAsignaturaEditDialog.hide()"/></div>
                 </h:panelGroup>
             </h:form>
