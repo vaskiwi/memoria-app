@@ -42,10 +42,7 @@
                                            itemValue="#{tipo_asignatura.item}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="Creditos que otorga: " for="creditos_asignatura" />
-                        <p:inputMask id="creditos_asignatura" value="#{asignaturaController.selected.creditos_asignatura}" required="true" mask="9" title="Creditos que otorga" >
-                            <f:validator validatorId="custom.numeroValidador"/>
-                            <f:validateLength minimum="1" maximum="2"/>
-                        </p:inputMask>
+                        <p:inputText id="creditos_asignatura" value="#{asignaturaController.selected.creditos_asignatura}" required="true" title="Creditos que otorga" />
                         <p:outputLabel value="Carrera Asociada: " for="carrera" />
                         <p:selectOneMenu id="carrera" required="true" value="#{asignaturaController.selected.carrera}" >
                             <f:selectItems value="#{carreraController.itemsAvailableSelectOne}"

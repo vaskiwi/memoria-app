@@ -175,7 +175,7 @@ public class Asignatura implements Serializable {
 
     @Override
     public String toString() {
-        return nombre_asignatura;
+        return codigo+" "+nombre_asignatura+" "+carrera.getNombre_carrera();
     }
     
 }

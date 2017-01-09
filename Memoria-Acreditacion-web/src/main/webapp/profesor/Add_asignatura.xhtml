@@ -42,23 +42,33 @@
                                     rowsPerPageTemplate="10,20,30,40,50"
                                     >
 
-                           <p:ajax event="rowSelect"   update="editButton deleteButton"/>
-                           <p:ajax event="rowUnselect" update="editButton deleteButton"/>
-
+                           <p:ajax event="rowSelect"   update="deleteButton"/>
+                           <p:ajax event="rowUnselect" update="deleteButton"/>
                            <p:column>
                                <f:facet name="header">
-                                   <h:outputText value="ASIGNATURAS"/>
+                                   <h:outputText value="Código"/>
+                               </f:facet>
+                               <h:outputText value="#{item_curso.id_asignatura.codigo}"/>
+                           </p:column>
+                           <p:column>
+                               <f:facet name="header">
+                                   <h:outputText value="Asignatura"/>
                                </f:facet>
                                <h:outputText value="#{item_curso.id_asignatura.nombre_asignatura}"/>
                            </p:column>
                            <p:column>
                                <f:facet name="header">
-                                   <h:outputText value="AÑO"/>
+                                   <h:outputText value="Carrera"/>
+                               </f:facet>
+                               <h:outputText value="#{item_curso.id_asignatura.carrera.nombre_carrera}"/>
+                           </p:column>
+                           <p:column>
+                               <f:facet name="header">
+                                   <h:outputText value="Año"/>
                                </f:facet>
                                <h:outputText value="#{item_curso.ano_profesor_asignatura}"/>
                            </p:column>
                            <f:facet name="footer">
-                               <p:commandButton id="editButton"   icon="ui-icon-pencil" value="Editar año" update=":ProfesorAsignaturaEditForm" disabled="#{empty profesorController.curso_del}"/>
                                <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="Quitar Curso" actionListener="#{profesorController.delAsignatura()}" update=":ProfesorACreateForm, :ProfesorACreateForm2"  disabled="#{empty profesorController.curso_del}"/>
                            </f:facet>
                         </p:dataTable>
@@ -68,7 +78,6 @@
                 </h:panelGroup>
                 </p:panel>
             </h:form>
-            <ui:include src="Edit_ano.xhtml"/>
             
         </p:dialog>
 
