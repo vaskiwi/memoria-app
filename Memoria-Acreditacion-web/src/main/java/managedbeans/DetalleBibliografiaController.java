@@ -99,6 +99,7 @@ public class DetalleBibliografiaController implements Serializable {
             cont4+=item.getCantTitulosFisicos();
             cont5+=item.getPromAlumnosCurso();
             cont6+=item.getRelEjemplaresAlumnos();
+            d_b.setCodigo_asignatura(item.getAsignatura().getCodigo());
             d_b.setAsignatura(item.getAsignatura().getNombre_asignatura());
             d_b.setCantBibliografiaComplementaria(item.getCantBibliografiaComplementaria());
             d_b.setCantBibliografiaObligatoria(item.getCantBibliografiaObligatoria());

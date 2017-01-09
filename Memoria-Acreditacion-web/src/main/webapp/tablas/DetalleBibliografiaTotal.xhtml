@@ -27,10 +27,15 @@
                                  rows="10"
                                  rowsPerPageTemplate="10,20,30,40,50"
                                  >
-
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Asignatura"/>
+                                <h:outputText value="Código de la asignatura"/>
+                            </f:facet>
+                            <h:outputText  value="#{item.codigo_asignatura}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Nombre de la asignatura"/>
                             </f:facet>
                             <h:outputText  value="#{item.asignatura}"/>
                         </p:column>

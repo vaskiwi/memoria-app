@@ -72,6 +72,7 @@ public class ProfesorController implements Serializable {
     private ProfesorAsignaturaAno profeAsigAno = null;
     private List<ListaProfesor> lista_profesor_diurno = null;
     private List<ListaProfesor> lista_profesor_vespertino = null;
+    private int ano_asig = 0;
     @Inject
     private ProfesorAsignaturaController profeasigCtrl;
   
@@ -92,6 +93,14 @@ public class ProfesorController implements Serializable {
 
     public void setProfeAsig_profe(List<ProfesorAsignatura> profeAsig_profe) {
         this.profeAsig_profe = profeAsig_profe;
+    }
+
+    public int getAño_asig() {
+        return ano_asig;
+    }
+
+    public void setAño_asig(int año_asig) {
+        this.ano_asig = año_asig;
     }
 
     public UploadedFile getFile() {
@@ -532,7 +541,7 @@ public class ProfesorController implements Serializable {
         profeasigCtrl.prepareCreate();
         profeasigCtrl.getSelected().setRut_profesor(selected);
         profeasigCtrl.getSelected().setId_asignatura(curso_add);
-        profeasigCtrl.getSelected().setAno_profesor_asignatura(year);
+        profeasigCtrl.getSelected().setAno_profesor_asignatura(ano_asig);
         profeasigCtrl.create();
     }
     

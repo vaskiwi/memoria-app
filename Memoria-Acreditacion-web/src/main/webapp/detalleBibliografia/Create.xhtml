@@ -20,21 +20,13 @@
                                            itemValue="#{asignatura.item}"/>
                         </p:selectOneMenu>
                        <p:outputLabel value="Cantidad de títulos físicos: " for="cantTitulosFisicos" />
-                       <p:inputMask id="cantTitulosFisicos" value="#{detalleBibliografiaController.selected.cantTitulosFisicos}" title="Cantidad de títulos físicos" required="true" mask="9" >
-                            <f:validator validatorId="custom.numeroValidador"/>
-                        </p:inputMask>
+                       <p:inputText id="cantTitulosFisicos" value="#{detalleBibliografiaController.selected.cantTitulosFisicos}" title="Cantidad de títulos físicos" required="true" />
                        <p:outputLabel value="Cantidad de ejemplares físicos: " for="cantEjemplaresFisicos" />
-                       <p:inputMask id="cantEjemplaresFisicos" value="#{detalleBibliografiaController.selected.cantEjemplaresFisicos}" title="Cantidad de ejemplares físicos" required="true" mask="9">
-                            <f:validator validatorId="custom.numeroValidador"/>
-                        </p:inputMask>
+                       <p:inputText id="cantEjemplaresFisicos" value="#{detalleBibliografiaController.selected.cantEjemplaresFisicos}" title="Cantidad de ejemplares físicos" required="true" />
                        <p:outputLabel value="Cantidad de bibliografía obligatoria: " for="cantBibliografiaObligatoria" />
-                       <p:inputMask id="cantBibliografiaObligatoria" value="#{detalleBibliografiaController.selected.cantBibliografiaObligatoria}" title="Cantidad de bibliografia obligatoria" required="true" mask="9">
-                            <f:validator validatorId="custom.numeroValidador"/>
-                        </p:inputMask>
+                       <p:inputText id="cantBibliografiaObligatoria" value="#{detalleBibliografiaController.selected.cantBibliografiaObligatoria}" title="Cantidad de bibliografia obligatoria" required="true"/>
                        <p:outputLabel value="Cantidad de bibliografía complementaria: " for="cantBibliografiaComplementaria" />
-                       <p:inputMask id="cantBibliografiaComplementaria" value="#{detalleBibliografiaController.selected.cantBibliografiaComplementaria}" title="Cantidad de bibliografia complementaria" required="true" mask="9">
-                            <f:validator validatorId="custom.numeroValidador"/>
-                        </p:inputMask>
+                       <p:inputText id="cantBibliografiaComplementaria" value="#{detalleBibliografiaController.selected.cantBibliografiaComplementaria}" title="Cantidad de bibliografia complementaria" required="true"/>
                        <p:outputLabel value="Promedio de alumnos por curso: " for="promedio_alumnos_curso"  />
                        <p:inputText id="promedio_alumnos_curso"  required="false" value="#{detalleBibliografiaController.selected.promAlumnosCurso}" title="Promedio de alumnos por curso" />
                        <p:outputLabel value="Relación entre ejemplares y alumnos : " for="relacion_ejemplares_alumnos"  />

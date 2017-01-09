@@ -21,6 +21,7 @@ public class DetalleBibliografiaTotal {
      */
     public DetalleBibliografiaTotal() {
     }
+    private int codigo_asignatura;
     private String asignatura;
     private int cantTitulosFisicos;
     private int cantEjemplaresFisicos;
@@ -28,6 +29,14 @@ public class DetalleBibliografiaTotal {
     private int cantBibliografiaComplementaria;
     private float promAlumnosCurso;
     private float relEjemplaresAlumnos; 
+
+    public int getCodigo_asignatura() {
+        return codigo_asignatura;
+    }
+
+    public void setCodigo_asignatura(int codigo_asignatura) {
+        this.codigo_asignatura = codigo_asignatura;
+    }
 
     public String getAsignatura() {
         return asignatura;
