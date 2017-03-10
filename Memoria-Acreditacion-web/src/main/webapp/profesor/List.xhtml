@@ -131,11 +131,6 @@
                     </div>
                             </p:panel>
                         </h:form>
- <h:form>
-                                <p:fileUpload fileUploadListener="#{profesorController.upload}"  mode="advanced" dragDropSupport="false"
-                                        update="messagesFile, :ProfesorCreateForm"    />
-                                 <p:growl id="messagesFile" showDetail="true" />
-                             </h:form>
             <ui:include src="Create.xhtml"/>
             <ui:include src="Edit.xhtml"/>
             <ui:include src="View.xhtml"/>

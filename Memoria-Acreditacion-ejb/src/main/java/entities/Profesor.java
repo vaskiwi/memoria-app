@@ -29,7 +29,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Profesor.findByNombre", query = "SELECT a FROM Profesor a WHERE a.nombre_profesor = :nombre_profesor"),
-    @NamedQuery(name = "Profesor.findByRenta", query = "SELECT a FROM Profesor a WHERE a.renta = :renta"),
     @NamedQuery(name = "Profesor.findByAno", query = "SELECT a FROM Profesor a WHERE a.ano_ingreso <= :ano AND a.vigente = :vigente"),
     @NamedQuery(name = "Profesor.findByAnoRetiro", query = "SELECT a FROM Profesor a WHERE a.ano_ingreso <= :ano AND a.vigente = :vigente AND a.anoRetiro >= :ano"),
     @NamedQuery(name = "Profesor.findByContrato", query = "SELECT a FROM Profesor a WHERE a.contrato = :contrato"),
@@ -60,7 +59,6 @@ public class Profesor implements Serializable {
     private int ano_ingreso;
     private String unidad_profesor;
     private String comuna_profesor;
-    private float renta;
     private String diurno_vespertino;
     
     @ManyToOne
@@ -184,14 +182,6 @@ public class Profesor implements Serializable {
     public void setComuna_profesor(String comuna_profesor) {
         this.comuna_profesor = comuna_profesor;
     }    
-
-    public float getRenta() {
-        return renta;
-    }
-
-    public void setRenta(float renta) {
-        this.renta = renta;
-    }
 
     public String getTitulo_profesor() {
         return titulo_profesor;
