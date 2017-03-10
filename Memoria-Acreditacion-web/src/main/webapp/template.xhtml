@@ -8,11 +8,11 @@
     <h:head>
         <title>Acreditación Informática</title>
 
-        <link rel="stylesheet" href="resources/css/jsfcrud.css"/>
-        <link rel="script" href="resources/css/jsfcrud.js"/>
-        <link rel="stylesheet" href="resources/css/bootstrap.css" />
-        <link rel="stylesheet" href="resources/css/pushy.css" />
-        <link rel="stylesheet" href="resources/css/font-awesome.css" />
+        <h:outputStylesheet library="css" name="jsfcrud.css"/>
+        <h:outputScript library = "js" name="jsfcrud.js"/>
+        <h:outputStylesheet library="css" name="bootstrap.css" />
+        <h:outputStylesheet library="css" name="pushy.css" />
+        <h:outputStylesheet library="css" name="font-awesome.css" />
     </h:head>
   
     <h:body>
@@ -34,7 +34,7 @@
                                     <td><p:graphicImage value="/faces/resources/logo-usach.png"/></td>		
                                     <td><h1 style="color:white">Sistema de Gestión de la Acreditación</h1></td>
                                     <td>
-                                        <p:commandButton rendered="#{loginController.hay_usuario_logeado}" label="Cerrar Sesión" title="Cerrar sesión" icon="ui-icon-extlink" action="#{loginController.logout}"  ajax="false" style=" border-bottom-color: #1b65bd;  border: solid #1b65bd; background: #1b65bd; color: #FFF;"></p:commandButton>
+                                        <p:commandButton rendered="#{loginController.hay_usuario_logeado()}" value="Cerrar Sesión" label="Cerrar Sesión" title="Cerrar sesión" icon="ui-icon-extlink" action="#{loginController.logout}"  ajax="false" style=" border-bottom-color: #1b65bd;  border: solid #1b65bd; background: #1b65bd; color: #FFF;"></p:commandButton>
                                     </td>
                                     </tr></table>
                             </div>
@@ -84,10 +84,10 @@
         </p:layoutUnit>
         </p:layout>
     </h:body>  
-<h:outputScript name="js/bootstrap.js" />
-<h:outputScript name="js/pushy.js" />
+<h:outputScript library = "js" name="bootstrap.js" />
+<h:outputScript library = "js" name="pushy.js" />
 
-<h:outputScript name="js/language_es.js" />
+<h:outputScript library = "js" name="language_es.js" />
 
 
 </html>

@@ -9,6 +9,7 @@ import entities.Rol;
 import entities.Usuario;
 import java.io.Serializable;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -36,7 +37,6 @@ public class LoginController implements Serializable{
     private List<Rol> roles;
     private String rol;
     private Usuario usuarioLogeado = null;
-    private boolean hay_usuario_logeado=false;
     @EJB
     private UsuarioFacadeLocal usuarioFacade;
     @Inject
@@ -86,12 +86,10 @@ public class LoginController implements Serializable{
         this.usuarioLogeado = usuarioLogeado;
     }
 
-    public boolean isHay_usuario_logeado() {
-        return hay_usuario_logeado;
-    }
-
-    public void setHay_usuario_logeado(boolean hay_usuario_logeado) {
-        this.hay_usuario_logeado = hay_usuario_logeado;
+    public boolean hay_usuario_logeado() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();//obtengo el contexto en el servidor
+        return request.getRemoteUser() != null;
     }
 
     public LoginController(){
@@ -139,6 +137,11 @@ public class LoginController implements Serializable{
         return null;
     }
     
+    @PostConstruct
+    public void init() {
+
+    }
+    
     public String login() {
         try {
             FacesContext context = FacesContext.getCurrentInstance();
@@ -162,7 +165,6 @@ public class LoginController implements Serializable{
                     try {
                         request.login(this.nombre, this.password);
                         usuarioLogeado = usuario;
-                        hay_usuario_logeado=true;
                         context.addMessage(null, new FacesMessage("Usuario autentificado correctamente"));           
                         FacesContext.getCurrentInstance().getExternalContext().redirect("/Memoria-Acreditacion-web/faces/index1.xhtml");
                     } catch (ServletException e) {//si request.login fallo y la password o el usuario no corresponden
@@ -188,7 +190,6 @@ public class LoginController implements Serializable{
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
         try {
             request.logout();
-            hay_usuario_logeado=false;
         } catch (ServletException e) {//si request.login fallo y la password o el usuario no corresponden
             context.addMessage(null, new FacesMessage("El correo y la contraseña ingresados no coinciden"));
             return "/faces/index.xhtml";
@@ -218,9 +219,21 @@ public class LoginController implements Serializable{
         return "ADMINISTRADOR".equals(userCtrl.encontrarUsuarioPorCorreoRol(nombre));
     }
     public boolean esComite(){
-        return "COMITÉ".equals(userCtrl.encontrarUsuarioPorCorreoRol(nombre));
+        FacesContext context = FacesContext.getCurrentInstance();
+        HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();//obtengo el contexto en el servidor
+        nombre = request.getRemoteUser();
+        if (request.getRemoteUser() != null){
+            return "COMITÉ".equals(userCtrl.encontrarUsuarioPorCorreoRol(nombre));
+        }
+        return false;
     }
     public boolean noesComite(){
-        return !"COMITÉ".equals(userCtrl.encontrarUsuarioPorCorreoRol(nombre));
+        FacesContext context = FacesContext.getCurrentInstance();
+        HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();//obtengo el contexto en el servidor
+        nombre = request.getRemoteUser();
+        if (request.getRemoteUser() != null){
+            return !"COMITÉ".equals(userCtrl.encontrarUsuarioPorCorreoRol(nombre));
+        }
+        return false;
     }
 }

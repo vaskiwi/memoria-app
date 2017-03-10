@@ -117,7 +117,7 @@
                             <p:commandButton id="editButton"   icon="ui-icon-pencil" value="Editar" update=":ProfesorEditForm" oncomplete="PF('ProfesorEditDialog').show()" disabled="#{empty profesorController.selected}"/>
                             <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="Borrar" actionListener="#{profesorController.destroy}" update=":growl,datalist" disabled="#{empty profesorController.selected}"/>
                             <p:commandButton id="addCurso"   icon="ui-icon-plus" value="Asignaturas" update=":ProfesorACreateForm, :ProfesorACreateForm2" oncomplete="PF('ProfesorACreateDialog').show()" disabled="#{empty profesorController.selected}"/>
-                            <p:commandButton id="retButton" icon="ui-icon-trash"  value="Desvincular" actionListener="#{profesorController.desvincular}" update=":growl,datalist" disabled="#{empty profesorController.selected}"/>
+                            <p:commandButton id="retButton" icon="ui-icon-trash"  value="Desvincular" actionListener="#{profesorController.desvincular()}" update=":growl,datalist" disabled="#{empty profesorController.selected}"/>
                             
                             <br /><br /><br />
                            

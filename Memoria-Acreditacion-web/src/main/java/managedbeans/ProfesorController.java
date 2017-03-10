@@ -443,7 +443,7 @@ public class ProfesorController implements Serializable {
         Date fecha = new Date();
         int ano = fecha.getYear() +1900;
         selected.setAnoRetiro(ano);
-        ejbFacade.edit(selected);
+        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("ProfesorUpdated"));
     }
     
     
