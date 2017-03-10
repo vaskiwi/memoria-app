@@ -77,6 +77,12 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
+                                <h:outputText value="Año de retiro de actividades en la carrera"/>
+                            </f:facet>
+                            <h:outputText value="#{item.anoRetiro}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
                                 <h:outputText value="Jerarquía Docente"/>
                             </f:facet>
                             <h:outputText value="#{item.jerarquia.nombre_jerarquia}"/>
