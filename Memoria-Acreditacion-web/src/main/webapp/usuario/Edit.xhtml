@@ -13,17 +13,17 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{usuarioController.selected != null}"> 
                         <p:outputLabel value="#{bundle.CreateUsuarioLabel_roles}" for="rol" />
-                        <p:selectOneMenu id="rol" value="#{usuarioController.selected.rol}" effect="fold" >
+                        <p:selectOneMenu id="rol" value="#{usuarioController.selected.rol}" effect="fold" required="true">
                             <f:selectItems value="#{usuarioController.todosroles}" var="rol" itemLabel="#{rol.nombre}" itemValue="#{rol}" />
                         </p:selectOneMenu>
                         <p:outputLabel value="Contraseña actual" for="old-password" />
-                        <p:password id="old-password" value="#{usuarioController.old_password}" title="#{bundle.EditUsuarioTitle_password}" />
+                        <p:password id="old-password" value="#{usuarioController.old_password}" title="Contraseña antigua" />
                         <p:outputLabel value="Nueva contraseña" for="new-password" />
-                        <p:password id="new-password" value="#{usuarioController.new_password}" title="#{bundle.EditUsuarioTitle_password}" />
+                        <p:password id="new-password" value="#{usuarioController.new_password}" title="Nueva contraseña" />
                         <p:outputLabel value="#{bundle.CreateUsuarioLabel_rutUsuario}" for="rutUsuario" />
-                        <p:inputText id="rutUsuario" value="#{usuarioController.selected.rutUsuario}" title="#{bundle.CreateUsuarioTitle_rutUsuario}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_rutUsuario}"/>
+                        <p:inputText id="rutUsuario" value="#{usuarioController.selected.rutUsuario}" title="Ej: 12345678-9" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_rutUsuario}"/>
                         <p:outputLabel value="#{bundle.CreateUsuarioLabel_nombreUsuario}" for="correo" />
-                        <p:inputText id="correo" value="#{usuarioController.selected.nombreUsuario}" title="#{bundle.CreateUsuarioTitle_nombreUsuario}" />
+                        <p:inputText id="correo" value="#{usuarioController.selected.nombreUsuario}" required="true" title="#{bundle.CreateUsuarioTitle_nombreUsuario}" />
                         <p:outputLabel value="#{bundle.CreateUsuarioLabel_activo}" for="activo" />
                         <p:selectBooleanCheckbox id="activo" value="#{usuarioController.selected.activo}" />
                     </p:panelGrid>

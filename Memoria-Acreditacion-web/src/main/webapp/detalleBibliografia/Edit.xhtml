@@ -19,13 +19,9 @@
                                            itemValue="#{asignatura.item}"/>
                         </p:selectOneMenu>
                        <p:outputLabel value="Cantidad de títulos físicos: " for="cantTitulosFisicos" />
-                       <p:inputMask id="cantTitulosFisicos" value="#{detalleBibliografiaController.selected.cantTitulosFisicos}" title="Cantidad de títulos físicos: " required="true" mask="9" >
-                            <f:validator validatorId="custom.numeroValidador"/>
-                        </p:inputMask>
+                       <p:inputText id="cantTitulosFisicos" value="#{detalleBibliografiaController.selected.cantTitulosFisicos}" title="Cantidad de títulos físicos" required="true" />
                        <p:outputLabel value="Cantidad de ejemplares físicos: " for="cantEjemplaresFisicos" />
-                       <p:inputMask id="cantEjemplaresFisicos" value="#{detalleBibliografiaController.selected.cantEjemplaresFisicos}" title="Cantidad de ejemplares físicos: " required="true" mask="9">
-                            <f:validator validatorId="custom.numeroValidador"/>
-                        </p:inputMask>
+                       <p:inputText id="cantEjemplaresFisicos" value="#{detalleBibliografiaController.selected.cantEjemplaresFisicos}" title="Cantidad de ejemplares físicos" required="true" />
                        <p:outputLabel value="Cantidad de bibliografía obligatoria: " for="cantBibliografiaObligatoria" />
                        <p:inputMask id="cantBibliografiaObligatoria" value="#{detalleBibliografiaController.selected.cantBibliografiaObligatoria}" title="Cantidad de bibliografia obligatoria: " required="true" mask="9">
                             <f:validator validatorId="custom.numeroValidador"/>
@@ -35,9 +31,9 @@
                             <f:validator validatorId="custom.numeroValidador"/>
                         </p:inputMask>
                        <p:outputLabel value="Promedio de alumnos por curso: " for="promedio_alumnos_curso"  />
-                       <p:inputText id="promedio_alumnos_curso"  required="false" value="#{detalleBibliografiaController.selected.promAlumnosCurso}" title="Promedio de alumnos por curso" />
+                       <p:inputText id="promedio_alumnos_curso"  required="true" value="#{detalleBibliografiaController.selected.promAlumnosCurso}" title="Promedio de alumnos por curso" />
                        <p:outputLabel value="Relación entre ejemplares y alumnos : " for="relacion_ejemplares_alumnos"  />
-                       <p:inputText id="relacion_ejemplares_alumnos"  required="false" value="#{detalleBibliografiaController.selected.relEjemplaresAlumnos}" title="Promedio de alumnos por curso" />
+                       <p:inputText id="relacion_ejemplares_alumnos"  required="true" value="#{detalleBibliografiaController.selected.relEjemplaresAlumnos}" title="Relación ejemplares alumnos" />
                     </p:panelGrid>
                   <div align="center">
                       <p:commandButton actionListener="#{detalleBibliografiaController.update}" value="Guardar" iconPos="right" update="display,:DetalleBibliografiaListForm:datalist,:growl"/>

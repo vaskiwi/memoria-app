@@ -31,8 +31,30 @@ public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFac
     }
     
     @Override
-    public Usuario findByUsername(String uid) {
+    public Usuario findByUid(String uid) {
         Query query = em.createNamedQuery("Usuario.findByUid").setParameter("uid", uid);
+        try{
+            return (Usuario) query.getSingleResult();
+        }
+        catch(NoResultException e){
+            return null;
+        }
+    }
+    
+    @Override
+    public Usuario findByRutUsuario(String rutUsuario) {
+        Query query = em.createNamedQuery("Usuario.findByRutUsuario").setParameter("rutUsuario", rutUsuario);
+        try{
+            return (Usuario) query.getSingleResult();
+        }
+        catch(NoResultException e){
+            return null;
+        }
+    }
+    
+    @Override
+    public Usuario findByNombreUsuario(String nombreUsuario) {
+        Query query = em.createNamedQuery("Usuario.findByNombreUsuario").setParameter("nombreUsuario", nombreUsuario);
         try{
             return (Usuario) query.getSingleResult();
         }

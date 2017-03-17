@@ -28,9 +28,9 @@
                        <p:outputLabel value="Cantidad de bibliografía complementaria: " for="cantBibliografiaComplementaria" />
                        <p:inputText id="cantBibliografiaComplementaria" value="#{detalleBibliografiaController.selected.cantBibliografiaComplementaria}" title="Cantidad de bibliografia complementaria" required="true"/>
                        <p:outputLabel value="Promedio de alumnos por curso: " for="promedio_alumnos_curso"  />
-                       <p:inputText id="promedio_alumnos_curso"  required="false" value="#{detalleBibliografiaController.selected.promAlumnosCurso}" title="Promedio de alumnos por curso" />
+                       <p:inputText id="promedio_alumnos_curso" value="#{detalleBibliografiaController.selected.promAlumnosCurso}" title="Promedio de alumnos por curso" required="true"/>
                        <p:outputLabel value="Relación entre ejemplares y alumnos : " for="relacion_ejemplares_alumnos"  />
-                       <p:inputText id="relacion_ejemplares_alumnos"  required="false" value="#{detalleBibliografiaController.selected.relEjemplaresAlumnos}" title="Promedio de alumnos por curso" />
+                       <p:inputText id="relacion_ejemplares_alumnos" value="#{detalleBibliografiaController.selected.relEjemplaresAlumnos}" title="Relación ejemplares alumnos" required="true" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{detalleBibliografiaController.create}" value="Guardar" update="display,:DetalleBibliografiaListForm:datalist,:growl"/>
                     <p:commandButton value="Cancelar" onclick="DetalleBibliografiaCreateDialog.hide()"/>

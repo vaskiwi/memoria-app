@@ -9,6 +9,7 @@ import entities.Rol;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -22,6 +23,13 @@ public class RolFacade extends AbstractFacade<Rol> implements RolFacadeLocal {
     @Override
     protected EntityManager getEntityManager() {
         return em;
+    }
+    @Override
+    public Rol findByNombre(String nombre){
+        Query query;
+        query = em.createNamedQuery("Rol.findByNombre")
+                .setParameter("nombre", nombre);
+        return (Rol) query.getSingleResult();
     }
 
     public RolFacade() {

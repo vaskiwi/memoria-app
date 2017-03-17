@@ -13,7 +13,7 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{carreraController.selected != null}">
                         <p:outputLabel value="Nombre: " for="nombre" />
-                        <p:inputText id="nombre" value="#{carreraController.selected.nombre_carrera}" title="Nombre" />
+                        <p:inputText id="nombre" value="#{carreraController.selected.nombre_carrera}" title="Nombre" required="true"/>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{carreraController.update}" value="Guardar" update="display,:CarreraListForm:datalist,:growl"/>
                     <p:commandButton value="Cancelar" onclick="CarreraEditDialog.hide()"/>

@@ -57,13 +57,13 @@
                     
                 </h:panelGrid> 
             </p:growl>     
-                
+            <p:commandButton id="createButton" icon="ui-icon-plus" value="Registrarse" actionListener="#{usuarioController.prepareCreate}" update=":UsuarioCreateForm" oncomplete="PF('UsuarioCreateDialog').show()"/>    
             
  
         </h:form></center> </div>
               </div>
         </div>
-                    
+                    <ui:include src="Create.xhtml"/>
             </ui:define>
      </ui:composition>
     </h:body>

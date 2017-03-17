@@ -12,8 +12,6 @@
             <h:form id="GradoAcademicoViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{gradoAcademicoController.selected != null}">
-                        <h:outputText value="Código: "/>
-                        <h:outputText value="#{gradoAcademicoController.selected.id_grado_academico}" title="#{bundle.ViewAsignaturaTitle_id_grado_academico}"/>
                         <h:outputText value="Nombre: "/>
                         <h:outputText value="#{gradoAcademicoController.selected.nombre_grado_academico}" title="#{bundle.ViewGradoAcademicoTitle_nombre}"/>
                     </p:panelGrid>

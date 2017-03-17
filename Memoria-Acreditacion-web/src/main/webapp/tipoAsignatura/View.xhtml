@@ -11,9 +11,9 @@
         <p:dialog id="TipoAsignaturaViewDlg" widgetVar="TipoAsignaturaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="INFORMACIÓN DEL TIPO DE ASIGNATURA">
             <h:form id="TipoAsignaturaViewForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{TipoAsignaturaController.selected != null}">
+                    <p:panelGrid columns="2" rendered="#{tipoAsignaturaController.selected != null}">
                         <h:outputText value="Nombre: "/>
-                        <h:outputText value="#{tipoAsignaturaController.selected.nombre_tipo_asignatura}" title="#{bundle.ViewTipoAsignaturaTitle_nombre}"/>
+                        <h:outputText value="#{tipoAsignaturaController.selected.nombre_tipo_asignatura}" title="Nombre"/>
                     </p:panelGrid>
                     <p:commandButton value="Cerrar" onclick="TipoAsignaturaViewDialog.hide()"/>
                 </h:panelGroup>

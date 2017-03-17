@@ -14,29 +14,29 @@
                 <h:panelGroup id="display" >
                     <p:panelGrid columns="2" rendered="#{profesorController.selected != null}">
                         <h:outputText value="RUN: "/>
-                        <h:outputText value="#{profesorController.selected.rut_profesor}" title="#{bundle.ViewProfesorTitle_rut_profesor}"/>
+                        <h:outputText value="#{profesorController.selected.rut_profesor}" title="Rut"/>
                         <h:outputText value="Nombres: "/>
-                        <h:outputText value="#{profesorController.selected.nombre_profesor}" title="#{bundle.ViewProfesorTitle_nombre}"/>
+                        <h:outputText value="#{profesorController.selected.nombre_profesor}" title="Nombre"/>
                         <h:outputText value="Apellido paterno: "/>
-                        <h:outputText value="#{profesorController.selected.apellido_pat}" title="apellidopat"/>
+                        <h:outputText value="#{profesorController.selected.apellido_pat}" title="Apellido paterno"/>
                         <h:outputText value="Apellido materno: "/>
-                        <h:outputText value="#{profesorController.selected.apellido_mat}" title="apellidomat"/>
+                        <h:outputText value="#{profesorController.selected.apellido_mat}" title="Apellido materno"/>
                         <h:outputText value="Título Profesional: "/>
-                        <h:outputText value="#{profesorController.selected.titulo_profesor}" title="titulo"/>
+                        <h:outputText value="#{profesorController.selected.titulo_profesor}" title="Título profesional"/>
                         <h:outputText value="Unidad: "/>
-                        <h:outputText value="#{profesorController.selected.unidad_profesor}" title="unidad"/>
+                        <h:outputText value="#{profesorController.selected.unidad_profesor}" title="Unidad"/>
                         <h:outputText value="Comuna: "/>
-                        <h:outputText value="#{profesorController.selected.comuna_profesor}" title="comuna"/>
+                        <h:outputText value="#{profesorController.selected.comuna_profesor}" title="Comuna"/>
                         <h:outputText value="Año de Ingreso: "/>
-                        <h:outputText value="#{profesorController.selected.ano_ingreso}" title="#{bundle.ViewProfesorTitle_ano_ingreso}"/>
+                        <h:outputText value="#{profesorController.selected.ano_ingreso}" title="Año de ingreso"/>
                         <h:outputText value="Tipo de Contrato: "/>
-                        <h:outputText value="#{profesorController.selected.contrato}" title="#{bundle.ViewProfesorTitle_contrato}"/>
+                        <h:outputText value="#{profesorController.selected.contrato}" title="Contrato"/>
                         <h:outputText value="Jornada: "/>
-                        <h:outputText value="#{profesorController.selected.diurno_vespertino}" title="jornada"/>
+                        <h:outputText value="#{profesorController.selected.diurno_vespertino}" title="Jornada"/>
                         <h:outputText value="Tipo de Jerarquía: "/>
-                        <h:outputText value="#{profesorController.selected.jerarquia.nombre_jerarquia}" title="#{bundle.ViewProfesorTitle_jerarquia}"/>
+                        <h:outputText value="#{profesorController.selected.jerarquia.nombre_jerarquia}" title="Jerarquía"/>
                         <h:outputText value="Grado Académico: "/>
-                        <h:outputText value="#{profesorController.selected.grado.nombre_grado_academico}" title="#{bundle.ViewProfesorTitle_grado}"/>
+                        <h:outputText value="#{profesorController.selected.grado.nombre_grado_academico}" title="Grado académico"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="ProfesorViewDialog.hide()"/>
                 </h:panelGroup>

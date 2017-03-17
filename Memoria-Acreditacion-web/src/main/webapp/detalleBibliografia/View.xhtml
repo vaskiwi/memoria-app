@@ -15,6 +15,10 @@
                     <p:panelGrid columns="2" rendered="#{detalleBibliografiaController.selected != null}">
                         <h:outputText value="Asignatura: "/>
                         <h:outputText value="#{detalleBibliografiaController.selected.asignatura.nombre_asignatura}" title="Asignatura"/>
+                        <h:outputText value="Cantidad de títulos físicos: "/>
+                        <h:outputText value="#{detalleBibliografiaController.selected.cantTitulosFisicos}" title="Cantidad de títulos físicos"/>
+                        <h:outputText value="Cantidad de ejemplares físicos: "/>
+                        <h:outputText value="#{detalleBibliografiaController.selected.cantEjemplaresFisicos}" title="Cantidad de ejemplares físicos"/> 
                         <h:outputText value="Cantidad de bibliografia obligatoria: "/>
                         <h:outputText value="#{detalleBibliografiaController.selected.cantBibliografiaObligatoria}" title="Cantidad Bibliografia Obligatoria"/>
                         <h:outputText value="Cantidad de bibliografia complementaria: "/>

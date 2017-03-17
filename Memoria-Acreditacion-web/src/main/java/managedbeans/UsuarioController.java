@@ -15,10 +15,12 @@ import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import javax.servlet.http.HttpServletRequest;
 import sessionbeans.RolFacadeLocal;
 
 @Named("usuarioController")
@@ -143,10 +145,43 @@ public class UsuarioController implements Serializable {
     }
 
     public void create() {
-        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("UsuarioCreated"));
-        if (!JsfUtil.isValidationFailed()) {
-            items = null;    // Invalidate list of items to trigger re-query.
+        if(ejbFacade.findByRutUsuario(selected.getRutUsuario())==null){
+            if(ejbFacade.findByNombreUsuario(selected.getNombreUsuario())==null){
+                persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("UsuarioCreated"));
+                if (!JsfUtil.isValidationFailed()) {
+                    items = null;    // Invalidate list of items to trigger re-query.
+                }
+            }
+            else {
+                FacesContext context = FacesContext.getCurrentInstance();
+                context.addMessage(null, new FacesMessage("Existe un usuario con este nombre"));
+            } 
         }
+        else {
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage("Existe un usuario con este rut"));
+        }     
+    }
+    
+    public void registrar() {
+        selected.setRol(rolFacade.findByNombre("COMITÉ"));
+        selected.setActivo(false);
+        if(ejbFacade.findByRutUsuario(selected.getRutUsuario())==null){
+            if(ejbFacade.findByNombreUsuario(selected.getNombreUsuario())==null){
+                persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("UsuarioCreated"));
+                if (!JsfUtil.isValidationFailed()) {
+                    items = null;    // Invalidate list of items to trigger re-query.
+                }
+            }
+            else {
+                FacesContext context = FacesContext.getCurrentInstance();
+                context.addMessage(null, new FacesMessage("Existe un usuario con este nombre"));
+            } 
+        }
+        else {
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage("Existe un usuario con este rut"));
+        }     
     }
 
     public void update() {

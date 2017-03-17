@@ -12,10 +12,8 @@
             <h:form id="JerarquiaViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{jerarquiaController.selected != null}">
-                        <h:outputText value="Código: "/>
-                        <h:outputText value="#{jerarquiaController.selected.id_jerarquia}" title="#{bundle.ViewAsignaturaTitle_id_jerarquia}"/>
                         <h:outputText value="Nombre: "/>
-                        <h:outputText value="#{jerarquiaController.selected.nombre_jerarquia}" title="#{bundle.ViewJerarquiaTitle_nombre}"/>
+                        <h:outputText value="#{jerarquiaController.selected.nombre_jerarquia}" title="Nombre"/>
                     </p:panelGrid>
                     <p:commandButton value="Cerrar" onclick="JerarquiaViewDialog.hide()"/>
                 </h:panelGroup>

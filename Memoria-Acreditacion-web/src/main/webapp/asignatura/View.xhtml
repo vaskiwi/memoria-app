@@ -13,13 +13,21 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{asignaturaController.selected != null}">
                         <h:outputText value="Código: "/>
-                        <h:outputText value="#{asignaturaController.selected.codigo}" title="#{bundle.ViewAsignaturaTitle_codigo}"/>
+                        <h:outputText value="#{asignaturaController.selected.codigo}" title="Código"/>
                         <h:outputText value="Nombre: "/>
-                        <h:outputText value="#{asignaturaController.selected.nombre_asignatura}" title="#{bundle.ViewAsignaturaTitle_nombre}"/>
-                        <h:outputText value="Total Horas: "/>
-                        <h:outputText value="#{asignaturaController.selected.cant_horas_presenciales}" title="#{bundle.ViewAsignaturaTitle_cant_horas}"/>
+                        <h:outputText value="#{asignaturaController.selected.nombre_asignatura}" title="Nombre"/>
+                        <h:outputText value="Contribución al perfil de egreso: "/>
+                        <h:outputText value="#{asignaturaController.selected.contr_perfil_egreso}" title="Contribución al perfil de egreso"/>
+                        <h:outputText value="Área o eje al que pertenece: "/>
+                        <h:outputText value="#{asignaturaController.selected.tipo_asignatura.nombre_tipo_asignatura}" title="Área o eje al que pertenece"/>
+                        <h:outputText value="Cantidad de horas preseneciales: "/>
+                        <h:outputText value="#{asignaturaController.selected.cant_horas_presenciales}" title="Cantidad de horas presenciales"/>
+                        <h:outputText value="Cantidad de horas no presenciales: "/>
+                        <h:outputText value="#{asignaturaController.selected.cant_horas_no_presenciales}" title="Cantidad de horas no presenciales"/>
+                        <h:outputText value="Créditos que otorga: "/>
+                        <h:outputText value="#{asignaturaController.selected.creditos_asignatura}" title="Créditos que otorga"/>
                         <h:outputText value="Carrera Asociada: "/>
-                        <h:outputText value="#{asignaturaController.selected.carrera.nombre_carrera}" title="#{bundle.ViewAsignaturaTitle_carrera}"/>
+                        <h:outputText value="#{asignaturaController.selected.carrera.nombre_carrera}" title="Carrera"/>
                     </p:panelGrid>
                     <p:commandButton value="Cerrar" onclick="AsignaturaViewDialog.hide()"/>
                 </h:panelGroup>

@@ -13,7 +13,7 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{carreraController.selected != null}">
                         <h:outputText value="Nombre: "/>
-                        <h:outputText value="#{carreraController.selected.nombre_carrera}" title="#{bundle.ViewCarreraTitle_nombre}"/>
+                        <h:outputText value="#{carreraController.selected.nombre_carrera}" title="Nombre"/>
                     </p:panelGrid>
                     <p:commandButton value="Cerrar" onclick="CarreraViewDialog.hide()"/>
                 </h:panelGroup>
