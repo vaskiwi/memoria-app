@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Scope="Project" version="2">
+    <Scope Scope="Faces Configuration Only"/>
+    <Scope Scope="Project">
+        <Node id="gradoAcademico/Create.xhtml" x="150" y="300" zoom="true"/>
+        <Node id="tablas/GradoAno-2-Vespertino.xhtml" x="900" y="600" zoom="true"/>
+        <Node id="asignatura/View.xhtml" x="150" y="1050" zoom="true"/>
+        <Node id="usuario/List.xhtml" x="150" y="1500" zoom="true"/>
+        <Node id="detalleBibliografia/List.xhtml" x="2150" y="450" zoom="true"/>
+        <Node id="usuario/View.xhtml" x="150" y="150" zoom="true"/>
+        <Node id="tablas/DetalleBibliografiaTotal.xhtml" x="650" y="450" zoom="true"/>
+        <Node id="tablas/GradoAno-1-Vespertino.xhtml" x="1400" y="600" zoom="true"/>
+        <Node id="usuario/Create.xhtml" x="650" y="900" zoom="true"/>
+        <Node id="carrera/View.xhtml" x="2400" y="150" zoom="true"/>
+        <Node id="carrera/Edit.xhtml" x="1400" y="900" zoom="true"/>
+        <Node id="tablas/JerarGradoVespertino.xhtml" x="400" y="750" zoom="true"/>
+        <Node id="tipoAsignatura/List.xhtml" x="1900" y="600" zoom="true"/>
+        <Node id="rol/List.xhtml" x="1900" y="450" zoom="true"/>
+        <Node id="asignatura/Edit.xhtml" x="1150" y="900" zoom="true"/>
+        <Node id="carrera/List.xhtml" x="900" y="450" zoom="true"/>
+        <Node id="tablas/JerarGradoDiurno.xhtml" x="1150" y="750" zoom="true"/>
+        <Node id="rol/View.xhtml" x="150" y="1350" zoom="true"/>
+        <Node id="tipoAsignatura/Create.xhtml" x="2150" y="150" zoom="true"/>
+        <Node id="asignatura/List.xhtml" x="400" y="600" zoom="true"/>
+        <Node id="detalleBibliografia/Edit.xhtml" x="150" y="600" zoom="true"/>
+        <Node id="detalleBibliografia/View.xhtml" x="400" y="1050" zoom="true"/>
+        <Node id="tipoAsignatura/Edit.xhtml" x="400" y="300" zoom="true"/>
+        <Node id="index.xhtml" x="1400" y="150" zoom="true"/>
+        <Node id="instalacion/List.xhtml" x="1650" y="150" zoom="true"/>
+        <Node id="usuario/Edit.xhtml" x="1400" y="750" zoom="true"/>
+        <Node id="index1.xhtml" x="2400" y="300" zoom="true"/>
+        <Node id="gradoAcademico/Edit.xhtml" x="400" y="900" zoom="true"/>
+        <Node id="profesor/Create.xhtml" x="1650" y="750" zoom="true"/>
+        <Node id="tablas/GradoAno-4-Diurno.xhtml" x="900" y="300" zoom="true"/>
+        <Node id="tablas/GradoAno-3-Vespertino.xhtml" x="2150" y="300" zoom="true"/>
+        <Node id="Create.xhtml" x="2650" y="150" zoom="true"/>
+        <Node id="profesor/View.xhtml" x="400" y="150" zoom="true"/>
+        <Node id="tablas/GradoAno-3-Diurno.xhtml" x="400" y="450" zoom="true"/>
+        <Node id="instalacion/View.xhtml" x="1400" y="450" zoom="true"/>
+        <Node id="tablas/GradoAno-1-Diurno.xhtml" x="1900" y="150" zoom="true"/>
+        <Node id="tablas/GradoAno-2-Diurno.xhtml" x="650" y="1050" zoom="true"/>
+        <Node id="profesor/List.xhtml" x="1650" y="600" zoom="true"/>
+        <Node id="gradoAcademico/List.xhtml" x="1650" y="450" zoom="true"/>
+        <Node id="profesor/Edit.xhtml" x="1900" y="300" zoom="true"/>
+        <Node id="profesorDiurno/profesores.xhtml" x="900" y="1050" zoom="true"/>
+        <Node id="comite/Instalacion.xhtml" x="150" y="450" zoom="true"/>
+        <Node id="carrera/Create.xhtml" x="150" y="900" zoom="true"/>
+        <Node id="jerarquia/View.xhtml" x="650" y="300" zoom="true"/>
+        <Node id="jerarquia/Create.xhtml" x="900" y="150" zoom="true"/>
+        <Node id="jerarquia/Edit.xhtml" x="1650" y="300" zoom="true"/>
+        <Node id="accesoDenegado.xhtml" x="150" y="1200" zoom="true"/>
+        <Node id="template.xhtml" x="400" y="1350" zoom="true"/>
+        <Node id="profesor/Add_asignatura.xhtml" x="650" y="600" zoom="true"/>
+        <Node id="objetoNoEncontrado.xhtml" x="1150" y="600" zoom="true"/>
+        <Node id="comite/Asignatura.xhtml" x="650" y="150" zoom="true"/>
+        <Node id="profesorVespertino/profesores.xhtml" x="650" y="750" zoom="true"/>
+        <Node id="tablas/GradoAno-4-Vespertino.xhtml" x="650" y="1200" zoom="true"/>
+        <Node id="asignatura/Create.xhtml" x="400" y="1200" zoom="true"/>
+        <Node id="tipoAsignatura/View.xhtml" x="1150" y="450" zoom="true"/>
+        <Node id="instalacion/Create.xhtml" x="1150" y="150" zoom="true"/>
+        <Node id="index2.xhtml" x="1400" y="300" zoom="true"/>
+        <Node id="jerarquia/List.xhtml" x="900" y="750" zoom="true"/>
+        <Node id="gradoAcademico/View.xhtml" x="150" y="750" zoom="true"/>
+        <Node id="instalacion/Edit.xhtml" x="1150" y="300" zoom="true"/>
+        <Node id="detalleBibliografia/Create.xhtml" x="900" y="900" zoom="true"/>
+    </Scope>
+    <Scope Scope="All Faces Configurations"/>
+</Scene>

@@ -8,6 +8,8 @@ package managedbeans;
 import entities.Rol;
 import entities.Usuario;
 import java.io.Serializable;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -112,7 +114,7 @@ public class LoginController implements Serializable{
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = password+"u-de-sa";
     }
     
     public String getNombre() {
@@ -121,20 +123,6 @@ public class LoginController implements Serializable{
  
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-    
-    public String MD5(String md5) {
-        try {
-            java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
-            byte[] array = md.digest(md5.getBytes());
-            StringBuffer sb = new StringBuffer();
-            for (int i = 0; i < array.length; ++i) {
-                sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1, 3));
-            }
-            return sb.toString();
-        } catch (java.security.NoSuchAlgorithmException e) {
-        }
-        return null;
     }
     
     @PostConstruct

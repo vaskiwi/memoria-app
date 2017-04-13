@@ -80,5 +80,5 @@ INSERT INTO asignatura("id_asignatura","codigo","creditos_asignatura","cant_hora
 INSERT INTO asignatura("id_asignatura","codigo","creditos_asignatura","cant_horas_presenciales","nombre_asignatura","semestre","carrera_id_carrera","tipo_asignatura_id_tipo_asignatura") VALUES (99923,13262,8,8,'Administración y Gestión Informática',6,1002,101)
 INSERT INTO asignatura("id_asignatura","codigo","creditos_asignatura","cant_horas_presenciales","nombre_asignatura","semestre","carrera_id_carrera","tipo_asignatura_id_tipo_asignatura") VALUES (99924,13214,3,4,'Antropología e Ingeniería',6,1001,103)
 
-INSERT INTO usuario("rut_usuario","activo","nombre_usuario","uid","user_password","rol_nombre") VALUES ('18210538-4',TRUE,'vasco.vergara@usach.cl',9998,'4b7ee6c01bc292e00ea85991febf6a3b',1)
-INSERT INTO usuario("rut_usuario","activo","nombre_usuario","uid","user_password","rol_nombre") VALUES ('5166831-6',TRUE,'monica.villanueva@usach.cl',9999,'4b7ee6c01bc292e00ea85991febf6a3b',1)
+INSERT INTO usuario("rut_usuario","activo","nombre_usuario","uid","user_password","rol_nombre") VALUES ('18210538-4',TRUE,'vasco.vergara@usach.cl',9998,'57dd2cb1028bc30b68ec9d5e835901fb55194951af6bb87846c9c7c23a8d538c',1)
+INSERT INTO usuario("rut_usuario","activo","nombre_usuario","uid","user_password","rol_nombre") VALUES ('5166831-6',TRUE,'monica.villanueva@usach.cl',9999,'57dd2cb1028bc30b68ec9d5e835901fb55194951af6bb87846c9c7c23a8d538c',1)

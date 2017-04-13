@@ -121,28 +121,29 @@ public class Usuario implements Serializable {
     }
 
     public void setUser_password(String user_password) {
-        this.user_password = this.MD5(user_password);
+        this.user_password = this.hash(user_password);
     }
     
     
-    public String MD5(String input) {
+    public String hash(String password) {
         try {
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            byte[] messageDigest = md.digest(input.getBytes());
-            BigInteger number = new BigInteger(1, messageDigest);
-            String hashtext = number.toString(16);
-            // Now we need to zero pad it if you actually want the full 32 chars.
-            while (hashtext.length() < 32) {
-                hashtext = "0" + hashtext;
+            MessageDigest sha256 = MessageDigest.getInstance("SHA-256");
+            String salt = "u-de-sa";
+            String passWithSalt = password + salt;
+            byte[] passBytes = passWithSalt.getBytes();
+            byte[] passHash = sha256.digest(passBytes);             
+            StringBuilder sb = new StringBuilder();
+            for(int i=0; i< passHash.length ;i++) {
+                sb.append(Integer.toString((passHash[i] & 0xff) + 0x100, 16).substring(1));         
             }
-            return hashtext;
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        }
+            String generatedPassword = sb.toString();
+            return generatedPassword;
+        } catch (NoSuchAlgorithmException e) { e.printStackTrace(); }       
+        return null;
     }
     
     public boolean cambiarPassword(String old_password, String new_password) {
-        if (MD5(old_password).compareTo(this.user_password) == 0) {
+        if (hash(old_password).compareTo(this.user_password) == 0) {
             setUser_password(new_password);
             return true;
         }
