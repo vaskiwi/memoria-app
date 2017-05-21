@@ -12,12 +12,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.TypedQuery;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -31,16 +29,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Profesor.findByNombre", query = "SELECT a FROM Profesor a WHERE a.nombre_profesor = :nombre_profesor"),
     @NamedQuery(name = "Profesor.findByAno", query = "SELECT a FROM Profesor a WHERE a.ano_ingreso <= :ano AND a.vigente = :vigente"),
     @NamedQuery(name = "Profesor.findByAnoRetiro", query = "SELECT a FROM Profesor a WHERE a.ano_ingreso <= :ano AND a.vigente = :vigente AND a.anoRetiro >= :ano"),
-    @NamedQuery(name = "Profesor.findByContrato", query = "SELECT a FROM Profesor a WHERE a.contrato = :contrato"),
     @NamedQuery(name = "Profesor.findByRut", query = "SELECT a FROM Profesor a WHERE a.rut_profesor = :rut"),
-    @NamedQuery(name = "Profesor.findByJerarquia", query = "SELECT a FROM Profesor a WHERE a.jerarquia = :jerarquia"),
-    @NamedQuery(name = "Profesor.findByGrado", query = "SELECT a FROM Profesor a WHERE a.grado = :grado"),
-    @NamedQuery(name = "Profesor.findByJerarYGrado", query = "SELECT a FROM Profesor a WHERE a.jerarquia = :jerarquia AND a.grado = :grado"),
-    @NamedQuery(name = "Profesor.findByGradoYDiurnoVespertino", query = "SELECT a FROM Profesor a WHERE a.grado = :grado AND a.diurno_vespertino = :diurno_vespertino"),
-    @NamedQuery(name = "Profesor.findByJerarYGradoYDiurnoVespertino", query = "SELECT a FROM Profesor a WHERE a.jerarquia = :jerarquia AND a.grado = :grado AND a.diurno_vespertino = :diurno_vespertino"),
-    @NamedQuery(name = "Profesor.findByJerarYContrato", query = "SELECT a FROM Profesor a WHERE a.jerarquia = :jerarquia AND a.contrato = :contrato"),
-    @NamedQuery(name = "Profesor.findByDiurnoVespertino", query = "SELECT a FROM Profesor a WHERE a.diurno_vespertino = :diurno_vespertino")
-    
+    @NamedQuery(name = "Profesor.findByDisponible", query = "SELECT a FROM Profesor a WHERE a.informacion_completa_profesor = :disponible")
 })
 public class Profesor implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -52,23 +42,24 @@ public class Profesor implements Serializable {
     private String nombre_profesor;
     private String apellido_pat;
     private String apellido_mat;
-    private String contrato;
     private boolean vigente;
     private String titulo_profesor;
-    private float dedicacion_contratada;
     private int ano_ingreso;
     private String unidad_profesor;
     private String comuna_profesor;
-    private String diurno_vespertino;
-    
-    @ManyToOne
-    private Jerarquia jerarquia;
-    
-    @ManyToOne
-    private GradoAcademico grado;
+    private boolean informacion_completa_profesor;
     
     @OneToMany(mappedBy = "rut_profesor",targetEntity=ProfesorAsignatura.class,fetch=FetchType.EAGER)
     private Set<ProfesorAsignatura> profesor_asignatura; 
+    
+    @OneToMany(mappedBy = "rut_profesor",targetEntity=ProfesorGrado.class,fetch=FetchType.EAGER)
+    private Set<ProfesorGrado> profesor_grado;
+    
+    @OneToMany(mappedBy = "rut_profesor",targetEntity=ProfesorJerarquia.class,fetch=FetchType.EAGER)
+    private Set<ProfesorJerarquia> profesor_jerarquia;
+    
+    @OneToMany(mappedBy = "rut_profesor",targetEntity=ProfesorContrato.class,fetch=FetchType.EAGER)
+    private Set<ProfesorContrato> profesor_contrato;
 
     public Long getId_profesor() {
         return id_profesor;
@@ -108,31 +99,14 @@ public class Profesor implements Serializable {
 
     public void setAno_ingreso(int ano_ingreso) {
         this.ano_ingreso = ano_ingreso;
+    }   
+
+    public boolean isInformacion_completa_profesor() {
+        return informacion_completa_profesor;
     }
 
-    public String getContrato() {
-        return contrato;
-    }
-
-    public void setContrato(String contrato) {
-        this.contrato = contrato;
-    }
-    
-    
-    public Jerarquia getJerarquia() {
-        return jerarquia;
-    }
-
-    public void setJerarquia(Jerarquia jerarquia) {
-        this.jerarquia = jerarquia;
-    }
-
-    public GradoAcademico getGrado() {
-        return grado;
-    }
-
-    public void setGrado(GradoAcademico grado) {
-        this.grado = grado;
+    public void setInformacion_completa_profesor(boolean informacion_completa_profesor) {
+        this.informacion_completa_profesor = informacion_completa_profesor;
     }
 
     public Set<ProfesorAsignatura> getProfesor_asignatura() {
@@ -191,22 +165,30 @@ public class Profesor implements Serializable {
         this.titulo_profesor = titulo_profesor;
     }
 
-    public float getDedicacion_contratada() {
-        return dedicacion_contratada;
+    public Set<ProfesorGrado> getProfesor_grado() {
+        return profesor_grado;
     }
 
-    public void setDedicacion_contratada(float dedicacion_contratada) {
-        this.dedicacion_contratada = dedicacion_contratada;
+    public void setProfesor_grado(Set<ProfesorGrado> profesor_grado) {
+        this.profesor_grado = profesor_grado;
     }
 
-    public String getDiurno_vespertino() {
-        return diurno_vespertino;
+    public Set<ProfesorJerarquia> getProfesor_jerarquia() {
+        return profesor_jerarquia;
+    }
+    
+    public void setProfesor_jerarquia(Set<ProfesorJerarquia> profesor_jerarquia) {
+        this.profesor_jerarquia = profesor_jerarquia;
     }
 
-    public void setDiurno_vespertino(String diurno_vespertino) {
-        this.diurno_vespertino = diurno_vespertino;
+    public Set<ProfesorContrato> getProfesor_contrato() {
+        return profesor_contrato;
     }
 
+    public void setProfesor_contrato(Set<ProfesorContrato> profesor_contrato) {
+        this.profesor_contrato = profesor_contrato;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -229,7 +211,7 @@ public class Profesor implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.Profesor[ id=" + rut_profesor + " ]";
+        return rut_profesor;
     }
     
 }

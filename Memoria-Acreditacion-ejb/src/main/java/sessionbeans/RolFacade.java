@@ -6,6 +6,7 @@
 package sessionbeans;
 
 import entities.Rol;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -30,6 +31,14 @@ public class RolFacade extends AbstractFacade<Rol> implements RolFacadeLocal {
         query = em.createNamedQuery("Rol.findByNombre")
                 .setParameter("nombre", nombre);
         return (Rol) query.getSingleResult();
+    }
+    
+    @Override
+    public List<Rol> findByNombreList(String nombre){
+        Query query;
+        query = em.createNamedQuery("Rol.findByNombreList")
+                .setParameter("nombre", nombre);
+        return query.getResultList();
     }
 
     public RolFacade() {

@@ -7,6 +7,7 @@ package entities;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -46,8 +47,8 @@ public class GradoAcademico implements Serializable {
         @JoinColumn(name = "grado_academico_id_grado_academico", referencedColumnName = "id_grado_academico")}, inverseJoinColumns = {
         @JoinColumn(name = "profesor_rut_profesor", referencedColumnName = "rut_profesor")})
 */   
-    @OneToMany(mappedBy="grado")
-    private List<Profesor> profesorList;
+    @OneToMany(mappedBy = "id_grado_academico")
+    private Set<ProfesorGrado> profesor_grado;  
 
     public String getNombre_grado_academico() {
         return nombre_grado_academico;
@@ -65,14 +66,13 @@ public class GradoAcademico implements Serializable {
         this.id_grado_academico = id_grado_academico;
     }
 
-    public List<Profesor> getProfesorList() {
-        return profesorList;
+    public Set<ProfesorGrado> getProfesor_grado() {
+        return profesor_grado;
     }
 
-    public void setProfesorList(List<Profesor> profesorList) {
-        this.profesorList = profesorList;
+    public void setProfesor_grado(Set<ProfesorGrado> profesor_grado) {
+        this.profesor_grado = profesor_grado;
     }
-
     
     @Override
     public int hashCode() {

@@ -26,6 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Rol.findByNombre", query = "SELECT a FROM Rol a WHERE a.nombre = :nombre"),
+    @NamedQuery(name = "Rol.findByNombreList", query = "SELECT a FROM Rol a WHERE a.nombre = :nombre")
   
 })
     

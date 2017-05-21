@@ -1,13 +1,11 @@
 package managedbeans;
 
 import entities.Jerarquia;
-import entities.GradoAcademico;
 import managedbeans.util.JsfUtil;
 import managedbeans.util.JsfUtil.PersistAction;
 import sessionbeans.JerarquiaFacadeLocal;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import javax.faces.application.FacesMessage;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -30,13 +28,9 @@ public class JerarquiaController implements Serializable {
     private JerarquiaFacadeLocal ejbFacade;
     private List<Jerarquia> items = null;
     private Jerarquia selected;
-    private List<Jerarquia> lista_nombres = null;
-    
 
     public JerarquiaController() {
     }
-
-    
       
     public Jerarquia getSelected() {
         return selected;
@@ -64,8 +58,7 @@ public class JerarquiaController implements Serializable {
 
     public void create() {
        FacesContext context = FacesContext.getCurrentInstance();
-        lista_nombres = ejbFacade.findByNombrelist(selected.getNombre_jerarquia());
-        if(lista_nombres.isEmpty()){
+        if(ejbFacade.findByNombre(selected.getNombre_jerarquia()).size()==0){
             persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("JerarquiaCreated"));
             if (!JsfUtil.isValidationFailed()) {
                 items = null;    // Invalidate list of items to trigger re-query.

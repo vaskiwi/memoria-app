@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+ 
+        <p:dialog id="ProfesorGCreateDlg" widgetVar="ProfesorGCreateDialog" height="400" modal="true" resizable="false" appendTo="@(body)" header="Administrar Grados académicos" width="60%">
+            <h:form id="ProfesorGCreateForm">
+                <p:panel header="Grados académicos Disponibles">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{profesorController.selected != null}">
+                        <p:outputLabel value="Grado académico Asociado: " for="grado" />
+                        <p:selectOneMenu id="grado" required="true" value="#{profesorController.grado_add}" >
+                            <f:selectItems value="#{gradoAcademicoController.itemsAvailableSelectOne}"
+                                           var="carreraItem"
+                                           itemValue="#{grado.item}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Año: " for="ano_ingreso" />
+                        <p:inputText id="ano_ingreso" value="#{profesorController.año_asig}" required="true" title="año de ingreso" >
+                            <f:validator validatorId="custom.numeroValidador"/>
+                            <f:validateLength minimum="4" maximum="4"/>
+                        </p:inputText>
+                    </p:panelGrid>
+                    <p:commandButton id="createButton" icon="ui-icon-plus"   value="Asignar Grado académico" actionListener="#{profesorController.addGrado()}" update=":ProfesorGCreateForm, :ProfesorGCreateForm2"/>
+                </h:panelGroup>
+                </p:panel>
+            </h:form>
+            
+            <h:form id="ProfesorGCreateForm2">
+                <p:panel header="Grados académicos Vinculados">
+                <h:panelGroup id="display2">
+                    <h:panelGrid columns="2" rendered="#{profesorController.selected != null}">
+                        <p:dataTable id="datalist2" value="#{profesorController.profeGrado_profe}" var="item_grado"
+                                     selectionMode="single" selection="#{profesorController.grado_del}"
+                                    paginator="true"
+                                    rowKey="#{item_grado.id_profesor_grado}"
+                                    rows="10"
+                                    rowsPerPageTemplate="10,20,30,40,50"
+                                    >
+
+                           <p:ajax event="rowSelect"   update="deleteButton"/>
+                           <p:ajax event="rowUnselect" update="deleteButton"/>
+                           <p:column>
+                               <f:facet name="header">
+                                   <h:outputText value="Grado Académico"/>
+                               </f:facet>
+                               <h:outputText value="#{item_grado.id_grado_academico.nombre_grado_academico}"/>
+                           </p:column>
+                           <p:column>
+                               <f:facet name="header">
+                                   <h:outputText value="Año"/>
+                               </f:facet>
+                               <h:outputText value="#{item_grado.ano_profesor_grado}"/>
+                           </p:column>
+                           <f:facet name="footer">
+                               <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="Quitar Grado Académico" actionListener="#{profesorController.delGrado()}" update=":ProfesorGCreateForm, :ProfesorGCreateForm2"  disabled="#{empty profesorController.grado_del}"/>
+                           </f:facet>
+                        </p:dataTable>
+                        
+                    </h:panelGrid>
+                    
+                </h:panelGroup>
+                </p:panel>
+            </h:form>
+            
+        </p:dialog>
+
+    </ui:composition>
+</html>

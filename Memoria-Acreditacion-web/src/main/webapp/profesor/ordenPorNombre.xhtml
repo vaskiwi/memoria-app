@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+        <br></br>
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListProfesorTitle}"></h:outputText>
+        </ui:define>
+        
+        <ui:define name="body">
+            <br/>
+            <h:form id="ProfesorListForm">
+                <p:breadCrumb>
+                            <p:menuitem value="Portada" url="/faces/index1.xhtml" />
+                            <p:menuitem value="Administrador" url="/faces/index2.xhtml" />
+                            <p:menuitem value="Profesores" url="/faces/profesor/List.xhtml" />
+                </p:breadCrumb>
+                <p:panel header="PROFESORES EXISTENTES">
+                    <p:dataTable id="datalist" value="#{profesorController.itemsSortNombre}" var="item"
+                                 selectionMode="single" selection="#{profesorController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.id_profesor}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton addContrato addGrado addJerarquia addCurso retButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton addContrato addGrado addJerarquia addCurso retButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <p:button outcome="/faces/profesor/ordenPorRut" value="RUN" />
+                            </f:facet>
+                            <h:outputText  value="#{item.rut_profesor}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <p:button outcome="/faces/profesor/ordenPorNombre" value="Nombres"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre_profesor}" style="center"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                               <p:button outcome="/faces/profesor/List" value="Apellido paterno"/> 
+                            </f:facet>
+                            <h:outputText value="#{item.apellido_pat}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <p:button outcome="/faces/profesor/ordenPorApellidoMaterno" value="Apellido materno"/>
+                            </f:facet>
+                            <h:outputText value="#{item.apellido_mat}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <p:button outcome="/faces/profesor/ordenPorTitulo" value="Título profesional"/>
+                            </f:facet>
+                            <h:outputText value="#{item.titulo_profesor}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <p:button outcome="/faces/profesor/ordenPorAnoIngreso" value="Año de inicio de actividades en la carrera"/> 
+                                <h:outputText />
+                            </f:facet>
+                            <h:outputText value="#{item.ano_ingreso}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <p:button outcome="/faces/profesor/ordenPorAnoRetiro" value="Año de retiro de actividades en la carrera"/>
+                            </f:facet>
+                            <h:outputText value="#{item.anoRetiro}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <p:button outcome="/faces/profesor/ordenPorUnidad" value="Unidad a la que pertenece"/>
+                            </f:facet>
+                            <h:outputText value="#{item.unidad_profesor}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <p:button outcome="/faces/profesor/ordenPorComuna" value="Comuna"/>
+                            </f:facet>
+                            <h:outputText value="#{item.comuna_profesor}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <p:button outcome="/faces/profesor/ordenPorVigente" value="Vigente"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.vigente}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <p:button outcome="/faces/profesor/ordenPorInformacionCompleta" value="Información completa"/> 
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.informacion_completa_profesor}" disabled="true"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="Nuevo" actionListener="#{profesorController.prepareCreate}" update=":ProfesorCreateForm" oncomplete="PF('ProfesorCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="Ver" update=":ProfesorViewForm" oncomplete="PF('ProfesorViewDialog').show()" disabled="#{empty profesorController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="Editar" update=":ProfesorEditForm" oncomplete="PF('ProfesorEditDialog').show()" disabled="#{empty profesorController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="Borrar" actionListener="#{profesorController.destroy}" update=":growl,datalist" disabled="#{empty profesorController.selected}"/>
+                            <p:commandButton id="addContrato"   icon="ui-icon-plus" value="Contratos" update=":ProfesorCCreateForm, :ProfesorCCreateForm2" oncomplete="PF('ProfesorCCreateDialog').show()" disabled="#{empty profesorController.selected}"/>
+                            <p:commandButton id="addGrado"   icon="ui-icon-plus" value="Grados académicos" update=":ProfesorGCreateForm, :ProfesorGCreateForm2" oncomplete="PF('ProfesorGCreateDialog').show()" disabled="#{empty profesorController.selected}"/>
+                            <p:commandButton id="addJerarquia"   icon="ui-icon-plus" value="Jerarquías" update=":ProfesorJCreateForm, :ProfesorJCreateForm2" oncomplete="PF('ProfesorJCreateDialog').show()" disabled="#{empty profesorController.selected}"/>
+                            <p:commandButton id="addCurso"   icon="ui-icon-plus" value="Asignaturas" update=":ProfesorACreateForm, :ProfesorACreateForm2" oncomplete="PF('ProfesorACreateDialog').show()" disabled="#{empty profesorController.selected}"/>
+                            <p:commandButton id="retButton" icon="ui-icon-trash"  value="Desvincular" actionListener="#{profesorController.desvincular()}" update=":growl,datalist" disabled="#{empty profesorController.selected}"/>
+                            
+                            <br /><br /><br />
+                           
+                    
+                                    </f:facet>
+                                </p:dataTable>
+                                <div style="text-align:center">  
+                        <h:commandButton value="Exportar">
+                            <p:dataExporter type="xls" target="datalist" fileName="Docentes de la carrera durante los últimos 5 años"/>
+                        </h:commandButton>  
+                    </div>
+                            </p:panel>
+                        </h:form>
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+            <ui:include src="Add_asignatura.xhtml"/>
+            <ui:include src="Add_contrato.xhtml"/>
+            <ui:include src="Add_grado_academico.xhtml"/>
+            <ui:include src="Add_jerarquia.xhtml"/>
+            
+        </ui:define>
+    </ui:composition>
+
+</html>

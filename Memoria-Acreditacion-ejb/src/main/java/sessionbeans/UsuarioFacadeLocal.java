@@ -5,6 +5,7 @@
  */
 package sessionbeans;
 
+import entities.Rol;
 import entities.Usuario;
 import java.util.List;
 import javax.ejb.Local;
@@ -33,6 +34,8 @@ public interface UsuarioFacadeLocal {
     public Usuario findByRutUsuario(String rutUsuario);
     
     public Usuario findByNombreUsuario(String nombreUsuario);
+    
+    public List<Usuario> findByRolActivo(Rol rol, Boolean activo);
 
     int count();
     

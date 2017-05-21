@@ -12,6 +12,8 @@
             <h:form id="AsignaturaViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{asignaturaController.selected != null}">
+                        <h:outputText value="Nivel: "/>
+                        <h:outputText value="#{asignaturaController.selected.semestre}" title="Código"/>
                         <h:outputText value="Código: "/>
                         <h:outputText value="#{asignaturaController.selected.codigo}" title="Código"/>
                         <h:outputText value="Nombre: "/>
@@ -24,10 +26,14 @@
                         <h:outputText value="#{asignaturaController.selected.cant_horas_presenciales}" title="Cantidad de horas presenciales"/>
                         <h:outputText value="Cantidad de horas no presenciales: "/>
                         <h:outputText value="#{asignaturaController.selected.cant_horas_no_presenciales}" title="Cantidad de horas no presenciales"/>
-                        <h:outputText value="Créditos que otorga: "/>
-                        <h:outputText value="#{asignaturaController.selected.creditos_asignatura}" title="Créditos que otorga"/>
+                        <h:outputText value="SCT: "/>
+                        <h:outputText value="#{asignaturaController.selected.creditos_asignatura}" title="SCT"/>
                         <h:outputText value="Carrera Asociada: "/>
                         <h:outputText value="#{asignaturaController.selected.carrera.nombre_carrera}" title="Carrera"/>
+                        <h:outputText value="Jornada: "/>
+                        <h:outputText value="#{asignaturaController.selected.jornada_asignatura}" title="Jornada"/>
+                        <h:outputText value="Información completa: "/>
+                        <p:selectBooleanCheckbox value="#{asignaturaController.selected.informacion_completa_asignatura}" disabled="true"/>
                     </p:panelGrid>
                     <p:commandButton value="Cerrar" onclick="AsignaturaViewDialog.hide()"/>
                 </h:panelGroup>

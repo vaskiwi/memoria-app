@@ -30,98 +30,84 @@
                                  rowsPerPageTemplate="10,20,30,40,50"
                                  >
 
-                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton addCurso     retButton"/>
-                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton addCurso retButton"/>
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton addContrato addGrado addJerarquia addCurso retButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton addContrato addGrado addJerarquia addCurso retButton"/>
 
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="RUN"/>
+                                <p:button outcome="/faces/profesor/ordenPorRut" value="RUN" />
                             </f:facet>
                             <h:outputText  value="#{item.rut_profesor}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Nombres"/>
+                                <p:button outcome="/faces/profesor/ordenPorNombre" value="Nombres"/>
                             </f:facet>
                             <h:outputText value="#{item.nombre_profesor}" style="center"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Apellido paterno"/>
+                               <p:button outcome="/faces/profesor/List" value="Apellido paterno"/> 
                             </f:facet>
                             <h:outputText value="#{item.apellido_pat}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Apellido materno"/>
+                                <p:button outcome="/faces/profesor/ordenPorApellidoMaterno" value="Apellido materno"/>
                             </f:facet>
                             <h:outputText value="#{item.apellido_mat}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Título profesional"/>
+                                <p:button outcome="/faces/profesor/ordenPorTitulo" value="Título profesional"/>
                             </f:facet>
                             <h:outputText value="#{item.titulo_profesor}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Grado Académico más alto completado"/>
-                            </f:facet>
-                            <h:outputText value="#{item.grado.nombre_grado_academico}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Año de inicio de actividades en la carrera"/>
+                                <p:button outcome="/faces/profesor/ordenPorAnoIngreso" value="Año de inicio de actividades en la carrera"/> 
+                                <h:outputText />
                             </f:facet>
                             <h:outputText value="#{item.ano_ingreso}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Año de retiro de actividades en la carrera"/>
+                                <p:button outcome="/faces/profesor/ordenPorAnoRetiro" value="Año de retiro de actividades en la carrera"/>
                             </f:facet>
                             <h:outputText value="#{item.anoRetiro}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Jerarquía Docente"/>
-                            </f:facet>
-                            <h:outputText value="#{item.jerarquia.nombre_jerarquia}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Dedicacion horaria contratado"/>
-                            </f:facet>
-                            <h:outputText value="#{item.dedicacion_contratada}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Tipo de Contrato"/>
-                            </f:facet>
-                            <h:outputText value="#{item.contrato}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Unidad a la que pertenece"/>
+                                <p:button outcome="/faces/profesor/ordenPorUnidad" value="Unidad a la que pertenece"/>
                             </f:facet>
                             <h:outputText value="#{item.unidad_profesor}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Comuna"/>
+                                <p:button outcome="/faces/profesor/ordenPorComuna" value="Comuna"/>
                             </f:facet>
                             <h:outputText value="#{item.comuna_profesor}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Jornada"/>
+                                <p:button outcome="/faces/profesor/ordenPorVigente" value="Vigente"/>
                             </f:facet>
-                            <h:outputText value="#{item.diurno_vespertino}"/>
+                            <p:selectBooleanCheckbox value="#{item.vigente}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <p:button outcome="/faces/profesor/ordenPorInformacionCompleta" value="Información completa"/> 
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.informacion_completa_profesor}" disabled="true"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="Nuevo" actionListener="#{profesorController.prepareCreate}" update=":ProfesorCreateForm" oncomplete="PF('ProfesorCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="Ver" update=":ProfesorViewForm" oncomplete="PF('ProfesorViewDialog').show()" disabled="#{empty profesorController.selected}"/>
                             <p:commandButton id="editButton"   icon="ui-icon-pencil" value="Editar" update=":ProfesorEditForm" oncomplete="PF('ProfesorEditDialog').show()" disabled="#{empty profesorController.selected}"/>
                             <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="Borrar" actionListener="#{profesorController.destroy}" update=":growl,datalist" disabled="#{empty profesorController.selected}"/>
+                            <p:commandButton id="addContrato"   icon="ui-icon-plus" value="Contratos" update=":ProfesorCCreateForm, :ProfesorCCreateForm2" oncomplete="PF('ProfesorCCreateDialog').show()" disabled="#{empty profesorController.selected}"/>
+                            <p:commandButton id="addGrado"   icon="ui-icon-plus" value="Grados académicos" update=":ProfesorGCreateForm, :ProfesorGCreateForm2" oncomplete="PF('ProfesorGCreateDialog').show()" disabled="#{empty profesorController.selected}"/>
+                            <p:commandButton id="addJerarquia"   icon="ui-icon-plus" value="Jerarquías" update=":ProfesorJCreateForm, :ProfesorJCreateForm2" oncomplete="PF('ProfesorJCreateDialog').show()" disabled="#{empty profesorController.selected}"/>
                             <p:commandButton id="addCurso"   icon="ui-icon-plus" value="Asignaturas" update=":ProfesorACreateForm, :ProfesorACreateForm2" oncomplete="PF('ProfesorACreateDialog').show()" disabled="#{empty profesorController.selected}"/>
                             <p:commandButton id="retButton" icon="ui-icon-trash"  value="Desvincular" actionListener="#{profesorController.desvincular()}" update=":growl,datalist" disabled="#{empty profesorController.selected}"/>
                             
@@ -141,6 +127,9 @@
             <ui:include src="Edit.xhtml"/>
             <ui:include src="View.xhtml"/>
             <ui:include src="Add_asignatura.xhtml"/>
+            <ui:include src="Add_contrato.xhtml"/>
+            <ui:include src="Add_grado_academico.xhtml"/>
+            <ui:include src="Add_jerarquia.xhtml"/>
             
         </ui:define>
     </ui:composition>

@@ -14,7 +14,7 @@
                 <h:panelGroup id="display" >
                     <p:panelGrid columns="2" rendered="#{detalleBibliografiaController.selected != null}">
                         <h:outputText value="Asignatura: "/>
-                        <h:outputText value="#{detalleBibliografiaController.selected.asignatura.nombre_asignatura}" title="Asignatura"/>
+                        <h:outputText value="#{detalleBibliografiaController.selected.asignatura.toString()}" title="Asignatura"/>
                         <h:outputText value="Cantidad de títulos físicos: "/>
                         <h:outputText value="#{detalleBibliografiaController.selected.cantTitulosFisicos}" title="Cantidad de títulos físicos"/>
                         <h:outputText value="Cantidad de ejemplares físicos: "/>

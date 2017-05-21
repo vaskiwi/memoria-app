@@ -6,6 +6,7 @@
 package sessionbeans;
 
 import entities.Asignatura;
+import entities.Carrera;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -33,6 +34,12 @@ public interface AsignaturaFacadeLocal {
     Asignatura findByNombre(String nombre);
     
     List<Asignatura> findByNombrelist(String nombre);
+    
+    List<Asignatura> findByCodigo(int codigo);
+    
+    List<Asignatura> findByCarrerayJornada(Carrera carrera, String jornada);
+    
+    List<Asignatura> findByDisponible(Boolean disponible);
 
     int count();
     

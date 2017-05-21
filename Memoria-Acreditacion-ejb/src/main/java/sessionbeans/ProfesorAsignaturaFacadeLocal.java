@@ -29,7 +29,9 @@ public interface ProfesorAsignaturaFacadeLocal {
 
     List<ProfesorAsignatura> findRange(int[] range);
     
-    List<Profesor> findByAsignatura(String nombre);
+    List<ProfesorAsignatura> findByAsignatura(Asignatura asignatura, Integer ano);
+    
+    List<ProfesorAsignatura> findByAsignaturaNoFecha(Asignatura asignatura);
     
     List<ProfesorAsignatura> findByProfesorNoFecha(Profesor rut);
     

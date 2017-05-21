@@ -8,7 +8,7 @@
 
     <ui:composition>
  
-        <p:dialog id="ProfesorACreateDlg" widgetVar="ProfesorACreateDialog" height="400" modal="true" resizable="false" appendTo="@(body)" header="Administrar Asignaturas" width="60%">
+        <p:dialog id="ProfesorACreateDlg" widgetVar="ProfesorACreateDialog" height="400" modal="true" resizable="true" appendTo="@(body)" header="Administrar Asignaturas" width="60%">
             <h:form id="ProfesorACreateForm">
                 <p:panel header="Asignaturas Disponibles">
                 <h:panelGroup id="display">
@@ -29,6 +29,14 @@
                 </h:panelGroup>
                 </p:panel>
             </h:form>
+            <h:form>
+                <h:outputText value="Subir un archivo Excel de versión 2007 o menor del sitio Loa para cargar las asignaturas del profesor."></h:outputText>
+                <h:outputText value=" Asegurese que todas las asignaturas están previamente en el sistema"></h:outputText>
+                                <p:fileUpload fileUploadListener="#{profesorController.upload}"  mode="advanced" dragDropSupport="false"
+                                        update="messagesFile, :ProfesorACreateForm2"    />
+                                 <p:growl id="messagesFile" showDetail="true" />
+                    </h:form>
+
             
             <h:form id="ProfesorACreateForm2">
                 <p:panel header="Asignaturas Vinculadas">
@@ -61,6 +69,12 @@
                                    <h:outputText value="Carrera"/>
                                </f:facet>
                                <h:outputText value="#{item_curso.id_asignatura.carrera.nombre_carrera}"/>
+                           </p:column>
+                           <p:column>
+                               <f:facet name="header">
+                                   <h:outputText value="Jornada"/>
+                               </f:facet>
+                               <h:outputText value="#{item_curso.id_asignatura.jornada_asignatura}"/>
                            </p:column>
                            <p:column>
                                <f:facet name="header">

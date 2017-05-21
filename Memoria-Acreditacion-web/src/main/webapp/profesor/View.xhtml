@@ -29,14 +29,12 @@
                         <h:outputText value="#{profesorController.selected.comuna_profesor}" title="Comuna"/>
                         <h:outputText value="Año de Ingreso: "/>
                         <h:outputText value="#{profesorController.selected.ano_ingreso}" title="Año de ingreso"/>
-                        <h:outputText value="Tipo de Contrato: "/>
-                        <h:outputText value="#{profesorController.selected.contrato}" title="Contrato"/>
-                        <h:outputText value="Jornada: "/>
-                        <h:outputText value="#{profesorController.selected.diurno_vespertino}" title="Jornada"/>
-                        <h:outputText value="Tipo de Jerarquía: "/>
-                        <h:outputText value="#{profesorController.selected.jerarquia.nombre_jerarquia}" title="Jerarquía"/>
-                        <h:outputText value="Grado Académico: "/>
-                        <h:outputText value="#{profesorController.selected.grado.nombre_grado_academico}" title="Grado académico"/>
+                        <h:outputText value="Año de Retiro: "/>
+                        <h:outputText value="#{profesorController.selected.anoRetiro}" title="Año de ingreso"/>
+                        <h:outputText value="Vigente: "/>
+                        <p:selectBooleanCheckbox value="#{profesorController.selected.vigente}" disabled="true"/>
+                        <h:outputText value="Información completa: "/>
+                        <p:selectBooleanCheckbox value="#{profesorController.selected.informacion_completa_profesor}" disabled="true"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="ProfesorViewDialog.hide()"/>
                 </h:panelGroup>

@@ -36,57 +36,69 @@
 
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Nivel"/>
+                                <p:button outcome="/faces/asignatura/ordenPorNivel" value="Nivel"/>
                             </f:facet>
                             <h:outputText value="#{item.semestre}"/>
                         </p:column>
                         <p:column >
                             <f:facet name="header">
-                                <h:outputText value="Código de la asignatura"/>
+                                <p:button outcome="/faces/asignatura/ordenPorCodigo" value="Código de la asignatura"/>
                             </f:facet>
                             <h:outputText value="#{item.codigo}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Nombre de la asignatura"/>
+                                <p:button outcome="/faces/asignatura/List" value="Nombre de la asignatura"/>
                             </f:facet>
                             <h:outputText value="#{item.nombre_asignatura}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Contribución al perfil de egreso"/>
+                                <p:button outcome="/faces/asignatura/ordenPorCont" value="Contribución al perfil de egreso"/>
                             </f:facet>
                             <h:outputText value="#{item.contr_perfil_egreso}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Área o Eje al que pertenece"/>
+                                <p:button outcome="/faces/asignatura/ordenPorArea" value="Área o Eje al que pertenece"/>
                             </f:facet>
                             <h:outputText value="#{item.tipo_asignatura.nombre_tipo_asignatura}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Cantidad de horas presenciales"/>
+                                <p:button outcome="/faces/asignatura/ordenPorHorasPresenciales" value="Cantidad de horas presenciales"/>
                             </f:facet>
                             <h:outputText value="#{item.cant_horas_presenciales}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Cantidad de horas no presenciales"/>
+                                <p:button outcome="/faces/asignatura/ordenPorHorasNoPresenciales" value="Cantidad de horas no presenciales"/>
                             </f:facet>
                             <h:outputText value="#{item.cant_horas_no_presenciales}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Creditos que otorga"/>
+                                <p:button outcome="/faces/asignatura/ordenPorSCT" value="SCT"/>
                             </f:facet>
                             <h:outputText value="#{item.creditos_asignatura}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Carrera Asociada"/>
+                                <p:button outcome="/faces/asignatura/ordenPorCarrera" value="Carrera Asociada"/>
                             </f:facet>
                             <h:outputText value="#{item.carrera.nombre_carrera}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <p:button outcome="/faces/asignatura/ordenPorJornada" value="Jornada"/>
+                            </f:facet>
+                            <h:outputText value="#{item.jornada_asignatura}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <p:button outcome="/faces/asignatura/ordenPorInfo" value="Información completa"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.informacion_completa_asignatura}" disabled="true"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="Nueva" actionListener="#{asignaturaController.prepareCreate}" update=":AsignaturaCreateForm" oncomplete="PF('AsignaturaCreateDialog').show()"/>

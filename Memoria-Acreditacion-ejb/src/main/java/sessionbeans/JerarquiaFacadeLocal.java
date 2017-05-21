@@ -5,6 +5,7 @@
  */
 package sessionbeans;
 
+import entities.Contrato;
 import entities.Jerarquia;
 import java.util.List;
 import javax.ejb.Local;
@@ -26,9 +27,7 @@ public interface JerarquiaFacadeLocal {
 
     List<Jerarquia> findAll();
     
-    Jerarquia findByNombre(String nombre);
-    
-    List<Jerarquia> findByNombrelist(String nombre);
+    List<Jerarquia> findByNombre(String nombre);
 
     List<Jerarquia> findRange(int[] range);
 

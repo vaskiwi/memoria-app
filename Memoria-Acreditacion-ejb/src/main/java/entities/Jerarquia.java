@@ -7,12 +7,14 @@ package entities;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -29,7 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "jerarquia")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Jerarquia.findByNombre", query = "SELECT a FROM Jerarquia a WHERE a.nombre_jerarquia = :nombre_jerarquia"),
+    @NamedQuery(name = "Jerarquia.findByNombre", query = "SELECT a FROM Jerarquia a WHERE a.nombre_jerarquia = :nombre_jerarquia")
 })
 public class Jerarquia implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -39,16 +41,9 @@ public class Jerarquia implements Serializable {
     
     private String nombre_jerarquia;
     
-    @OneToMany(mappedBy="jerarquia")
-    private List<Profesor> profesorList;
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id_jerarquia != null ? id_jerarquia.hashCode() : 0);
-        return hash;
-    }
-
+    @OneToMany(mappedBy = "id_jerarquia")
+    private Set<ProfesorJerarquia> profesor_jerarquia; 
+    
     public Long getId_jerarquia() {
         return id_jerarquia;
     }
@@ -65,14 +60,13 @@ public class Jerarquia implements Serializable {
         this.nombre_jerarquia = nombre_jerarquia;
     }
 
-    public List<Profesor> getProfesorList() {
-        return profesorList;
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (id_jerarquia != null ? id_jerarquia.hashCode() : 0);
+        return hash;
     }
-
-    public void setProfesorList(List<Profesor> profesorList) {
-        this.profesorList = profesorList;
-    }
-
+    
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -84,6 +78,14 @@ public class Jerarquia implements Serializable {
             return false;
         }
         return true;
+    }
+
+    public Set<ProfesorJerarquia> getProfesor_jerarquia() {
+        return profesor_jerarquia;
+    }
+
+    public void setProfesor_jerarquia(Set<ProfesorJerarquia> profesor_jerarquia) {
+        this.profesor_jerarquia = profesor_jerarquia;
     }
 
     @Override

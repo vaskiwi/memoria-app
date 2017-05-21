@@ -110,6 +110,12 @@ public class ProfesorFacade extends AbstractFacade<Profesor> implements Profesor
                 .setParameter("diurno_vespertino", diurno_vespertino);
         return query.getResultList();
     }
-    
+    @Override
+    public List<Profesor> findByDisponible(Boolean disponible){
+        Query query;
+        query = em.createNamedQuery("Profesor.findByDisponible")
+                .setParameter("disponible", disponible);
+        return query.getResultList();
+    }
     
 }

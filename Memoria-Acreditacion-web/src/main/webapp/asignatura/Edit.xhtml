@@ -12,43 +12,43 @@
             <h:form id="AsignaturaEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{asignaturaController.selected != null}">
-                        <p:outputLabel value="Semestre: " for="semestre" />
-                        <p:inputText id="semestre" value="#{asignaturaController.selected.semestre}" required="true" title="Semestre" >
-                            <f:validator validatorId="custom.numeroValidador"/>
-                            <f:validateLength minimum="1" maximum="2"/>
+                        <p:outputLabel value="Nivel: " for="semestre" />
+                        <p:inputText id="semestre" value="#{asignaturaController.selected.semestre}" title="Semestre" >
                         </p:inputText>
                         <p:outputLabel value="Código: " for="codigo" />
-                        <p:inputMask id="codigo" required="true" value="#{asignaturaController.selected.codigo}" mask="99999" title="Código" >
-                            <f:validator validatorId="custom.numeroValidador"/>
-                            <f:validateLength minimum="5" maximum="5"/>
-                        </p:inputMask> 
+                        <p:inputText id="codigo" value="#{asignaturaController.selected.codigo}" title="Código" >
+                        </p:inputText> 
                         <p:outputLabel value="Nombre: " for="nombre" />
-                        <p:inputText id="nombre" value="#{asignaturaController.selected.nombre_asignatura}" required="true" title="Nombre" >
-                            <f:validator validatorId="custom.nombreValidador"/>
+                        <p:inputText id="nombre" value="#{asignaturaController.selected.nombre_asignatura}" title="Nombre" >
                         </p:inputText>  
                         <p:outputLabel value="Contribución al perfil de egreso: " for="contr_perfil_egreso" />
-                        <p:inputText id="contr_perfil_egreso" required="true" value="#{asignaturaController.selected.contr_perfil_egreso}" title="Contribución al perfil de egreso" >
-                            <f:validator validatorId="custom.numeroValidador"/>
-                            <f:validateLength minimum="1" maximum="2"/>
+                        <p:inputText id="contr_perfil_egreso" value="#{asignaturaController.selected.contr_perfil_egreso}" title="Contribución al perfil de egreso" >
                         </p:inputText> 
                         <p:outputLabel value="Total de Horas Presenciales: " for="cant_horas_presenciales"  />
-                        <p:inputText id="cant_horas_presenciales"  required="true" value="#{asignaturaController.selected.cant_horas_presenciales}" title="Cantidad de horas presenciales" />
+                        <p:inputText id="cant_horas_presenciales"  value="#{asignaturaController.selected.cant_horas_presenciales}" title="Cantidad de horas presenciales" />
                         <p:outputLabel value="Total de Horas No Presenciales: " for="cant_horas_no_presenciales"  />
-                        <p:inputText id="cant_horas_no_presenciales"  required="true" value="#{asignaturaController.selected.cant_horas_no_presenciales}" title="Cantidad de horas no presenciales" />
+                        <p:inputText id="cant_horas_no_presenciales"  value="#{asignaturaController.selected.cant_horas_no_presenciales}" title="Cantidad de horas no presenciales" />
                         <p:outputLabel value="Tipo de Asignatura: " for="tipo_asignatura" />
-                        <p:selectOneMenu id="tipo_asignatura" required="true" value="#{asignaturaController.selected.tipo_asignatura}" >
+                        <p:selectOneMenu id="tipo_asignatura" value="#{asignaturaController.selected.tipo_asignatura}" >
                             <f:selectItems value="#{tipoAsignaturaController.itemsAvailableSelectOne}"
                                            var="tipoAsignaturaItem"
                                            itemValue="#{tipo_asignatura.item}"/>
                         </p:selectOneMenu>
-                        <p:outputLabel value="Creditos que otorga: " for="creditos_asignatura" />
-                        <p:inputText id="creditos_asignatura" value="#{asignaturaController.selected.creditos_asignatura}" required="true" title="Creditos que otorga" />
+                        <p:outputLabel value="SCT: " for="creditos_asignatura" />
+                        <p:inputText id="creditos_asignatura" value="#{asignaturaController.selected.creditos_asignatura}" title="Creditos que otorga" />
+                                                <p:outputLabel for="jornada" value="Jornada: " />
+                        <p:selectOneMenu id="jornada" value="#{asignaturaController.selected.jornada_asignatura}" style="width:190px">
+                                    <f:selectItem itemLabel="DIURNO" itemValue="DIURNO"/>
+                                    <f:selectItem itemLabel="VESPERTINO" itemValue="VESPERTINO"/>
+                        </p:selectOneMenu>
                         <p:outputLabel value="Carrera Asociada: " for="carrera" />
-                        <p:selectOneMenu id="carrera" required="true" value="#{asignaturaController.selected.carrera}" >
+                        <p:selectOneMenu id="carrera" value="#{asignaturaController.selected.carrera}" >
                             <f:selectItems value="#{carreraController.itemsAvailableSelectOne}"
                                            var="carreraItem"
                                            itemValue="#{carrera.item}"/>
                         </p:selectOneMenu>
+                        <p:outputLabel value="Información completa" for="disponible" />
+                        <p:selectBooleanCheckbox id="disponible" value="#{asignaturaController.selected.informacion_completa_asignatura}" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{asignaturaController.update}" value="Guardar" update="display,:AsignaturaListForm:datalist,:growl"/>
                     <p:commandButton value="Cancelar" onclick="AsignaturaEditDialog.hide()"/>

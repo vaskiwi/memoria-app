@@ -29,6 +29,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Asignatura.findById", query = "SELECT a FROM Asignatura a WHERE a.id_asignatura = :id_asignatura"),
     @NamedQuery(name = "Asignatura.findByNombre", query = "SELECT a FROM Asignatura a WHERE a.nombre_asignatura = :nombre_asignatura"),
     @NamedQuery(name = "Asignatura.findByNombrelist", query = "SELECT a FROM Asignatura a WHERE a.nombre_asignatura = :nombre_asignatura"),
+    @NamedQuery(name = "Asignatura.findByCodigo", query = "SELECT a FROM Asignatura a WHERE a.codigo = :codigo"),
+    @NamedQuery(name = "Asignatura.findByCarreraYJornada", query = "SELECT a FROM Asignatura a WHERE a.carrera = :carrera AND a.jornada_asignatura = :jornada_asignatura"), 
+    @NamedQuery(name = "Asignatura.findByDisponible", query = "SELECT a FROM Asignatura a WHERE a.informacion_completa_asignatura = :disponible")   
 })
 
 
@@ -45,6 +48,8 @@ public class Asignatura implements Serializable {
     private int semestre;
     private int codigo;
     private int creditos_asignatura;
+    private String jornada_asignatura;
+    private boolean informacion_completa_asignatura;
     
     @OneToMany(mappedBy = "asignatura")
     private Set<DetalleBibliografia> detalleBibliografias;
@@ -153,6 +158,22 @@ public class Asignatura implements Serializable {
         this.tipo_asignatura = tipo_asignatura;
     }
 
+    public String getJornada_asignatura() {
+        return jornada_asignatura;
+    }
+
+    public void setJornada_asignatura(String jornada_asignatura) {
+        this.jornada_asignatura = jornada_asignatura;
+    }
+
+    public boolean isInformacion_completa_asignatura() {
+        return informacion_completa_asignatura;
+    }
+
+    public void setInformacion_completa_asignatura(boolean informacion_completa_asignatura) {
+        this.informacion_completa_asignatura = informacion_completa_asignatura;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -175,7 +196,7 @@ public class Asignatura implements Serializable {
 
     @Override
     public String toString() {
-        return codigo+" "+nombre_asignatura+" "+carrera.getNombre_carrera();
+        return codigo+" "+nombre_asignatura+" "+carrera.getNombre_carrera()+" "+jornada_asignatura;
     }
     
 }

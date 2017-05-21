@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+ 
+        <p:dialog id="ProfesorCCreateDlg" widgetVar="ProfesorCCreateDialog" height="400" modal="true" resizable="false" appendTo="@(body)" header="Administrar Contratos" width="60%">
+            <h:form id="ProfesorCCreateForm">
+                <p:panel header="Contratos Disponibles">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{profesorController.selected != null}">
+                        <p:outputLabel value="Contrato Asociado: " for="contrato" />
+                        <p:selectOneMenu id="contrato" required="true" value="#{profesorController.contrato_add}" >
+                            <f:selectItems value="#{contratoController.itemsAvailableSelectOne}"
+                                           var="carreraItem"
+                                           itemValue="#{contrato.item}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Año: " for="ano_ingreso" />
+                        <p:inputText id="ano_ingreso" value="#{profesorController.año_asig}" required="true" title="año de ingreso" >
+                            <f:validator validatorId="custom.numeroValidador"/>
+                            <f:validateLength minimum="4" maximum="4"/>
+                        </p:inputText>
+                    </p:panelGrid>
+                    <p:commandButton id="createButton" icon="ui-icon-plus"   value="Asignar Contrato" actionListener="#{profesorController.addContrato()}" update=":ProfesorCCreateForm, :ProfesorCCreateForm2"/>
+                </h:panelGroup>
+                </p:panel>
+            </h:form>
+            
+            <h:form id="ProfesorCCreateForm2">
+                <p:panel header="Contratos Vinculados">
+                <h:panelGroup id="display2">
+                    <h:panelGrid columns="2" rendered="#{profesorController.selected != null}">
+                        <p:dataTable id="datalist2" value="#{profesorController.profeCont_profe}" var="item_cont"
+                                     selectionMode="single" selection="#{profesorController.contrato_del}"
+                                    paginator="true"
+                                    rowKey="#{item_cont.id_profesor_contrato}"
+                                    rows="10"
+                                    rowsPerPageTemplate="10,20,30,40,50"
+                                    >
+
+                           <p:ajax event="rowSelect"   update="deleteButton"/>
+                           <p:ajax event="rowUnselect" update="deleteButton"/>
+                           <p:column>
+                               <f:facet name="header">
+                                   <h:outputText value="Contrato"/>
+                               </f:facet>
+                               <h:outputText value="#{item_cont.id_contrato.nombre_contrato}"/>
+                           </p:column>
+                           <p:column>
+                               <f:facet name="header">
+                                   <h:outputText value="Año"/>
+                               </f:facet>
+                               <h:outputText value="#{item_cont.ano_profesor_contrato}"/>
+                           </p:column>
+                           <f:facet name="footer">
+                               <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="Quitar Contrato" actionListener="#{profesorController.delContrato()}" update=":ProfesorCCreateForm, :ProfesorCCreateForm2"  disabled="#{empty profesorController.contrato_del}"/>
+                           </f:facet>
+                        </p:dataTable>
+                        
+                    </h:panelGrid>
+                    
+                </h:panelGroup>
+                </p:panel>
+            </h:form>
+            
+        </p:dialog>
+
+    </ui:composition>
+</html>

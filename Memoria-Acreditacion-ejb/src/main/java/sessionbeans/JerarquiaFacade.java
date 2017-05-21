@@ -5,6 +5,7 @@
  */
 package sessionbeans;
 
+import entities.Contrato;
 import entities.Jerarquia;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -27,20 +28,12 @@ public class JerarquiaFacade extends AbstractFacade<Jerarquia> implements Jerarq
     }
     
     @Override
-    public Jerarquia findByNombre(String nombre){
-        Query query;
-        query = em.createNamedQuery("Jerarquia.findByNombre")
-                .setParameter("nombre_jerarquia", nombre);
-        return (Jerarquia) query.getSingleResult();
-    }
-    @Override
-    public List<Jerarquia> findByNombrelist(String nombre){
+     public List<Jerarquia> findByNombre(String nombre){
         Query query;
         query = em.createNamedQuery("Jerarquia.findByNombre")
                 .setParameter("nombre_jerarquia", nombre);
         return query.getResultList();
-    }
-    
+    }  
 
     public JerarquiaFacade() {
         super(Jerarquia.class);

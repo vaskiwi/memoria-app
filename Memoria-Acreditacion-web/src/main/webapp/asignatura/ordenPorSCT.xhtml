@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListAsignaturaTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+                <br/>
+            <h:form id="AsignaturaListForm">
+                
+                <p:breadCrumb>
+                            <p:menuitem value="Portada" url="/faces/index1.xhtml" />
+                            <p:menuitem value="Administrador" url="/faces/index2.xhtml" />
+                            <p:menuitem value="Asignaturas" url="/faces/asignatura/List.xhtml" />
+                </p:breadCrumb>
+                <p:panel header="ASIGNATURAS EXISTENTES">
+                    <p:dataTable id="datalist" value="#{asignaturaController.itemsSortCreditos}" var="item"
+                                 selectionMode="single" selection="#{asignaturaController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.id_asignatura}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                  >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <p:button outcome="/faces/asignatura/ordenPorNivel" value="Nivel"/>
+                            </f:facet>
+                            <h:outputText value="#{item.semestre}"/>
+                        </p:column>
+                        <p:column >
+                            <f:facet name="header">
+                                <p:button outcome="/faces/asignatura/ordenPorCodigo" value="Código de la asignatura"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <p:button outcome="/faces/asignatura/List" value="Nombre de la asignatura"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre_asignatura}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <p:button outcome="/faces/asignatura/ordenPorCont" value="Contribución al perfil de egreso"/>
+                            </f:facet>
+                            <h:outputText value="#{item.contr_perfil_egreso}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <p:button outcome="/faces/asignatura/ordenPorArea" value="Área o Eje al que pertenece"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipo_asignatura.nombre_tipo_asignatura}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <p:button outcome="/faces/asignatura/ordenPorHorasPresenciales" value="Cantidad de horas presenciales"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cant_horas_presenciales}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <p:button outcome="/faces/asignatura/ordenPorHorasNoPresenciales" value="Cantidad de horas no presenciales"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cant_horas_no_presenciales}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <p:button outcome="/faces/asignatura/ordenPorSCT" value="SCT"/>
+                            </f:facet>
+                            <h:outputText value="#{item.creditos_asignatura}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <p:button outcome="/faces/asignatura/ordenPorCarrera" value="Carrera Asociada"/>
+                            </f:facet>
+                            <h:outputText value="#{item.carrera.nombre_carrera}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <p:button outcome="/faces/asignatura/ordenPorJornada" value="Jornada"/>
+                            </f:facet>
+                            <h:outputText value="#{item.jornada_asignatura}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <p:button outcome="/faces/asignatura/ordenPorInfo" value="Información completa"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.informacion_completa_asignatura}" disabled="true"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="Nueva" actionListener="#{asignaturaController.prepareCreate}" update=":AsignaturaCreateForm" oncomplete="PF('AsignaturaCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="Ver" update=":AsignaturaViewForm" oncomplete="PF('AsignaturaViewDialog').show()" disabled="#{empty asignaturaController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="Editar" update=":AsignaturaEditForm" oncomplete="PF('AsignaturaEditDialog').show()" disabled="#{empty asignaturaController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="Borrar" actionListener="#{asignaturaController.destroy}" update=":growl,datalist" disabled="#{empty asignaturaController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                    <div style="text-align:center">  
+                        <h:commandButton value="Exportar">
+                            <p:dataExporter type="xls" target="datalist" fileName="Asignaturas del plan de estudio"/>
+                        </h:commandButton>  
+                    </div>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

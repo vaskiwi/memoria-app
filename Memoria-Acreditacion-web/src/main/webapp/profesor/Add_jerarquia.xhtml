@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+ 
+        <p:dialog id="ProfesorJCreateDlg" widgetVar="ProfesorJCreateDialog" height="400" modal="true" resizable="false" appendTo="@(body)" header="Administrar Jerarquias" width="60%">
+            <h:form id="ProfesorJCreateForm">
+                <p:panel header="Jerarquías Disponibles">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{profesorController.selected != null}">
+                        <p:outputLabel value="Jerarquía Asociada: " for="jerarquia" />
+                        <p:selectOneMenu id="jerarquia" required="true" value="#{profesorController.jerarquia_add}" >
+                            <f:selectItems value="#{jerarquiaController.itemsAvailableSelectOne}"
+                                           var="carreraItem"
+                                           itemValue="#{jerarquia.item}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Año: " for="ano_ingreso" />
+                        <p:inputText id="ano_ingreso" value="#{profesorController.año_asig}" required="true" title="año de ingreso" >
+                            <f:validator validatorId="custom.numeroValidador"/>
+                            <f:validateLength minimum="4" maximum="4"/>
+                        </p:inputText>
+                    </p:panelGrid>
+                    <p:commandButton id="createButton" icon="ui-icon-plus"   value="Asignar Jerarquía" actionListener="#{profesorController.addJerarquia()}" update=":ProfesorJCreateForm, :ProfesorJCreateForm2"/>
+                </h:panelGroup>
+                </p:panel>
+            </h:form>
+            
+            <h:form id="ProfesorJCreateForm2">
+                <p:panel header="Jerarquías Vinculados">
+                <h:panelGroup id="display2">
+                    <h:panelGrid columns="2" rendered="#{profesorController.selected != null}">
+                        <p:dataTable id="datalist2" value="#{profesorController.profeJerar_profe}" var="item_jerar"
+                                     selectionMode="single" selection="#{profesorController.jerarquia_del}"
+                                    paginator="true"
+                                    rowKey="#{item_jerar.id_profesor_jerarquia}"
+                                    rows="10"
+                                    rowsPerPageTemplate="10,20,30,40,50"
+                                    >
+
+                           <p:ajax event="rowSelect"   update="deleteButton"/>
+                           <p:ajax event="rowUnselect" update="deleteButton"/>
+                           <p:column>
+                               <f:facet name="header">
+                                   <h:outputText value="Jerarquía"/>
+                               </f:facet>
+                               <h:outputText value="#{item_jerar.id_jerarquia.nombre_jerarquia}"/>
+                           </p:column>
+                           <p:column>
+                               <f:facet name="header">
+                                   <h:outputText value="Año"/>
+                               </f:facet>
+                               <h:outputText value="#{item_jerar.ano_profesor_jerarquia}"/>
+                           </p:column>
+                           <f:facet name="footer">
+                               <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="Quitar Jerarquía" actionListener="#{profesorController.delJerarquia()}" update=":ProfesorJCreateForm, :ProfesorJCreateForm2"  disabled="#{empty profesorController.jerarquia_del}"/>
+                           </f:facet>
+                        </p:dataTable>
+                        
+                    </h:panelGrid>
+                    
+                </h:panelGroup>
+                </p:panel>
+            </h:form>
+            
+        </p:dialog>
+
+    </ui:composition>
+</html>

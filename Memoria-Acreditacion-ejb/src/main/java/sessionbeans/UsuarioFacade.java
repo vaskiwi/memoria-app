@@ -5,7 +5,9 @@
  */
 package sessionbeans;
 
+import entities.Rol;
 import entities.Usuario;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -61,5 +63,13 @@ public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFac
         catch(NoResultException e){
             return null;
         }
+    }
+    @Override
+    public List<Usuario> findByRolActivo(Rol rol, Boolean activo){
+        Query query;
+        query = em.createNamedQuery("Usuario.findByRolActivo")
+                .setParameter("rol", rol);
+        query.setParameter("activo", activo);
+        return query.getResultList();
     }
 }

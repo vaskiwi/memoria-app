@@ -14,7 +14,6 @@
                     <p:panelGrid columns="2" rendered="#{gradoAcademicoController.selected != null}">
                         <p:outputLabel value="Nombre: " for="nombre" />
                         <p:inputText id="nombre" required="true" value="#{gradoAcademicoController.selected.nombre_grado_academico}" title="nombre">
-                            <f:validator validatorId="custom.nombreValidador"/>
                         </p:inputText>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{gradoAcademicoController.create}" value="Guardar" update="display,:GradoAcademicoListForm:datalist,:growl"/>

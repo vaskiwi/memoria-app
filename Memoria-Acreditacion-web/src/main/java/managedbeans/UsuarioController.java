@@ -7,6 +7,8 @@ import managedbeans.util.JsfUtil.PersistAction;
 import sessionbeans.UsuarioFacadeLocal;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -20,7 +22,6 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
-import javax.servlet.http.HttpServletRequest;
 import sessionbeans.RolFacadeLocal;
 
 @Named("usuarioController")
@@ -32,6 +33,9 @@ public class UsuarioController implements Serializable {
     @EJB
     private UsuarioFacadeLocal ejbFacade;
     private List<Usuario> items = null;
+    private List<Usuario> itemsSortRut = null;
+    private List<Usuario> itemsSortActivo = null;
+    private List<Usuario> itemsSortRol = null;
     private Usuario selected;
     private Usuario antiguovalor;
     private List<Usuario> todos = null;
@@ -40,6 +44,7 @@ public class UsuarioController implements Serializable {
     private String rolNombre;
     private String old_password = "";
     private String new_password = "";
+    private boolean eliminarUsuario;
 
     public UsuarioController() {
     }
@@ -206,12 +211,91 @@ public class UsuarioController implements Serializable {
         }
     }
 
+    public boolean isEliminarUsuario() {
+        List<Rol> roles = rolFacade.findByNombreList("ADMINISTRADOR");
+        List<Usuario> administradores = ejbFacade.findByRolActivo(roles.get(0), true);
+        if(selected==null){
+            eliminarUsuario=true;
+            return eliminarUsuario;
+        }
+        else{
+            if(selected.getRol().getNombre().equals("ADMINISTRADOR")){
+                if(administradores.size()==1){
+                    eliminarUsuario=true;
+                    return eliminarUsuario;
+                }
+            }
+        }
+        eliminarUsuario=false;
+        return eliminarUsuario;
+    }
+
+    public void setEliminarUsuario(boolean eliminarUsuario) {
+        this.eliminarUsuario = eliminarUsuario;
+    }
+
     public List<Usuario> getItems() {
         if (items == null) {
             items = getFacade().findAll();
         }
+        Collections.sort(items, new Comparator<Usuario>(){
+            @Override
+            public int compare(Usuario o1, Usuario o2){
+               return o1.getNombreUsuario().compareTo(o2.getNombreUsuario());
+            }
+         });
         return items;
     }
+
+    public List<Usuario> getItemsSortRut() {
+        if (itemsSortRut == null) {
+            itemsSortRut = getFacade().findAll();
+        }
+        Collections.sort(itemsSortRut, new Comparator<Usuario>(){
+            @Override
+            public int compare(Usuario o1, Usuario o2){
+               return o1.getRutUsuario().compareTo(o2.getRutUsuario());
+            }
+         });
+        return itemsSortRut;
+    }
+
+    public void setItemsSortRut(List<Usuario> itemsSortRut) {
+        this.itemsSortRut = itemsSortRut;
+    }
+
+    public List<Usuario> getItemsSortActivo() {
+        itemsSortActivo = getFacade().findAll();
+        Collections.sort(itemsSortActivo, new Comparator<Usuario>(){
+            @Override
+            public int compare(Usuario o1, Usuario o2){
+                return Boolean.compare(o1.getActivo(),o2.getActivo());
+            }
+         });
+        return itemsSortActivo;
+    }
+
+    public void setItemsSortActivo(List<Usuario> itemsSortActivo) {
+        this.itemsSortActivo = itemsSortActivo;
+    }
+
+    public List<Usuario> getItemsSortRol() {
+        if (itemsSortRol == null) {
+            itemsSortRol = getFacade().findAll();
+        }
+        Collections.sort(itemsSortRol, new Comparator<Usuario>(){
+            @Override
+            public int compare(Usuario o1, Usuario o2){
+               return o1.getRol().getNombre().compareTo(o2.getRol().getNombre());
+            }
+         });
+        return itemsSortRol;
+    }
+
+    public void setItemsSortRol(List<Usuario> itemsSortRol) {
+        this.itemsSortRol = itemsSortRol;
+    }
+    
     
     public List<Usuario> getAllItems() {
         todos = getFacade().findAll();

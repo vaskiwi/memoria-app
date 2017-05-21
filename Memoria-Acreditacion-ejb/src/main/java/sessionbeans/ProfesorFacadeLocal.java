@@ -46,6 +46,8 @@ public interface ProfesorFacadeLocal {
     public List<Profesor> findByAnoRetiro(int ano);
             
     public List<Profesor> findByDiurnoVespertino(String diurno_vespertino);
+    
+    public List<Profesor> findByDisponible(Boolean disponible);
 
     List<Profesor> findRange(int[] range);
 

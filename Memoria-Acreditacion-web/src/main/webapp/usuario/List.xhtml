@@ -31,25 +31,25 @@
                                  >
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Rut usuario"/>
+                                <p:button outcome="/faces/usuario/ordenPorRut" value="Rut usuario"/>
                             </f:facet>
                             <h:outputText value="#{item.rutUsuario}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Nombre"/>
+                                <p:button outcome="/faces/usuario/List" value="Nombre"/>
                             </f:facet>
                             <h:outputText value="#{item.nombreUsuario}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Usuario activo"/>
+                                <p:button outcome="/faces/usuario/ordenPorActivo" value="Usuario activo"/>
                             </f:facet>
                             <p:selectBooleanCheckbox value="#{item.activo}" disabled="true"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Rol"/>
+                                <p:button outcome="/faces/usuario/ordenPorRol" value="Rol"/>
                             </f:facet>
                             <h:outputText value="#{item.rol.nombre}"/>
                         </p:column>
@@ -57,7 +57,7 @@
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="Nuevo" actionListener="#{usuarioController.prepareCreate}" update=":UsuarioCreateForm" oncomplete="PF('UsuarioCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="Ver" update=":UsuarioViewForm" oncomplete="PF('UsuarioViewDialog').show()" disabled="#{empty usuarioController.selected}"/>
                             <p:commandButton id="editButton"   icon="ui-icon-pencil" value="Editar" update=":UsuarioEditForm" oncomplete="PF('UsuarioEditDialog').show()" disabled="#{empty usuarioController.selected}"/>
-                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="Borrar" actionListener="#{usuarioController.destroy}" update=":growl,datalist" disabled="#{empty usuarioController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="Borrar" actionListener="#{usuarioController.destroy}" update=":growl,datalist" disabled="#{usuarioController.eliminarUsuario}"/>
                             
                         </f:facet>
                     </p:dataTable>

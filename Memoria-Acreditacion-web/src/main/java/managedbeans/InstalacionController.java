@@ -9,6 +9,8 @@ import entities.Instalacion;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -59,6 +61,12 @@ public class InstalacionController implements Serializable {
         if (items == null) {
             items = getEjbFacade().findAll();
         }
+        Collections.sort(items, new Comparator<Instalacion>(){
+            @Override
+            public int compare(Instalacion o1, Instalacion o2){
+               return o1.getNombre_instalacion().compareTo(o2.getNombre_instalacion());
+            }
+        });
         return items;
     }
 

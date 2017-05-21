@@ -32,10 +32,18 @@ public class ProfesorAsignaturaFacade extends AbstractFacade<ProfesorAsignatura>
         super(ProfesorAsignatura.class);
     }
     @Override
-    public List<Profesor> findByAsignatura(String nombre){
+    public List<ProfesorAsignatura> findByAsignatura(Asignatura asignatura,Integer ano){
         Query query;
-        query = em.createNamedQuery("Asignatura.findByNombre")
-                .setParameter("nombre_asignatura", nombre);
+        query = em.createNamedQuery("ProfesorAsignatura.findByAsignatura")
+                .setParameter("id_asignatura", asignatura);
+        query.setParameter("ano_profesor_asignatura", ano);
+        return query.getResultList();
+    }
+    @Override
+    public List<ProfesorAsignatura> findByAsignaturaNoFecha(Asignatura asignatura){
+        Query query;
+        query = em.createNamedQuery("ProfesorAsignatura.findByAsignaturaNoFecha")
+                .setParameter("id_asignatura", asignatura);
         return query.getResultList();
     }
     @Override

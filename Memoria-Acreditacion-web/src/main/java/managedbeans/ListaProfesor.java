@@ -5,6 +5,7 @@
  */
 package managedbeans;
 
+import entities.Contrato;
 import entities.GradoAcademico;
 import entities.Jerarquia;
 import javax.inject.Named;
@@ -30,7 +31,7 @@ public class ListaProfesor implements Serializable {
     private String nombre_profesor;
     private String apellido_pat;
     private String apellido_mat;
-    private String contrato;
+    private Contrato contrato;
     private boolean vigente;
     private String titulo_profesor;
     private float dedicacion_contratada;
@@ -86,11 +87,11 @@ public class ListaProfesor implements Serializable {
         this.apellido_mat = apellido_mat;
     }
 
-    public String getContrato() {
+    public Contrato getContrato() {
         return contrato;
     }
 
-    public void setContrato(String contrato) {
+    public void setContrato(Contrato contrato) {
         this.contrato = contrato;
     }
 

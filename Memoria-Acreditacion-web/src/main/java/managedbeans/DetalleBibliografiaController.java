@@ -8,6 +8,8 @@ package managedbeans;
 import entities.DetalleBibliografia;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -73,6 +75,12 @@ public class DetalleBibliografiaController implements Serializable {
         if (items == null) {
             items = getFacade().findAll();
         }
+        Collections.sort(items, new Comparator<DetalleBibliografia>(){
+            @Override
+            public int compare(DetalleBibliografia o1, DetalleBibliografia o2){
+               return o1.getAsignatura().getNombre_asignatura().compareTo(o2.getAsignatura().getNombre_asignatura());
+            }
+         });
         return items;
     }
 
@@ -85,6 +93,12 @@ public class DetalleBibliografiaController implements Serializable {
         if (items == null) {
             items = getFacade().findAll();
         }
+        Collections.sort(items, new Comparator<DetalleBibliografia>(){
+            @Override
+            public int compare(DetalleBibliografia o1, DetalleBibliografia o2){
+               return o1.getAsignatura().getNombre_asignatura().compareTo(o2.getAsignatura().getNombre_asignatura());
+            }
+        });
         int cont1=0;
         int cont2=0;
         int cont3=0;

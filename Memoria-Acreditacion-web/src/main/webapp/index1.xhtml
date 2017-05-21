@@ -23,30 +23,130 @@
                         <p:growl id="messages"/>
  
                             <p:menubar>
-                                <p:submenu label="Información de profesores para el año #{profesorController.fecha_actual.year+1900}"  icon="ui-icon-document" styleClass="ui-priority-primary">
-                                    <p:menuitem value="Docentes de jornada diurna según jerarquía para el año #{profesorController.fecha_actual.year+1900}" outcome="/tablas/JerarGradoDiurno" />
-                                    <p:menuitem value="Docentes de jornada vespertina según jerarquía para el año #{profesorController.fecha_actual.year+1900}" outcome="/tablas/JerarGradoVespertino" />
+                                <p:submenu label="Información de profesores según grado académico y jerarquía"  icon="ui-icon-document" styleClass="ui-priority-primary">
+                                    <p:menuitem value="Docentes de civil de jornada diurna según jerarquía para el año #{profesorController.fecha_actual.year+1900}" outcome="/tablas/JerarGradoAno-0-CivilDiurno" />
+                                    <p:menuitem value="Docentes de civil de jornada vespertina según jerarquía para el año #{profesorController.fecha_actual.year+1900}" outcome="/tablas/JerarGradoAno-0-CivilVespertino" />
+                                    <p:menuitem value="Docentes de ejecución de jornada diurna según jerarquía para el año #{profesorController.fecha_actual.year+1900}" outcome="/tablas/JerarGradoAno-0-EjecuDiurno" />
+                                    <p:menuitem value="Docentes de ejecución de jornada vespertina según jerarquía para el año #{profesorController.fecha_actual.year+1900}" outcome="/tablas/JerarGradoAno-0-EjecuVespertino" />
+                                    <p:menuitem value="Docentes de civil de jornada diurna según jerarquía para el año #{profesorController.fecha_actual.year+1899}" outcome="/tablas/JerarGradoAno-1-CivilDiurno" />
+                                    <p:menuitem value="Docentes de civil de jornada vespertina según jerarquía para el año #{profesorController.fecha_actual.year+1899}" outcome="/tablas/JerarGradoAno-1-CivilVespertino" />
+                                    <p:menuitem value="Docentes de ejecución de jornada diurna según jerarquía para el año #{profesorController.fecha_actual.year+1899}" outcome="/tablas/JerarGradoAno-1-EjecuDiurno" />
+                                    <p:menuitem value="Docentes de ejecución de jornada vespertina según jerarquía para el año #{profesorController.fecha_actual.year+1899}" outcome="/tablas/JerarGradoAno-1-EjecuVespertino" />
+                                    <p:menuitem value="Docentes de civil de jornada diurna según jerarquía para el año #{profesorController.fecha_actual.year+1898}" outcome="/tablas/JerarGradoAno-2-CivilDiurno" />
+                                    <p:menuitem value="Docentes de civil de jornada vespertina según jerarquía para el año #{profesorController.fecha_actual.year+1898}" outcome="/tablas/JerarGradoAno-2-CivilVespertino" />
+                                    <p:menuitem value="Docentes de ejecución de jornada diurna según jerarquía para el año #{profesorController.fecha_actual.year+1898}" outcome="/tablas/JerarGradoAno-2-EjecuDiurno" />
+                                    <p:menuitem value="Docentes de ejecución de jornada vespertina según jerarquía para el año #{profesorController.fecha_actual.year+1898}" outcome="/tablas/JerarGradoAno-2-EjecuVespertino" />
+                                    <p:menuitem value="Docentes de civil de jornada diurna según jerarquía para el año #{profesorController.fecha_actual.year+1897}" outcome="/tablas/JerarGradoAno-3-CivilDiurno" />
+                                    <p:menuitem value="Docentes de civil de jornada vespertina según jerarquía para el año #{profesorController.fecha_actual.year+1897}" outcome="/tablas/JerarGradoAno-3-CivilVespertino" />
+                                    <p:menuitem value="Docentes de ejecución de jornada diurna según jerarquía para el año #{profesorController.fecha_actual.year+1897}" outcome="/tablas/JerarGradoAno-3-EjecuDiurno" />
+                                    <p:menuitem value="Docentes de ejecución de jornada vespertina según jerarquía para el año #{profesorController.fecha_actual.year+1897}" outcome="/tablas/JerarGradoAno-3-EjecuVespertino" />
+                                    <p:menuitem value="Docentes de civil de jornada diurna según jerarquía para el año #{profesorController.fecha_actual.year+1896}" outcome="/tablas/JerarGradoAno-4-CivilDiurno" />
+                                    <p:menuitem value="Docentes de civil de jornada vespertina según jerarquía para el año #{profesorController.fecha_actual.year+1896}" outcome="/tablas/JerarGradoAno-4-CivilVespertino" />
+                                    <p:menuitem value="Docentes de ejecución de jornada diurna según jerarquía para el año #{profesorController.fecha_actual.year+1896}" outcome="/tablas/JerarGradoAno-4-EjecuDiurno" />
+                                    <p:menuitem value="Docentes de ejecución de jornada vespertina según jerarquía para el año #{profesorController.fecha_actual.year+1896}" outcome="/tablas/JerarGradoAno-4-EjecuVespertino" />
                                 </p:submenu>
 
                                 <p:submenu label="Información de profesores de los 5 últimos años" icon="ui-icon-document" styleClass="ui-priority-primary">
-                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1899} de jornada Diurna" outcome="/tablas/GradoAno-1-Diurno" />
-                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1898} de jornada Diurna" outcome="/tablas/GradoAno-2-Diurno" />
-                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1897} de jornada Diurna" outcome="/tablas/GradoAno-3-Diurno" />
-                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1896} de jornada Diurna" outcome="/tablas/GradoAno-4-Diurno" />
-                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1899} de jornada Vespertina" outcome="/tablas/GradoAno-1-Vespertino" />
-                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1898} de jornada Vespertina" outcome="/tablas/GradoAno-2-Vespertino" />
-                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1897} de jornada Vespertina" outcome="/tablas/GradoAno-3-Vespertino" />
-                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1896} de jornada Vespertina" outcome="/tablas/GradoAno-4-Vespertino" />
-                                    
+                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1900} de Civil de jornada Diurna" outcome="/tablas/GradoAno-0-CivilDiurno" />
+                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1900} de Civil de jornada Vespertina" outcome="/tablas/GradoAno-0-CivilVespertino" />
+                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1900} de Ejecución de jornada Diurna" outcome="/tablas/GradoAno-0-EjecuDiurno" />
+                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1900} de Ejecución de jornada Vespertina" outcome="/tablas/GradoAno-0-EjecuVespertino" />
+                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1899} de Civil de jornada Diurna" outcome="/tablas/GradoAno-1-CivilDiurno" />
+                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1899} de Civil de jornada Vespertina" outcome="/tablas/GradoAno-1-CivilVespertino" />
+                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1899} de Ejecución de jornada Diurna" outcome="/tablas/GradoAno-1-EjecuDiurno" />
+                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1899} de Ejecución de jornada Vespertina" outcome="/tablas/GradoAno-1-EjecuVespertino" />
+                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1898} de Civil de jornada Diurna" outcome="/tablas/GradoAno-2-CivilDiurno" />
+                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1898} de Civil de jornada Vespertina" outcome="/tablas/GradoAno-2-CivilVespertino" />
+                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1898} de Ejecución de jornada Diurna" outcome="/tablas/GradoAno-2-EjecuDiurno" />
+                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1898} de Ejecución de jornada Vespertina" outcome="/tablas/GradoAno-2-EjecuVespertino" />
+                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1897} de Civil de jornada Diurna" outcome="/tablas/GradoAno-3-CivilDiurno" />                                                                  
+                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1897} de Civil de jornada Vespertina" outcome="/tablas/GradoAno-3-CivilVespertino" />                         
+                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1897} de Ejecución de jornada Diurna" outcome="/tablas/GradoAno-3-EjecuDiurno" />
+                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1897} de Ejecución de jornada Vespertina" outcome="/tablas/GradoAno-3-EjecuVespertino" />
+                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1896} de Civil de jornada Diurna" outcome="/tablas/GradoAno-4-CivilDiurno" />
+                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1896} de Civil de jornada Vespertina" outcome="/tablas/GradoAno-4-CivilVespertino" />  
+                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1896} de Ejecución de jornada Diurna" outcome="/tablas/GradoAno-4-EjecuDiurno" />
+                                    <p:menuitem value="Docentes año #{profesorController.fecha_actual.year+1896} de Ejecución de jornada Vespertina" outcome="/tablas/GradoAno-4-EjecuVespertino" />                                  
                                 </p:submenu>
 
-                                <p:submenu label="Información de los profesores según jornada" icon="ui-icon-document">
-                                    <p:menuitem outcome="/profesorDiurno/profesores.xhtml"  value="Menú Profesores Diurno"/>
-                                    <p:menuitem outcome="/profesorVespertino/profesores.xhtml"  value="Menú Profesores Vespertino"/>
+                                <p:submenu label="Información de los profesores según carrera y jornada" icon="ui-icon-document">
+                                    <p:menuitem outcome="/profesorDiurno/profesoresCivil.xhtml"  value="Menú Profesores Civil Diurno"/>
+                                    <p:menuitem outcome="/profesorDiurno/profesoresEjecucion.xhtml"  value="Menú Profesores Ejecución Diurno"/>
+                                    <p:menuitem outcome="/profesorVespertino/profesoresCivil.xhtml"  value="Menú Profesores Civil Vespertino"/>
+                                    <p:menuitem outcome="/profesorVespertino/profesoresEjecucion.xhtml"  value="Menú Profesores Ejecución Vespertino"/>
                                 </p:submenu>
                                 
                                 <p:submenu label="Información adicional"  icon="ui-icon-document" styleClass="ui-priority-primary">
-                                    <p:menuitem value="Detalle Bibliografía con totales" outcome="/tablas/DetalleBibliografiaTotal" />
+                                    <p:menuitem value="Detalle Bibliografía con totales" outcome="/tablas/DetalleBibliografiaTotal" />                                                                  
+                                </p:submenu>
+                                
+                                <p:submenu label="Información de los docentes y sus grados académicos"  icon="ui-icon-document" styleClass="ui-priority-primary">
+                                    <p:menuitem value="Docentes y grados del año #{profesorController.fecha_actual.year+1900} de Civil de jornada Diurna" outcome="/tablas/Listado-Ano0-Grado-CivilDiurno.xhtml" />
+                                    <p:menuitem value="Docentes y grados del año #{profesorController.fecha_actual.year+1900} de Civil de jornada Vespertina" outcome="/tablas/Listado-Ano0-Grado-CivilVespertino.xhtml" />
+                                    <p:menuitem value="Docentes y grados del año #{profesorController.fecha_actual.year+1900} de Ejecución de jornada Diurna" outcome="/tablas/Listado-Ano0-Grado-EjecuDiurno.xhtml" />
+                                    <p:menuitem value="Docentes y grados del año #{profesorController.fecha_actual.year+1900} de Ejecución de jornada Vespertina" outcome="/tablas/Listado-Ano0-Grado-EjecuVespertino.xhtml" />
+                                    <p:menuitem value="Docentes y grados del año #{profesorController.fecha_actual.year+1899} de Civil de jornada Diurna" outcome="/tablas/Listado-Ano1-Grado-CivilDiurno.xhtml" />
+                                    <p:menuitem value="Docentes y grados del año #{profesorController.fecha_actual.year+1899} de Civil de jornada Vespertina" outcome="/tablas/Listado-Ano1-Grado-CivilVespertino.xhtml" />
+                                    <p:menuitem value="Docentes y grados del año #{profesorController.fecha_actual.year+1899} de Ejecución de jornada Diurna" outcome="/tablas/Listado-Ano1-Grado-EjecuDiurno.xhtml" />
+                                    <p:menuitem value="Docentes y grados del año #{profesorController.fecha_actual.year+1899} de Ejecución de jornada Vespertina" outcome="/tablas/Listado-Ano1-Grado-EjecuVespertino.xhtml" />
+                                    <p:menuitem value="Docentes y grados del año #{profesorController.fecha_actual.year+1898} de Civil de jornada Diurna" outcome="/tablas/Listado-Ano2-Grado-CivilDiurno.xhtml" />
+                                    <p:menuitem value="Docentes y grados del año #{profesorController.fecha_actual.year+1898} de Civil de jornada Vespertina" outcome="/tablas/Listado-Ano2-Grado-CivilVespertino.xhtml" />
+                                    <p:menuitem value="Docentes y grados del año #{profesorController.fecha_actual.year+1898} de Ejecución de jornada Diurna" outcome="/tablas/Listado-Ano2-Grado-EjecuDiurno.xhtml" />
+                                    <p:menuitem value="Docentes y grados del año #{profesorController.fecha_actual.year+1898} de Ejecución de jornada Vespertina" outcome="/tablas/Listado-Ano2-Grado-EjecuVespertino.xhtml" />
+                                    <p:menuitem value="Docentes y grados del año #{profesorController.fecha_actual.year+1897} de Civil de jornada Diurna" outcome="/tablas/Listado-Ano3-Grado-CivilDiurno.xhtml" />
+                                    <p:menuitem value="Docentes y grados del año #{profesorController.fecha_actual.year+1897} de Civil de jornada Vespertina" outcome="/tablas/Listado-Ano3-Grado-CivilVespertino.xhtml" />
+                                    <p:menuitem value="Docentes y grados del año #{profesorController.fecha_actual.year+1897} de Ejecución de jornada Diurna" outcome="/tablas/Listado-Ano3-Grado-EjecuDiurno.xhtml" />
+                                    <p:menuitem value="Docentes y grados del año #{profesorController.fecha_actual.year+1897} de Ejecución de jornada Vespertina" outcome="/tablas/Listado-Ano3-Grado-EjecuVespertino.xhtml" />
+                                    <p:menuitem value="Docentes y grados del año #{profesorController.fecha_actual.year+1896} de Civil de jornada Diurna" outcome="/tablas/Listado-Ano4-Grado-CivilDiurno.xhtml" />
+                                    <p:menuitem value="Docentes y grados del año #{profesorController.fecha_actual.year+1896} de Civil de jornada Vespertina" outcome="/tablas/Listado-Ano4-Grado-CivilVespertino.xhtml" />
+                                    <p:menuitem value="Docentes y grados del año #{profesorController.fecha_actual.year+1896} de Ejecución de jornada Diurna" outcome="/tablas/Listado-Ano4-Grado-EjecuDiurno.xhtml" />
+                                    <p:menuitem value="Docentes y grados del año #{profesorController.fecha_actual.year+1896} de Ejecución de jornada Vespertina" outcome="/tablas/Listado-Ano4-Grado-EjecuVespertino.xhtml" />
+                                </p:submenu>
+                                
+                                <p:submenu label="Información de los docentes y sus jerarquias"  icon="ui-icon-document" styleClass="ui-priority-primary">
+                                    <p:menuitem value="Docentes y jerarquias del año #{profesorController.fecha_actual.year+1900} de Civil de jornada Diurna" outcome="/tablas/ListadoJerarquias-Ano0-CivilDiurno.xhtml" />
+                                    <p:menuitem value="Docentes y jerarquias del año #{profesorController.fecha_actual.year+1900} de Civil de jornada Vespertina" outcome="/tablas/ListadoJerarquias-Ano0-CivilVespertino.xhtml" />
+                                    <p:menuitem value="Docentes y jerarquias del año #{profesorController.fecha_actual.year+1900} de Ejecución de jornada Diurna" outcome="/tablas/ListadoJerarquias-Ano0-EjecuDiurno.xhtml" />
+                                    <p:menuitem value="Docentes y jerarquias del año #{profesorController.fecha_actual.year+1900} de Ejecución de jornada Vespertina" outcome="/tablas/ListadoJerarquias-Ano0-EjecuVespertino.xhtml" />
+                                    <p:menuitem value="Docentes y jerarquias del año #{profesorController.fecha_actual.year+1899} de Civil de jornada Diurna" outcome="/tablas/ListadoJerarquias-Ano1-CivilDiurno.xhtml" />
+                                    <p:menuitem value="Docentes y jerarquias del año #{profesorController.fecha_actual.year+1899} de Civil de jornada Vespertina" outcome="/tablas/ListadoJerarquias-Ano1-CivilVespertino.xhtml" />
+                                    <p:menuitem value="Docentes y jerarquias del año #{profesorController.fecha_actual.year+1899} de Ejecución de jornada Diurna" outcome="/tablas/ListadoJerarquias-Ano1-EjecuDiurno.xhtml" />
+                                    <p:menuitem value="Docentes y jerarquias del año #{profesorController.fecha_actual.year+1899} de Ejecución de jornada Vespertina" outcome="/tablas/ListadoJerarquias-Ano1-EjecuVespertino.xhtml" />
+                                    <p:menuitem value="Docentes y jerarquias del año #{profesorController.fecha_actual.year+1898} de Civil de jornada Diurna" outcome="/tablas/ListadoJerarquias-Ano2-CivilDiurno.xhtml" />
+                                    <p:menuitem value="Docentes y jerarquias del año #{profesorController.fecha_actual.year+1898} de Civil de jornada Vespertina" outcome="/tablas/ListadoJerarquias-Ano2-CivilVespertino.xhtml" />
+                                    <p:menuitem value="Docentes y jerarquias del año #{profesorController.fecha_actual.year+1898} de Ejecución de jornada Diurna" outcome="/tablas/ListadoJerarquias-Ano2-EjecuDiurno.xhtml" />
+                                    <p:menuitem value="Docentes y jerarquias del año #{profesorController.fecha_actual.year+1898} de Ejecución de jornada Vespertina" outcome="/tablas/ListadoJerarquias-Ano2-EjecuVespertino.xhtml" />
+                                    <p:menuitem value="Docentes y jerarquias del año #{profesorController.fecha_actual.year+1897} de Civil de jornada Diurna" outcome="/tablas/ListadoJerarquias-Ano3-CivilDiurno.xhtml" />
+                                    <p:menuitem value="Docentes y jerarquias del año #{profesorController.fecha_actual.year+1897} de Civil de jornada Vespertina" outcome="/tablas/ListadoJerarquias-Ano3-CivilVespertino.xhtml" />
+                                    <p:menuitem value="Docentes y jerarquias del año #{profesorController.fecha_actual.year+1897} de Ejecución de jornada Diurna" outcome="/tablas/ListadoJerarquias-Ano3-EjecuDiurno.xhtml" />
+                                    <p:menuitem value="Docentes y jerarquias del año #{profesorController.fecha_actual.year+1897} de Ejecución de jornada Vespertina" outcome="/tablas/ListadoJerarquias-Ano3-EjecuVespertino.xhtml" />
+                                    <p:menuitem value="Docentes y jerarquias del año #{profesorController.fecha_actual.year+1896} de Civil de jornada Diurna" outcome="/tablas/ListadoJerarquias-Ano4-CivilDiurno.xhtml" />
+                                    <p:menuitem value="Docentes y jerarquias del año #{profesorController.fecha_actual.year+1896} de Civil de jornada Vespertina" outcome="/tablas/ListadoJerarquias-Ano4-CivilVespertino.xhtml" />
+                                    <p:menuitem value="Docentes y jerarquias del año #{profesorController.fecha_actual.year+1896} de Ejecución de jornada Diurna" outcome="/tablas/ListadoJerarquias-Ano4-EjecuDiurno.xhtml" />
+                                    <p:menuitem value="Docentes y jerarquias del año #{profesorController.fecha_actual.year+1896} de Ejecución de jornada Vespertina" outcome="/tablas/ListadoJerarquias-Ano4-EjecuVespertino.xhtml" />
+                                </p:submenu>
+                                
+                                <p:submenu label="Información de los docentes y sus contratos"  icon="ui-icon-document" styleClass="ui-priority-primary">
+                                    <p:menuitem value="Docentes y contratos del año #{profesorController.fecha_actual.year+1900} de Civil de jornada Diurna" outcome="/tablas/ListadoContratos-Ano0-CivilDiurno.xhtml" />
+                                    <p:menuitem value="Docentes y contratos del año #{profesorController.fecha_actual.year+1900} de Civil de jornada Vespertina" outcome="/tablas/ListadoContratos-Ano0-CivilVespertino.xhtml" />
+                                    <p:menuitem value="Docentes y contratos del año #{profesorController.fecha_actual.year+1900} de Ejecución de jornada Diurna" outcome="/tablas/ListadoContratos-Ano0-EjecuDiurno.xhtml" />
+                                    <p:menuitem value="Docentes y contratos del año #{profesorController.fecha_actual.year+1900} de Ejecución de jornada Vespertina" outcome="/tablas/ListadoContratos-Ano0-EjecuVespertino.xhtml" />
+                                    <p:menuitem value="Docentes y contratos del año #{profesorController.fecha_actual.year+1899} de Civil de jornada Diurna" outcome="/tablas/ListadoContratos-Ano1-CivilDiurno.xhtml" />
+                                    <p:menuitem value="Docentes y contratos del año #{profesorController.fecha_actual.year+1899} de Civil de jornada Vespertina" outcome="/tablas/ListadoContratos-Ano1-CivilVespertino.xhtml" />
+                                    <p:menuitem value="Docentes y contratos del año #{profesorController.fecha_actual.year+1899} de Ejecución de jornada Diurna" outcome="/tablas/ListadoContratos-Ano1-EjecuDiurno.xhtml" />
+                                    <p:menuitem value="Docentes y contratos del año #{profesorController.fecha_actual.year+1899} de Ejecución de jornada Vespertina" outcome="/tablas/ListadoContratos-Ano1-EjecuVespertino.xhtml" />
+                                    <p:menuitem value="Docentes y contratos del año #{profesorController.fecha_actual.year+1898} de Civil de jornada Diurna" outcome="/tablas/ListadoContratos-Ano2-CivilDiurno.xhtml" />
+                                    <p:menuitem value="Docentes y contratos del año #{profesorController.fecha_actual.year+1898} de Civil de jornada Vespertina" outcome="/tablas/ListadoContratos-Ano2-CivilVespertino.xhtml" />
+                                    <p:menuitem value="Docentes y contratos del año #{profesorController.fecha_actual.year+1898} de Ejecución de jornada Diurna" outcome="/tablas/ListadoContratos-Ano2-EjecuDiurno.xhtml" />
+                                    <p:menuitem value="Docentes y contratos del año #{profesorController.fecha_actual.year+1898} de Ejecución de jornada Vespertina" outcome="/tablas/ListadoContratos-Ano2-EjecuVespertino.xhtml" />
+                                    <p:menuitem value="Docentes y contratos del año #{profesorController.fecha_actual.year+1897} de Civil de jornada Diurna" outcome="/tablas/ListadoContratos-Ano3-CivilDiurno.xhtml" />
+                                    <p:menuitem value="Docentes y contratos del año #{profesorController.fecha_actual.year+1897} de Civil de jornada Vespertina" outcome="/tablas/ListadoContratos-Ano3-CivilVespertino.xhtml" />
+                                    <p:menuitem value="Docentes y contratos del año #{profesorController.fecha_actual.year+1897} de Ejecución de jornada Diurna" outcome="/tablas/ListadoContratos-Ano3-EjecuDiurno.xhtml" />
+                                    <p:menuitem value="Docentes y contratos del año #{profesorController.fecha_actual.year+1897} de Ejecución de jornada Vespertina" outcome="/tablas/ListadoContratos-Ano3-EjecuVespertino.xhtml" />
+                                    <p:menuitem value="Docentes y contratos del año #{profesorController.fecha_actual.year+1896} de Civil de jornada Diurna" outcome="/tablas/ListadoContratos-Ano4-CivilDiurno.xhtml" />
+                                    <p:menuitem value="Docentes y contratos del año #{profesorController.fecha_actual.year+1896} de Civil de jornada Vespertina" outcome="/tablas/ListadoContratos-Ano4-CivilVespertino.xhtml" />
+                                    <p:menuitem value="Docentes y contratos del año #{profesorController.fecha_actual.year+1896} de Ejecución de jornada Diurna" outcome="/tablas/ListadoContratos-Ano4-EjecuDiurno.xhtml" />
+                                    <p:menuitem value="Docentes y contratos del año #{profesorController.fecha_actual.year+1896} de Ejecución de jornada Vespertina" outcome="/tablas/ListadoContratos-Ano4-EjecuVespertino.xhtml" />
                                 </p:submenu>
                                 
                                 <p:submenu label="Administrador" icon="ui-icon-pencil" rendered="#{loginController.noesComite()}">
@@ -55,6 +155,7 @@
                                     <p:menuitem outcome="/tipoAsignatura/List" value="Menú Tipos de Asignaturas"/>
                                     <p:menuitem outcome="/carrera/List" value="Menú Carreras" />
                                     <p:menuitem outcome="/rol/List" value="Menú Roles" />
+                                    <p:menuitem outcome="/contrato/List" value="Menú Contrato" />
                                     <p:menuitem outcome="/gradoAcademico/List" value="Menú Grado Académico" />
                                     <p:menuitem outcome="/jerarquia/List" value="Menú Jerarquías" />
                                     <p:menuitem outcome="/usuario/List" value="Menú Usuarios" rendered="#{loginController.esAdministrador()}"/>

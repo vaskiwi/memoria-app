@@ -8,8 +8,6 @@ package managedbeans;
 import entities.Rol;
 import entities.Usuario;
 import java.io.Serializable;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;

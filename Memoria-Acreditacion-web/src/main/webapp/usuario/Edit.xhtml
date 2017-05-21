@@ -25,7 +25,7 @@
                         <p:outputLabel value="#{bundle.CreateUsuarioLabel_nombreUsuario}" for="correo" />
                         <p:inputText id="correo" value="#{usuarioController.selected.nombreUsuario}" required="true" title="#{bundle.CreateUsuarioTitle_nombreUsuario}" />
                         <p:outputLabel value="#{bundle.CreateUsuarioLabel_activo}" for="activo" />
-                        <p:selectBooleanCheckbox id="activo" value="#{usuarioController.selected.activo}" />
+                        <p:selectBooleanCheckbox id="activo" value="#{usuarioController.selected.activo}" disabled="#{usuarioController.eliminarUsuario}"/>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{usuarioController.update}" value="Guardar" update="display,:UsuarioListForm:datalist,:growl"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="UsuarioEditDialog.hide()"/>

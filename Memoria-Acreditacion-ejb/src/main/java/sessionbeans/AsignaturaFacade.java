@@ -6,6 +6,7 @@
 package sessionbeans;
 
 import entities.Asignatura;
+import entities.Carrera;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -51,6 +52,30 @@ public class AsignaturaFacade extends AbstractFacade<Asignatura> implements Asig
         Query query;
         query = em.createNamedQuery("Asignatura.findByNombre")
                 .setParameter("nombre_asignatura", nombre);
+        return query.getResultList();
+    }
+    
+    @Override
+    public List<Asignatura> findByCodigo(int codigo){
+        Query query;
+        query = em.createNamedQuery("Asignatura.findByCodigo")
+                .setParameter("codigo", codigo);
+        return query.getResultList();
+    }
+    
+    @Override
+    public List<Asignatura> findByCarrerayJornada(Carrera carrera,String jornada){
+        Query query;
+        query = em.createNamedQuery("Asignatura.findByCarreraYJornada")
+                .setParameter("carrera", carrera)
+                .setParameter("jornada_asignatura", jornada);
+        return query.getResultList();
+    }
+    @Override
+    public List<Asignatura> findByDisponible(Boolean disponible){
+        Query query;
+        query = em.createNamedQuery("Asignatura.findByDisponible")
+                .setParameter("disponible", disponible);
         return query.getResultList();
     }
     

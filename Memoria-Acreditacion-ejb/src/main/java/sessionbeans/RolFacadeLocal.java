@@ -25,6 +25,8 @@ public interface RolFacadeLocal {
     Rol find(Object id);
     
     Rol findByNombre(String nombre);
+    
+    List<Rol> findByNombreList(String nombre);
 
     List<Rol> findAll();
 
